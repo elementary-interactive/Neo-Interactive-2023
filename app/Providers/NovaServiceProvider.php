@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Dashboards\Main;
 use Laravel\Nova\Menu\Menu as NovaMenu;
 use Laravel\Nova\Menu\MenuItem as NovaMenuItem;
 use Laravel\Nova\Menu\MenuSection as NovaMenuSection;
@@ -22,6 +21,7 @@ use App\Nova\Link;
 use App\Nova\Menu;
 use App\Nova\Product;
 use App\Nova\Site;
+use App\Nova\Dashboards\Main;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
