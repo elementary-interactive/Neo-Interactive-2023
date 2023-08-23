@@ -1,13 +1,14 @@
 FROM php:8.1-fpm
 
 # Copy composer.lock and composer.json
-# COPY composer.lock composer.json /var/www/
+COPY composer.lock composer.json /var/www/
 
 # Set working directory
 WORKDIR /var/www
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get --allow-releaseinfo-change update
+RUN apt-get install -y \
     build-essential \
     libz-dev \ 
     libonig-dev \
@@ -38,6 +39,8 @@ RUN printf "\n" | pecl install imagick
 RUN docker-php-ext-enable imagick
 RUN docker-php-ext-install intl
 RUN docker-php-ext-enable intl
+RUN pecl install redis
+RUN docker-php-ext-enable redis
 #
 # don't need memcached...
 #
