@@ -57,4 +57,6 @@ return [
     'hu'  => ['hu-HU', 'magyar', 'hungarian'],
     'en'  => ['en-EN', 'english', 'english'],
   ],
+
+  'default_locale'    => 'hu',
 ];
