@@ -15,9 +15,9 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         \Neon\Admin\Models\Admin::class             => \App\Policies\AdminPolicy::class,
         \Neon\Attributable\Models\Attribute::class  => \App\Policies\AttributePolicy::class,
-        \Neon\Site\Models\Site::class               => \App\Policies\SitePolicy::class,
-        \Neon\Models\Menu::class                    => \App\Policies\MenuPolicy::class,
         \Neon\Models\Link::class                    => \App\Policies\LinkPolicy::class,
+        \Neon\Models\Menu::class                    => \App\Policies\MenuPolicy::class,
+        \Neon\Site\Models\Site::class               => \App\Policies\SitePolicy::class,
     ];
 
     /**
