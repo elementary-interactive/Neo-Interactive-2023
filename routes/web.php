@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Neon\Site\Facades\Site;
+use Neon\Site\Http\Middleware\SiteMiddleware;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group([
+    'prefix'      => 'en',
+    'middleware'  => SiteMiddleware::class
+  ], function () {
+
+Route::get('/', function() {
+    echo 'Hello '.app('site')->current()->locale.' /// DOMAIN';
+    dump(app()->getLocale());
+  });
+
+});
+
+
+Route::group([
+    'middleware'  => SiteMiddleware::class
+  ], function () {
+
+    Route::get('/', function() {
+        echo 'Szia '.app('site')->current()->locale.' /// DOMAIN';
+        dump(app()->getLocale());
+
+
+      });
+
 });
