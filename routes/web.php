@@ -23,7 +23,9 @@ Route::group([
 
 Route::get('/', function() {
     echo 'Hello '.app('site')->current()->locale.' /// DOMAIN';
-    dump(app()->getLocale());
+
+    echo 'Hello '.app('site')->current()->lablec_szoveg.' /// DOMAIN';
+    dump(app('site')->current());
   });
 
 });
