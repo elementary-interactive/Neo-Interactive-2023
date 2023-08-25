@@ -16,6 +16,7 @@ use Laravel\Nova\Menu\MenuSection as NovaMenuSection;
 use App\Nova\Admin;
 use App\Nova\Attribute;
 use App\Nova\Brand;
+use App\Nova\CaseStudy;
 use App\Nova\Category;
 use App\Nova\Link;
 use App\Nova\Menu;
@@ -73,6 +74,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
         NovaMenuSection::make(__('Resources'), [
           NovaMenuItem::resource(Partner::class),
+          NovaMenuItem::resource(CaseStudy::class),
           /** Here comes all the menu items...
          * 
          * ...
