@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\KeyValue;
 use Laravel\Nova\Fields\Select;
@@ -47,7 +48,7 @@ class Site extends Resource
      */
     public function fields(NovaRequest $request)
     {
-        return [
+        $fields = [
             Text::make(__('title'), 'title')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -67,13 +68,31 @@ class Site extends Resource
             KeyValue::make(__("Domains"), 'domains')
                 ->rules('required'),
             Select::make(__('Locale'), 'locale')
-                ->options(config('site.available_locales')),
+                ->options(config('site.available_locales'))
+                ->displayUsingLabels(),
             Textarea::make(__('Robots'), 'robots')
                 ->rows(5),
             Boolean::make(__("Default site"), 'default')
                 ->help(__('The domain which marked as default will be loaded if no domains were matched by domain or prefix.')),
-
+            // MorphMany::make(__('Variables'), 'attributeValues', AttributeValue::class)
         ];
+
+        $fields_collection = \Neon\Attributable\Models\Attribute::where('class', get_class($this->resource))->get();
+        
+        if ($fields_collection->count())
+        {
+            $fields[] = Heading::make(__('Advanced settings'));
+            foreach ($fields_collection as $field)
+            {
+                $field_class = '\\Laravel\\Nova\\Fields\\'.$field->field;
+                $fields[] = $field_class::make($field->name, $field->slug)
+                    ->rules($field->rules)
+                    ->hideFromIndex();
+            }
+        }
+
+
+        return $fields;
     }
 
     /**
