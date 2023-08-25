@@ -1,1 +1,1 @@
-&copy; Elementary Interactive, 2023 &mdash; {{ now()->year }} | N23
+&copy; Elementary Interactive, 2020 &mdash; {{ now()->year }} | N23
