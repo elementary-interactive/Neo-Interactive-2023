@@ -5,6 +5,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
@@ -124,7 +125,7 @@ class Partner extends Resource
         ->thumbnail(function () {
           return $this->getFirstMediaUrl('partners', 'thumb');
         }),
-      Number::make("order"),
+      Boolean::make('Kezdőoldalra', 'show_on_main'),
     ];
 
     return $fields;
