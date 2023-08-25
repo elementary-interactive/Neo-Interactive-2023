@@ -54,8 +54,15 @@ return [
   ],
 
   'available_locales' => [
-    'hu'  => ['hu-HU', 'magyar', 'hungarian'],
-    'en'  => ['en-EN', 'english', 'english'],
+    'hu'  => [
+      'iso'           => 'hu-HU',
+      'label'         => 'magyar',
+      'english_label' => 'hungarian'
+    ],
+    'en'  => [
+      'iso'           => 'en-EN',
+      'label'         => 'english',
+      'english_label' => 'english'],
   ],
 
   'default_locale'    => 'hu',
