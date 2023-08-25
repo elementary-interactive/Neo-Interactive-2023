@@ -121,13 +121,8 @@ class Link extends Resource
             Text::make(__('Title'), 'title')
                 // ->slug('slug')
                 ->rules('required', 'max:255'),
-            Slug::make('URI', 'slug')
-                // ->slugifyOptions([
-                //     'lang'  => 'hu'
-                // ])
-                ->from('title')
-                ->hideFromIndex()
-                ->hideFromDetail(),
+            Text::make('URI', 'slug')
+                ->hideFromIndex(),
             Text::make('', function() use ($model) {
                 return "<a style=\"color: inherit;\" href=\"".url($model->href)."\" target=\"_blank\" title=\"{$model->href}\">".view('nova::icon.svg-link', [
                     'color'     => 'rgb(var(--colors-gray-400), 0.75)'
@@ -194,30 +189,32 @@ class Link extends Resource
             MorphMany::make(__('Variables'), 'attributeValues', AttributeValue::class)
         ];
 
-        // $advanced_fields = \Neon\Attributable\Models\Attribute::where('class', get_class($model->resource))->get();
-        // if ($advanced_fields->count())
-        // {
-        //     $fields[] = Heading::make(__('Advanced settings'));
-        //     foreach ($advanced_fields as $field)
-        //     {
-        //         $field_class = '\\Laravel\\Nova\\Fields\\'.$field->field;
-        //         $fields[] = $field_class::make($field->name, $field->slug)
-        //             ->rules($field->rules)
-        //             ->hideFromIndex();
-        //     }
-        // }
-
-        foreach ($layouts as $layout)
+        $advanced_fields_collection = \Neon\Attributable\Models\Attribute::where('class', get_class($model->resource))->get();
+        $advanced_fields = [];
+        
+        if ($advanced_fields_collection->count())
         {
-            $flexible->addLayout($layout);
+            $advanced_fields[] = Heading::make(__('Advanced settings'));
+            foreach ($advanced_fields_collection as $field)
+            {
+                $field_class = '\\Laravel\\Nova\\Fields\\'.$field->field;
+                $advanced_fields[] = $field_class::make($field->name, $field->slug)
+                    ->rules($field->rules)
+                    ->hideFromIndex();
+            }
         }
+
+        // foreach ($layouts as $layout)
+        // {
+        //     $flexible->addLayout($layout);
+        // }
 
         // $fields[] = $flexible;
 
 
         $tabs = Tabs::make(__('Link'), [
             Tab::make(__('Page'), $fields),
-            Tab::make(__('Content'), [$flexible]),
+            // Tab::make(__('Content'), [$flexible]),
             Tab::make(__('Advanced Settings'), $advanced_fields),
         ]);
 
