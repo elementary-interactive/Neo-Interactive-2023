@@ -6,12 +6,17 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
 class Partner extends Resource
 {
+  use HasSortableRows {
+    indexQuery as indexSortableQuery;
+  }
+
   /**
    * The model the resource corresponds to.
    *
@@ -61,6 +66,30 @@ class Partner extends Resource
   }
 
   /**
+   * Return the location to redirect the user after creation.
+   *
+   * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+   * @param  \Laravel\Nova\Resource  $resource
+   * @return \Laravel\Nova\URL|string
+   */
+  public static function redirectAfterCreate(NovaRequest $request, $resource)
+  {
+    return '/resources/' . static::uriKey();
+  }
+
+  /**
+   * Return the location to redirect the user after update.
+   *
+   * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+   * @param  \Laravel\Nova\Resource  $resource
+   * @return \Laravel\Nova\URL|string
+   */
+  public static function redirectAfterUpdate(NovaRequest $request, $resource)
+  {
+    return '/resources/' . static::uriKey();
+  }
+
+  /**
    * Get the fields displayed by the resource.
    *
    * @param  \Illuminate\Http\Request  $request
@@ -68,22 +97,20 @@ class Partner extends Resource
    */
   public function fields(Request $request)
   {
-    $model = $this;
-
     $fields = [
-      BelongsToMany::make(__('Site'), 'site', \App\Nova\Site::class)
-        ->fields(function ($request, $relatedModel) {
-          return [
-            Text::make(__('Dependence type'), 'dependence_type')
-              ->default(\Neon\Models\Menu::class)
-              ->readonly()
-              ->hideFromIndex(),
-          ];
-        }),
+      // BelongsToMany::make(__('Site'), 'site', \App\Nova\Site::class)
+      //   ->fields(function ($request, $relatedModel) {
+      //     return [
+      //       Text::make(__('Dependence type'), 'dependence_type')
+      //         ->default(\Neon\Models\Menu::class)
+      //         ->readonly()
+      //         ->hideFromIndex(),
+      //     ];
+      //   }),
       Text::make('Név', 'name')
         ->rules('required', 'max:255'),
       Text::make('Link')
-        ->rules('max:255'),
+        ->rules('required', 'url', 'max:255'),
       Image::make('Logó', 'logo')
         ->store(function (Request $request, $model) {
           /**
@@ -96,7 +123,8 @@ class Partner extends Resource
         })
         ->thumbnail(function () {
           return $this->getFirstMediaUrl('partners', 'thumb');
-        })
+        }),
+      Number::make("order"),
     ];
 
     return $fields;
@@ -111,11 +139,12 @@ class Partner extends Resource
    */
   public static function indexQuery(NovaRequest $request, $query)
   {
-    $next = parent::indexQuery($request, $query);
+    $next = parent::indexQuery($request, static::indexSortableQuery($request, $query));
 
-    $next->withoutGlobalScopes([
-      \Neon\Site\Models\Scopes\SiteScope::class
-    ]);
+    // $next->withoutGlobalScopes([
+    //   \Neon\Site\Models\Scopes\SiteScope::class
+    // ]);
+    $next->orderBy('order', 'ASC');
 
     // dd($next);
     return $next;

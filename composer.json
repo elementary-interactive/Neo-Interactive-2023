@@ -20,6 +20,7 @@
         "neon/model-uuid": "^1.0",
         "neon/site": "^2.0",
         "neon/ui": "0.1.0-alpha-1",
+        "outl1ne/nova-sortable": "^3.4",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-tags": "^4.5",
         "symfony/intl": "^6.3",

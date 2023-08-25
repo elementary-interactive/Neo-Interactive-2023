@@ -52,10 +52,7 @@ class Site extends Resource
             Text::make(__('title'), 'title')
                 ->sortable()
                 ->rules('required', 'max:255'),
-            Slug::make('', 'slug')
-                ->from('title')
-                ->separator('_')
-                ->hideFromIndex(),
+            Text::make('URI', 'slug'),
             Image::make(__('Favicon'), 'favicon')
                 ->store(function (Request $request, $model) {
                     /**
