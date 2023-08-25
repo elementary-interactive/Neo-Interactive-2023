@@ -22,6 +22,7 @@ use App\Nova\Menu;
 use App\Nova\Product;
 use App\Nova\Site;
 use App\Nova\Dashboards\Main;
+use App\Nova\Partner;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -71,7 +72,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
           ->collapsable(),
 
         NovaMenuSection::make(__('Resources'), [
-
+          NovaMenuItem::resource(Partner::class),
           /** Here comes all the menu items...
          * 
          * ...
