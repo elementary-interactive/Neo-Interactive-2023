@@ -2,7 +2,8 @@
 
 namespace App\Nova;
 
-
+use App\Models\CaseStudy as ModelsCaseStudy;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -107,8 +108,26 @@ class CaseStudy extends Resource
         ->showCreateRelationButton(),
       Text::make('Cím', 'title')
         ->rules('required', 'max:255'),
+      Text::make('')
+        ->resolveUsing(function () {
+            return '<a style="color: inherit;" href="'.route($this->resource->site->locale.'.case_study.show', ['slug' => $this->resource->slug]).'" target="_blank" title="'.$this->resource->title.'">'.view('nova::icon.svg-link', [
+                'color'     => 'rgb(var(--colors-gray-400), 0.75)'
+            ])->render().'</a>';
+        })
+        ->asHtml()
+        ->onlyOnIndex(),
       Slug::make('', 'slug')
-        ->from('title'),
+        ->from('title')
+        ->hideFromIndex(),
+      Images::make(__('Images'), ModelsCaseStudy::MEDIA_COLLECTION) // second parameter is the media collection name
+        ->conversionOnPreview('responsive') // conversion used to display the "original" image
+        ->conversionOnDetailView('responsive') // conversion used on the model's view
+        ->conversionOnIndexView('responsive') // conversion used to display the image on the model's index page
+        ->conversionOnForm('responsive') // conversion used to display the image on the model's form
+        // validation rules for the collection of images
+        ->singleImageRules('dimensions:min_width=100')
+        ->withResponsiveImages()
+        ->enableExistingMedia(),
       Trix::make('Brief', 'brief')
         ->rules('required'),
       Trix::make('Megoldás', 'solution')

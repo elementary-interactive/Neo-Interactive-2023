@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CaseStudyController;
 use Illuminate\Support\Facades\Route;
 use Neon\Site\Facades\Site;
 use Neon\Site\Http\Middleware\SiteMiddleware;
@@ -41,5 +42,8 @@ Route::group([
 
 
       });
+
+    Route::get("/munkaink/{slug}", [CaseStudyController::class, 'show'])
+      ->name('hu.case_study.show');
 
 });
