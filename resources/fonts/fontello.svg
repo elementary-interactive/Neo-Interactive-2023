@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2023 by original authors @ fontello.com</metadata>
+<defs>
+<font id="fontello" horiz-adv-x="1000" >
+<font-face font-family="fontello" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="arrow-left" unicode="&#xe802;" d="M1441 438h-1119l300 293-125 119-497-497 497-503 125 119-300 299h1119z" horiz-adv-x="1441" />
+
+<glyph glyph-name="arrow-right" unicode="&#xe803;" d="M938 850l-119-119 294-293h-1113v-170h1113l-294-299 119-119 503 503z" horiz-adv-x="1441" />
+
+<glyph glyph-name="checkmark" unicode="&#xe804;" d="M559-150l-559 559 98 98 461-454 798 797 98-98z" horiz-adv-x="1455" />
+
+<glyph glyph-name="icon-open-external-link" unicode="&#xe805;" d="M0 850v-1000h1000v244h-122v-122h-756v756h122v122h-244z m500 0l183-183-305-317 122-122 317 317 195-183v488h-512z" horiz-adv-x="1000" />
+
+<glyph glyph-name="play" unicode="&#xe806;" d="M71 850l868-498-868-498v996z m142-235v-526l462 263-462 263z" horiz-adv-x="944" />
+
+<glyph glyph-name="twitter" unicode="&#xf099;" d="M904 622q-37-54-90-93 0-8 0-23 0-73-21-145t-64-139-103-117-144-82-181-30q-151 0-276 81 19-2 43-2 126 0 224 77-59 1-105 36t-64 89q19-3 34-3 24 0 48 6-63 13-104 62t-41 115v2q38-21 82-23-37 25-59 64t-22 86q0 49 25 91 68-83 164-133t208-55q-5 21-5 41 0 75 53 127t127 53q79 0 132-57 61 12 115 44-21-64-80-100 52 6 104 28z" horiz-adv-x="928.6" />
+
+<glyph glyph-name="linkedin" unicode="&#xf0e1;" d="M195 501v-553h-184v553h184z m12 171q0-41-29-68t-75-27h-1q-46 0-74 27t-28 68q0 41 29 68t75 27 74-27 29-68z m650-407v-317h-183v296q0 59-23 92t-71 33q-35 0-58-19t-36-48q-6-17-6-45v-309h-184q1 223 1 361t0 165l-1 27h184v-80h-1q11 18 23 31t31 29 49 24 64 9q95 0 153-63t58-186z" horiz-adv-x="857.1" />
+</font>
+</defs>
+</svg>

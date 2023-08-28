@@ -1,0 +1,27 @@
+// variables
+@import "variables";
+
+// fonts
+@import "fonts/_fonts";
+@import "fonts/_fontello";
+
+// common
+@import "color";
+@import "common";
+@import "texts";
+@import "spacing";
+
+// components
+@import "components/_buttons";
+@import "components/_footer";
+@import "components/_forms";
+@import "components/_header";
+@import "components/_intros";
+@import "components/_our-mission-popup";
+
+// pages - page parts
+
+@import "pages/_case-studies";
+@import "pages/_courses";
+@import "pages/_main";
+@import "pages/_newsroom";

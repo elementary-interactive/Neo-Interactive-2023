@@ -1,0 +1,180 @@
+form {
+
+    .form-control:focus,
+    textarea:focus,
+    select:focus,
+    input[type]:focus,
+    .uneditable-input:focus {
+        box-shadow: 0 0 4px 2px rgba($color: $black, $alpha: .2);
+        border: 1px solid rgba($color: $black, $alpha: .1);
+        outline: 0 none;
+    }
+
+    .form-group {
+        margin-bottom: 3rem;
+
+        &.biger-margin-top {
+            margin-top: 6rem;
+        }
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        border: 1px solid $white;
+        -webkit-text-fill-color: $black;
+        -webkit-box-shadow: 0 0 0px 1000px inherit inset;
+        transition: background-color 5000s ease-in-out 0s;
+        font-size: 1.6rem;
+    }
+
+    input[type],
+    select,
+    .form-control {
+        font-size: 1.6rem;
+        color: $black;
+        padding: 1.7rem 1.5rem;
+        background-color: $white;
+        border: 1px solid $white;
+        border-radius: 0;
+        height: auto;
+
+        &::placeholder {
+            color: $grey;
+        }
+
+        &:focus {
+            color: $black;
+            //border: 1px solid $white;
+        }
+    }
+
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: transparent;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        background-repeat: no-repeat;
+        background-position-x: calc(100% - 10px);
+        background-position-y: 50%;
+
+        & option:disabled {
+            color: $grey;
+        }
+    }
+
+    label {
+        font-size: 1.6rem;
+        margin-bottom: 1.8rem;
+        font-weight: 300;
+        color: $black;
+    }
+
+    .custom-checkbox {
+        min-height: 3.4rem;
+        padding-left: 0;
+        margin: 0 0 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: transparent;
+    }
+
+    .custom-control-label {
+        font-size: 1.4rem;
+        line-height: 1.2em;
+        font-weight: 300;
+        color: $black;
+        padding-left: 4.8rem;
+        text-align: left;
+        cursor: pointer;
+        vertical-align: middle;
+        text-transform: none;
+        margin: 0;
+
+        a {
+            text-decoration: underline;
+        }
+    }
+
+    .custom-control-label::before {
+        opacity: 0;
+    }
+
+    .custom-control-label::before,
+    .custom-control-label::after {
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        width: 2.8rem;
+        height: 2.8rem;
+        background-color: $white;
+        border: none;
+        border-radius: 0;
+    }
+
+    .custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+        background-image: url('#{$images-path}/check_black.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 60%;
+    }
+}
+
+
+@media (min-width: $xl-width) {
+
+    form {
+
+        .form-group {
+            margin-bottom: 5rem;
+
+            &.biger-margin-top {
+                margin-top: 8rem;
+            }
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus,
+        select:-webkit-autofill,
+        select:-webkit-autofill:hover,
+        select:-webkit-autofill:focus {
+            font-size: 1.8rem;
+        }
+
+        input[type],
+        .form-control {
+            font-size: 1.8rem;
+        }
+
+        label {
+            font-size: 2.4rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .custom-control-label {
+            font-size: 1.8rem;
+            padding-left: 5.5rem;
+        }
+
+        .custom-control-label::before,
+        .custom-control-label::after {
+            width: 3.4rem;
+            height: 3.4rem;
+        }
+
+        .custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+            background-size: auto;
+        }
+    }
+}

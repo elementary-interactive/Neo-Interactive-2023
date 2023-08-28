@@ -1,0 +1,128 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: inherit;
+
+    &::before,
+    &::after {
+        box-sizing: inherit;
+    }
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: $white;
+    font-family: "proxima-nova", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: $black;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color .2s, background-color .2s;
+
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    &:focus {
+        outline: none;
+        //text-shadow: 0 0 4px rgba($color: $black, $alpha: .2); 
+    }
+
+    &.ul {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -.3rem;
+            height: .1rem;
+            width: 100%;
+            background-color: $yellow;
+        }
+    }
+}
+
+a[href^="tel"] {
+    color: inherit;
+    text-decoration: none;
+}
+
+div {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: text;
+}
+
+.default-margin {
+    margin: $mobile-margin 0;
+}
+
+.default-padding {
+    padding: $mobile-margin 0 calc($mobile-margin + 8rem);
+}
+
+header,
+footer,
+.intro-container,
+section.main-container {
+    max-width: $content-width;
+    margin: 0 auto;
+}
+
+.main-container {
+    overflow: hidden;
+    background-color: $lightgrey;
+}
+
+// scrollbar style
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: $lightgrey;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba($color: $yellow, $alpha: .4);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba($color: $yellow, $alpha: 1);
+}
+
+
+@media (min-width: $xl-width) {
+    .main-container {
+        background-color: $white;
+    }
+
+    .default-margin {
+        margin: $desktop-margin 0;
+    }
+
+    .default-padding {
+        padding: $desktop-margin 0 calc($desktop-margin + 8rem);
+    }
+}
