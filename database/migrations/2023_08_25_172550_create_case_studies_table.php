@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id');
 
             $table->uuid('site_id');
+            $table->uuid('partner_id');
             
             $table->string('title');
             $table->string('slug')
