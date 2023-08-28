@@ -27,7 +27,8 @@ Route::get('/', function() {
 
     echo 'Hello '.app('site')->current()->lablec_szoveg.' /// DOMAIN';
     dump(app('site')->current());
-  });
+  })
+  ->name('en.index');
 
 });
 
@@ -37,11 +38,13 @@ Route::group([
   ], function () {
 
     Route::get('/', function() {
-        echo 'Szia '.app('site')->current()->locale.' /// DOMAIN';
-        dump(app()->getLocale());
+        // echo 'Szia '.app('site')->current()->locale.' /// DOMAIN';
+        // dump(app()->getLocale());
 
+        return view('web.pages.index');
 
-      });
+      })
+      ->name('hu.index');
 
     Route::get("/munkaink/{slug}", [CaseStudyController::class, 'show'])
       ->name('hu.case_study.show');
