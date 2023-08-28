@@ -103,7 +103,8 @@ class CaseStudy extends Resource
   {
     $fields = [
       BelongsTo::make('Weboldal', 'site', \App\Nova\Site::class),
-      BelongsTo::make('Partner', 'partner', \App\Nova\Partner::class),
+      BelongsTo::make('Partner', 'partner', \App\Nova\Partner::class)
+        ->showCreateRelationButton(),
       Text::make('Cím', 'title')
         ->rules('required', 'max:255'),
       Slug::make('', 'slug')
