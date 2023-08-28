@@ -83,7 +83,7 @@ class Site extends Resource
             {
                 $field_class = '\\Laravel\\Nova\\Fields\\'.$field->field;
                 $fields[] = $field_class::make($field->name, $field->slug)
-                    ->rules($field->rules)
+                    ->rules(explode(',', $field->rules))
                     ->hideFromIndex();
             }
         }

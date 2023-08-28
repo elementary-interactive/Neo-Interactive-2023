@@ -1,25 +1,6 @@
 {{--
     Footer part.
 --}}
-<footer>
-  <div class="footer-wrapper">
-    <h4>{{ app('site')->current()->lablec_cegnev }}</h4>
-    <ul class="general">
-      <li class="copy me-2">{!! app('site')->current()->lablec_copyright !!}</li>
-      <li>{!! app('site')->current()->lablec_tax !!}</li>
-    </ul>
-    <ul class="contact-info">
-      @if (app('site')->current()->lablec_email)
-      <li>email: <a href="mailto:{{ app('site')->current()->lablec_email }}">{{ app('site')->current()->lablec_email }}</a></li>
-      @endif
-      @if (app('site')->current()->lablec_phone)
-      <li>mobil: <a href="tel:{{ app('site')->current()->lablec_phone }}">{{ app('site')->current()->lablec_phone }}</a></li>
-      @endif
-    </ul>
-    <div class="info">{!! app('site')->current()->lablec_disclaimer !!}</div>
-  </div>
-</footer>
-
 <footer id="contact">
   <div class="footer-pattern"></div>
 
@@ -32,18 +13,24 @@
         <div class="footer-bottom">
           <div class="contact">
             <p>
-              Budapest, Gombocz Zoltán u. 9 H-1118<br>
-              <a href="tel:+3612345678">+36 1 234 5678</a>
+              {{ site()->footer_address }}<br>
+              <a href="tel:{{ Str::of(site()->footer_phone)->swap([' ' => '']) }}">{{ site()->footer_phone }}</a>
             </p>
           </div>
           <div class="social">
-            <a href="" class="defbtn"><i class="icon-arrow-right"></i>FACEBOOK</a>
-            <a href="" class="defbtn"><i class="icon-arrow-right"></i>youtube</a>
-            <a href="" class="defbtn"><i class="icon-arrow-right"></i>Linkedin</a>
+            @if (site()->link_facebook)
+            <a href="{{ site()->link_facebook }}" class="defbtn"><i class="icon-arrow-right"></i>FACEBOOK</a>
+            @endif
+            @if (site()->link_youtube)
+            <a href="{{ site()->link_youtube }}" class="defbtn"><i class="icon-arrow-right"></i>youtube</a>
+            @endif
+            @if (site()->link_linkedin)
+            <a href="{{ site()->link_linkedin }}" class="defbtn"><i class="icon-arrow-right"></i>Linkedin</a>
+            @endif
           </div>
         </div>
         <div class="legal">
-          © {{ now()->year() }} Neo Interactive All Rights Reserved.
+          © {{ now()->year }} Neo Interactive All Rights Reserved.
           <a href="" class="pp ul">Privacy Policy</a>
         </div>
       </div>

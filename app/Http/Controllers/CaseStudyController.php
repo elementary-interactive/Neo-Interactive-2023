@@ -15,10 +15,6 @@ use Neon\Models\Link;
 
 class CaseStudyController extends Controller
 {
-    public function __construct()
-    {
-    }
-
     public function show(Request $request, string $slug = null)
     {
     }

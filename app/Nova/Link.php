@@ -204,17 +204,17 @@ class Link extends Resource
             }
         }
 
-        // foreach ($layouts as $layout)
-        // {
-        //     $flexible->addLayout($layout);
-        // }
+        foreach ($layouts as $layout)
+        {
+            $flexible->addLayout($layout);
+        }
 
-        // $fields[] = $flexible;
+        $fields[] = $flexible;
 
 
         $tabs = Tabs::make(__('Link'), [
             Tab::make(__('Page'), $fields),
-            // Tab::make(__('Content'), [$flexible]),
+            Tab::make(__('Content'), [$flexible]),
             Tab::make(__('Advanced Settings'), $advanced_fields),
         ]);
 

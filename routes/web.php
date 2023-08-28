@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\CaseStudyController;
 use Illuminate\Support\Facades\Route;
 use Neon\Site\Facades\Site;
@@ -18,35 +19,22 @@ use Neon\Site\Http\Middleware\SiteMiddleware;
 */
 
 Route::group([
-    'prefix'      => 'en',
-    'middleware'  => SiteMiddleware::class
-  ], function () {
+  'prefix'      => 'en',
+  'middleware'  => SiteMiddleware::class
+], function () {
 
-Route::get('/', function() {
-    echo 'Hello '.app('site')->current()->locale.' /// DOMAIN';
-
-    echo 'Hello '.app('site')->current()->lablec_szoveg.' /// DOMAIN';
-    dump(app('site')->current());
-  })
-  ->name('en.index');
-
+  Route::get('/', [AppController::class, 'index'])
+    ->name('en.index');
 });
 
 
 Route::group([
-    'middleware'  => SiteMiddleware::class
-  ], function () {
+  'middleware'  => SiteMiddleware::class
+], function () {
 
-    Route::get('/', function() {
-        // echo 'Szia '.app('site')->current()->locale.' /// DOMAIN';
-        // dump(app()->getLocale());
+  Route::get('/', [AppController::class, 'index'])
+    ->name('hu.index');
 
-        return view('web.pages.index');
-
-      })
-      ->name('hu.index');
-
-    Route::get("/munkaink/{slug}", [CaseStudyController::class, 'show'])
-      ->name('hu.case_study.show');
-
+  Route::get("/munkaink/{slug}", [CaseStudyController::class, 'show'])
+    ->name('hu.case_study.show');
 });

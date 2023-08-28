@@ -67,10 +67,12 @@ class Attribute extends Resource
 
         $fields = [
             Text::make('Név', 'name')
-                ->rules('required', 'max:255'),
+                ->rules('required', 'max:255')
+                ->sortable(),
             Slug::make('', 'slug')
                 ->from('name')
-                ->separator('_'),
+                ->separator('_')
+                ->sortable(),
             Text::make(__('Validation rules'), 'rules')
                 ->help('A szabályokat a keretrendszer <a href="https://laravel.com/docs/10.x/validation#available-validation-rules" target="_blank">beviteli szabályai</a> szerint kell megadni.'),
             Select::make(__('Form field'), 'field')
@@ -80,7 +82,9 @@ class Attribute extends Resource
                 ->options(config('attributable.casts')),
             Select::make(__('Scope'), 'class')
                 ->options(config('attributable.scopes'))
-                ->help(__('Only on this resource will this attribute value available.')),
+                ->help(__('Only on this resource will this attribute value available.'))
+                ->required()
+                ->filterable(),
             KeyValue::make('parameters')
                 ->rules('json'),
         ];

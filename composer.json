@@ -24,7 +24,7 @@
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-tags": "^4.5",
         "symfony/intl": "^6.3",
-        "toponepercent/baum": "3.1.0"
+        "whitecube/nova-flexible-content": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
