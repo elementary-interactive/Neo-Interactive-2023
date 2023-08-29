@@ -28,6 +28,26 @@
     margin-top: 6.2rem;
 }
 
+.default-margin {
+    margin: $mobile-margin 0;
+}
+
+.default-padding {
+    padding: $mobile-margin 0 calc($mobile-margin + 8rem);
+}
+
+.default-padding-w {
+    padding: $mobile-margin 0;
+}
+
+.def-t-margin {
+    margin-top: $mobile-margin;
+}
+
+.def-b-margin {
+    margin-bottom: $mobile-margin;
+}
+
 @media (min-width: $xl-width) {
     .container-fluid {
         max-width: $row-width;
@@ -58,5 +78,25 @@
 
     .menu-top-margin {
         margin-top: 11.2rem;
+    }
+
+    .default-margin {
+        margin: $desktop-margin 0;
+    }
+
+    .default-padding {
+        padding: $desktop-margin 0 calc($desktop-margin + 8rem);
+    }
+
+    .default-padding-w {
+        padding: $desktop-margin 0;
+    }
+
+    .def-t-margin {
+        margin-top: $desktop-margin;
+    }
+
+    .def-b-margin {
+        margin-bottom: $desktop-margin;
     }
 }
