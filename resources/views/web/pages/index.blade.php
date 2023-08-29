@@ -87,10 +87,44 @@
                     <div class="col-12">
                         <div class="partners-items">
                             @foreach ($partners as $partner)
-                            <div class="partners-item">
-                              {{ $partner->getFirstMedia(App\Models\Partner::MEDIA_COLLECTION) }}
-                            </div>
+                                <div class="partners-item">
+                                    {{ $partner->getFirstMedia(App\Models\Partner::MEDIA_COLLECTION) }}
+                                </div>
                             @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+    @if ($case_studies?->count())
+        <!-- case studies -->
+
+        <div class="main-case-studies-container">
+            <div class="case-studies-bg"></div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Case studies<span class="yellow">.</span></h2>
+
+                        <div class="slider">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    @foreach ($case_studies as $case_study)
+                                    <div class="swiper-slide">
+                                        <div class="swiper-slide-inner"
+                                            style="background-image: url('{{ $case_study->getFirstMediaUrl(App\Models\CaseStudy::MEDIA_COLLECTION)}}')">
+                                            <div class="partner">{{ $case_study->partner->name }}</div>
+                                            <h3>{{ $case_study->title }}</h3>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+
+                                <!-- scrollbar -->
+                                <div class="scroll-label">SCROLL TO EXPLORE</div>
+                                <div class="swiper-scrollbar"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
