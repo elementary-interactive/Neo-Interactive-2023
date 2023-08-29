@@ -112,8 +112,8 @@
                                 <div class="swiper-wrapper">
                                     @foreach ($case_studies as $case_study)
                                     <div class="swiper-slide">
-                                       <a href="#" class="swiper-slide-inner"
-                                            style="background-image: url('{{ $case_study->getFirstMediaUrl(App\Models\CaseStudy::MEDIA_COLLECTION)}}')">
+                                       <a href="{{ route(site()->locale.'.case_study.show', ['slug' => $case_study->slug])}}" class="swiper-slide-inner"
+                                            style="background-image: url('{{ $case_study->getFirstMediaUrl(App\Models\CaseStudy::MEDIA_COLLECTION, 'thumb')}}')">
                                             <div class="partner">{{ $case_study->partner->name }}</div>
                                             <h3>{{ $case_study->title }}</h3>
                                         </a>

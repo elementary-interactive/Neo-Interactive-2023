@@ -38,6 +38,9 @@ Route::group([
   Route::get('/', [AppController::class, 'index'])
     ->name('hu.index');
 
+  Route::get("/munkaink", [CaseStudyController::class, 'index'])
+    ->name('hu.case_study.index');
+
   Route::get("/munkaink/{slug}", [CaseStudyController::class, 'show'])
     ->name('hu.case_study.show');
 
