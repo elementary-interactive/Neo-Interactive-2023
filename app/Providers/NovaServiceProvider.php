@@ -23,6 +23,7 @@ use App\Nova\Menu;
 use App\Nova\Product;
 use App\Nova\Site;
 use App\Nova\Dashboards\Main;
+use App\Nova\Leader;
 use App\Nova\Partner;
 use App\Nova\Tags;
 
@@ -74,6 +75,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
           ->collapsable(),
 
         NovaMenuSection::make(__('Resources'), [
+          NovaMenuItem::resource(Leader::class),
           NovaMenuItem::resource(Partner::class),
           NovaMenuItem::resource(CaseStudy::class),
           NovaMenuItem::resource(Tags::class),

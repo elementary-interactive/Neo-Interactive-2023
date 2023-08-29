@@ -6,30 +6,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Neon\Models\Traits\Uuid;
-use Neon\Site\Models\Traits\SiteDependencies;
+use Neon\Models\Traits\Uuid;;
 use Spatie\EloquentSortable\Sortable;
-use Spatie\EloquentSortable\SortableTrait;
+use Spatie\EloquentSortable\SortableTrait; 
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Tags\HasTags;
 
+use Neon\Models\Traits\Statusable;
 
-class CaseStudy extends Model implements HasMedia, Sortable
+class Leader extends Model implements HasMedia, Sortable
 {
   use HasFactory;
-  use HasTags;
-  // use SiteDependencies;
+  use InteractsWithMedia;
   use SoftDeletes; // Laravel built in soft delete handler trait.
   use SortableTrait;
+  use Statusable;
   use Uuid;
-  use InteractsWithMedia;
 
-  const MEDIA_COLLECTION = 'case_study';
-
-  const TAG_TYPE = 'case_study';
+  const MEDIA_COLLECTION = 'leaders';
 
   public $sortable = [
     'order_column_name'   => 'order',
@@ -43,7 +40,7 @@ class CaseStudy extends Model implements HasMedia, Sortable
    * @var array
    */
   protected $fillable = [
-    'title', 'bief', 'solution', 'result'
+    'name', 'position', 'image', 'link_facebook', 'link_linkedin', 'status', 'show_on_main'
   ];
 
   /** Cast attribute to array...
@@ -57,25 +54,16 @@ class CaseStudy extends Model implements HasMedia, Sortable
 
   public function registerMediaCollections(): void
   {
-    $this->addMediaCollection(self::MEDIA_COLLECTION); //->singleFile();
+    $this->addMediaCollection(self::MEDIA_COLLECTION);//->singleFile();
   }
 
   public function registerMediaConversions(?Media $media = null): void
   {
     $this->addMediaConversion('thumb')
-      ->height(680)
+      ->height(300)
+      ->width(300)
       ->performOnCollections(self::MEDIA_COLLECTION)
       ->nonQueued();
-
-    $this->addMediaConversion('responsive')
-      ->withResponsiveImages()
-      ->performOnCollections(self::MEDIA_COLLECTION)
-      ->nonQueued();
-  }
-
-  public function partner(): BelongsTo
-  {
-    return $this->belongsTo(Partner::class);
   }
 
   public function site(): BelongsTo
@@ -87,4 +75,5 @@ class CaseStudy extends Model implements HasMedia, Sortable
   {
     return static::query()->where('site_id', $this->site_id);
   }
+
 }

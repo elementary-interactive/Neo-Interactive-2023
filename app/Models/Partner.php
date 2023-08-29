@@ -58,7 +58,7 @@ class Partner extends Model implements HasMedia, Sortable
   public function registerMediaConversions(?Media $media = null): void
   {
     $this->addMediaConversion('thumb')
-      ->setManipulations(['h' => 100, 'w' => 100, 'fm' => 'png', 'fit' => 'max'])
+      ->width(200)
       ->performOnCollections(self::MEDIA_COLLECTION)
       ->nonQueued();
   }

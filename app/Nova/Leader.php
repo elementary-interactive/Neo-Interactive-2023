@@ -4,6 +4,7 @@ namespace App\Nova;
 
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Image;
@@ -12,7 +13,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
-class Partner extends Resource
+class Leader extends Resource
 {
   use HasSortableRows {
     indexQuery as indexSortableQuery;
@@ -23,7 +24,7 @@ class Partner extends Resource
    *
    * @var string
    */
-  public static $model = \App\Models\Partner::class;
+  public static $model = \App\Models\Leader::class;
 
   /**
    * The visual style used for the table. Available options are 'tight' and 'default'.
@@ -53,42 +54,42 @@ class Partner extends Resource
    * @var array
    */
   public static $search = [
-    'name',
+    'name', 'position', 'link_facebook', 'link_linkedin'
   ];
 
   public static function label()
   {
-    return 'Ügyfelek';
+    return 'Munkatársaink';
   }
 
   public static function singularLabel()
   {
-    return 'Ügyfél';
+    return 'Munkatársunk';
   }
 
-  /**
-   * Return the location to redirect the user after creation.
-   *
-   * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-   * @param  \Laravel\Nova\Resource  $resource
-   * @return \Laravel\Nova\URL|string
-   */
-  public static function redirectAfterCreate(NovaRequest $request, $resource)
-  {
-    return '/resources/' . static::uriKey();
-  }
+  // /**
+  //  * Return the location to redirect the user after creation.
+  //  *
+  //  * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+  //  * @param  \Laravel\Nova\Resource  $resource
+  //  * @return \Laravel\Nova\URL|string
+  //  */
+  // public static function redirectAfterCreate(NovaRequest $request, $resource)
+  // {
+  //   return '/resources/' . static::uriKey();
+  // }
 
-  /**
-   * Return the location to redirect the user after update.
-   *
-   * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-   * @param  \Laravel\Nova\Resource  $resource
-   * @return \Laravel\Nova\URL|string
-   */
-  public static function redirectAfterUpdate(NovaRequest $request, $resource)
-  {
-    return '/resources/' . static::uriKey();
-  }
+  // /**
+  //  * Return the location to redirect the user after update.
+  //  *
+  //  * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+  //  * @param  \Laravel\Nova\Resource  $resource
+  //  * @return \Laravel\Nova\URL|string
+  //  */
+  // public static function redirectAfterUpdate(NovaRequest $request, $resource)
+  // {
+  //   return '/resources/' . static::uriKey();
+  // }
 
   /**
    * Get the fields displayed by the resource.
@@ -99,35 +100,34 @@ class Partner extends Resource
   public function fields(Request $request)
   {
     $fields = [
-      // BelongsToMany::make(__('Site'), 'site', \App\Nova\Site::class)
-      //   ->fields(function ($request, $relatedModel) {
-      //     return [
-      //       Text::make(__('Dependence type'), 'dependence_type')
-      //         ->default(\Neon\Models\Menu::class)
-      //         ->readonly()
-      //         ->hideFromIndex(),
-      //     ];
-      //   }),
+      BelongsTo::make('Weboldal', 'site', \App\Nova\Site::class)
+        ->filterable(),
       Text::make('Név', 'name')
         ->rules('required', 'max:255'),
-      Text::make('Link')
-        ->rules('required', 'url', 'max:255'),
-      Image::make('Logó', 'logo')
+      Text::make('Pozíció', 'position')
+        ->rules('required', 'max:255'),
+      Image::make('Kép', 'image')
         ->store(function (Request $request, $model) {
           /**
            * @todo Handle favicon via media library
            */
-          $media = $model->addMediaFromRequest('logo')->toMediaCollection('partners');
-
+          $media = $model->addMediaFromRequest('image')->toMediaCollection(\App\Models\Leader::MEDIA_COLLECTION);
           return $media->file_name;
         })
         ->preview(function () {
-          return $this->getFirstMediaUrl('partners', 'thumb');
+          return $this->getFirstMediaUrl(\App\Models\Leader::MEDIA_COLLECTION, 'thumb');
         })
         ->thumbnail(function () {
-          return $this->getFirstMediaUrl('partners', 'thumb');
+          return $this->getFirstMediaUrl(\App\Models\Leader::MEDIA_COLLECTION, 'thumb');
         }),
+      Boolean::make('Aktív', 'status')
+        ->trueValue(\Neon\Models\Statuses\BasicStatus::Active->value)
+        ->falseValue(\Neon\Models\Statuses\BasicStatus::Inactive->value),
       Boolean::make('Kezdőoldalra', 'show_on_main'),
+      Text::make('Facebook link', 'link_facebook')
+        ->rules('nullable', 'url', 'max:255'),
+      Text::make('Linkedin link', 'link_linkedin')
+        ->rules('nullable', 'url', 'max:255'),
     ];
 
     return $fields;
@@ -144,9 +144,9 @@ class Partner extends Resource
   {
     $next = parent::indexQuery($request, static::indexSortableQuery($request, $query));
 
-    // $next->withoutGlobalScopes([
-    //   \Neon\Site\Models\Scopes\SiteScope::class
-    // ]);
+    $next->withoutGlobalScopes([
+      \Neon\Models\Scopes\ActiveScope::class
+    ]);
     $next->orderBy('order', 'ASC');
 
     // dd($next);
