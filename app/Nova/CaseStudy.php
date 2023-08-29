@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Models\CaseStudy as ModelsCaseStudy;
+use App\Models\CaseStudy as CaseStudyModel;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
@@ -15,6 +15,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Outl1ne\NovaSortable\Traits\HasSortableRows;
+use Spatie\TagsField\Tags;
 
 class CaseStudy extends Resource
 {
@@ -119,7 +120,7 @@ class CaseStudy extends Resource
       Slug::make('', 'slug')
         ->from('title')
         ->hideFromIndex(),
-      Images::make(__('Images'), ModelsCaseStudy::MEDIA_COLLECTION) // second parameter is the media collection name
+      Images::make(__('Images'), CaseStudyModel::MEDIA_COLLECTION) // second parameter is the media collection name
         ->conversionOnPreview('responsive') // conversion used to display the "original" image
         ->conversionOnDetailView('responsive') // conversion used on the model's view
         ->conversionOnIndexView('responsive') // conversion used to display the image on the model's index page
@@ -135,6 +136,8 @@ class CaseStudy extends Resource
       Trix::make('Eredmény', 'result')
         ->rules('required'),
       Boolean::make('Kezdőoldalra', 'show_on_main'),
+      Tags::make('Címkék', 'tags')
+        ->type(CaseStudyModel::TAG_TYPE),
     ];
 
     return $fields;

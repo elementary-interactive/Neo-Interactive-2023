@@ -8,17 +8,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Neon\Models\Traits\Uuid;
 use Neon\Site\Models\Traits\SiteDependencies;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait; 
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\EloquentSortable\Sortable;
-use Spatie\EloquentSortable\SortableTrait; 
+use Spatie\Tags\HasTags;
 
 
 class CaseStudy extends Model implements HasMedia, Sortable
 {
   use HasFactory;
+  use HasTags;
   // use SiteDependencies;
   use SoftDeletes; // Laravel built in soft delete handler trait.
   use SortableTrait;
@@ -26,6 +28,8 @@ class CaseStudy extends Model implements HasMedia, Sortable
   use InteractsWithMedia;
 
   const MEDIA_COLLECTION = 'case_study';
+
+  const TAG_TYPE = 'case_study';
 
   public $sortable = [
     'order_column_name'   => 'order',

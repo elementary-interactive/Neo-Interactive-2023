@@ -23,6 +23,7 @@
         "outl1ne/nova-sortable": "^3.4",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-tags": "^4.5",
+        "spatie/nova-tags-field": "^4.0",
         "symfony/intl": "^6.3",
         "whitecube/nova-flexible-content": "^1.0"
     },
