@@ -51,7 +51,7 @@
     </div>
 
     <div class="scroll-down">
-        <p><img src="images/scroll-mouse.svg" alt=""> SCROLL to explore</p>
+        <p><img src="{{ Vite::asset('resources/images/scroll-mouse.svg') }}" alt="SCROLL to explore"> SCROLL to explore</p>
     </div>
 @endsection
 
@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div>
-        <div class="showreel" style="background-image: url('images/main/showreel.png')">
+        <div class="showreel" style="background-image: url('{{ Vite::asset('resources/images/main/showreel.png') }}')">
             <a href="" class="defbtn white"><i class="icon-play"></i>view our showreel</a>
         </div>
     </div>

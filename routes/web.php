@@ -25,6 +25,9 @@ Route::group([
 
   Route::get('/', [AppController::class, 'index'])
     ->name('en.index');
+
+  Route::get("/privacy", [AppController::class, 'privacy'])
+    ->name('en.privacy-policy');
 });
 
 
@@ -37,4 +40,7 @@ Route::group([
 
   Route::get("/munkaink/{slug}", [CaseStudyController::class, 'show'])
     ->name('hu.case_study.show');
+
+  Route::get("/adatvedelem", [AppController::class, 'privacy'])
+    ->name('hu.privacy-policy');
 });

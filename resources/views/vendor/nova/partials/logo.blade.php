@@ -1,0 +1,1 @@
+<img src="{{ Vite::asset('resources/images/neo_logo.svg') }}" alt="NEO">
