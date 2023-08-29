@@ -125,9 +125,11 @@ class Leader extends Resource
         ->falseValue(\Neon\Models\Statuses\BasicStatus::Inactive->value),
       Boolean::make('Kezdőoldalra', 'show_on_main'),
       Text::make('Facebook link', 'link_facebook')
-        ->rules('nullable', 'url', 'max:255'),
+        ->rules('nullable', 'url', 'max:255')
+        ->hideFromIndex(),
       Text::make('Linkedin link', 'link_linkedin')
-        ->rules('nullable', 'url', 'max:255'),
+        ->rules('nullable', 'url', 'max:255')
+        ->hideFromIndex(),
     ];
 
     return $fields;

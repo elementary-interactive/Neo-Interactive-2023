@@ -31,7 +31,7 @@ class Leader extends Model implements HasMedia, Sortable
   public $sortable = [
     'order_column_name'   => 'order',
     'sort_when_creating'  => true,
-    'nova_order_by'       => 'DESC',
+    'nova_order_by'       => 'ASC',
   ];
 
   /**
