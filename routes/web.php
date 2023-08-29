@@ -26,6 +26,12 @@ Route::group([
   Route::get('/', [AppController::class, 'index'])
     ->name('en.index');
 
+  Route::get("/works", [CaseStudyController::class, 'index'])
+    ->name('en.case_study.index');
+
+  Route::get("/works/{slug}", [CaseStudyController::class, 'show'])
+    ->name('en.case_study.show');
+
   Route::get("/privacy", [AppController::class, 'privacy'])
     ->name('en.privacy-policy');
 });
