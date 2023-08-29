@@ -112,11 +112,11 @@
                                 <div class="swiper-wrapper">
                                     @foreach ($case_studies as $case_study)
                                     <div class="swiper-slide">
-                                        <div class="swiper-slide-inner"
+                                       <a href="#" class="swiper-slide-inner"
                                             style="background-image: url('{{ $case_study->getFirstMediaUrl(App\Models\CaseStudy::MEDIA_COLLECTION)}}')">
                                             <div class="partner">{{ $case_study->partner->name }}</div>
                                             <h3>{{ $case_study->title }}</h3>
-                                        </div>
+                                        </a>
                                     </div>
                                     @endforeach
                                 </div>

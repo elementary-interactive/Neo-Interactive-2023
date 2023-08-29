@@ -39,8 +39,7 @@
 
 {{--
   'resources/js/splide.min.js',
-  'resources/js/app.js',
-  'resources/js/site.js'
+  
 ]) --}}
 
 {{--
