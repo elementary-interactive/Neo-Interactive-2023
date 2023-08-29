@@ -77,6 +77,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         NovaMenuSection::make(__('Resources'), [
           NovaMenuItem::resource(Leader::class),
           NovaMenuItem::resource(Partner::class),
+          NovaMenuItem::resource(Product::class),
           NovaMenuItem::resource(CaseStudy::class),
           NovaMenuItem::resource(Tags::class),
           /** Here comes all the menu items...

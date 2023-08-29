@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\CaseStudyService;
 use App\Services\LeaderService;
 use App\Services\PartnerService;
+use App\Services\ProductService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -26,11 +27,20 @@ class AppController extends Controller
      */
     protected $leader_service;
 
-    public function __construct(PartnerService $partner_service, CaseStudyService $case_study_service, LeaderService $leader_service)
+    /** @var ProductService
+     */
+    protected $product_service;
+
+    public function __construct(
+        PartnerService $partner_service,
+        CaseStudyService $case_study_service,
+        LeaderService $leader_service,
+        ProductService $product_service)
     {
         $this->partner_service    = $partner_service;
         $this->case_study_service = $case_study_service;
         $this->leader_service     = $leader_service;
+        $this->product_service    = $product_service;
     }
 
 
@@ -48,6 +58,7 @@ class AppController extends Controller
                 'page'          => $page,
                 'leaders'       => $this->leader_service->index(),
                 'partners'      => $this->partner_service->index(),
+                'products'      => $this->product_service->index(),
                 'case_studies'  => $this->case_study_service->index(),
             ]
         );
