@@ -57,6 +57,32 @@ a {
     }
 }
 
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+.embed-youtube {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* - 16:9 aspect ratio (most common) */
+    /* padding-bottom: 62.5%; - 16:10 aspect ratio */
+    /* padding-bottom: 75%; - 4:3 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    //margin: 2em auto;
+
+    iframe {
+        border: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
 a[href^="tel"] {
     color: inherit;
     text-decoration: none;
@@ -66,14 +92,6 @@ div {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     user-select: text;
-}
-
-.default-margin {
-    margin: $mobile-margin 0;
-}
-
-.default-padding {
-    padding: $mobile-margin 0 calc($mobile-margin + 8rem);
 }
 
 header,
@@ -116,13 +134,5 @@ section.main-container {
 @media (min-width: $xl-width) {
     .main-container {
         background-color: $white;
-    }
-
-    .default-margin {
-        margin: $desktop-margin 0;
-    }
-
-    .default-padding {
-        padding: $desktop-margin 0 calc($desktop-margin + 8rem);
     }
 }

@@ -1,4 +1,4 @@
-var rowWidth = 1460;
+var rowWidth = 1530;
 
 // menu open
 

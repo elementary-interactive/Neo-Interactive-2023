@@ -1,0 +1,32 @@
+.news-container {
+
+  h1,
+  h3,
+  .date {
+    margin-bottom: 4rem;
+  }
+
+  .date {
+    color: $yellow;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .news-img {
+    width: 100%;
+    margin-bottom: 3.5rem;
+  }
+}
+
+@media (min-width: $xl-width) {
+
+  .news-container {
+    h1 {
+      margin-bottom: 4.5rem;
+    }
+
+    .news-img {
+      margin-bottom: 0;
+    }
+  }
+}
