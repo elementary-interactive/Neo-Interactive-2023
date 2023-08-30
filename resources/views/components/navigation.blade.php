@@ -13,50 +13,53 @@
       <div class="nav-content">
         <div class="nav-list-container">
           <ul class="nav-list">
+            @foreach ($links as $link)
             <li class="nav-list-item">
-              <a href="index.html">About us</a>
+              <a href="{{ $link->href }}">{{ $link->title }}</a>
             </li>
-            <li class="nav-list-item">
-              <a href="case_studies.html">Case studies</a>
-            </li>
-            <li class="nav-list-item">
-              <a href="courses.html">Courses</a>
-            </li>
-            <li class="nav-list-item">
-              <a href="news_room.html">News</a>
-            </li>
+            @endforeach
             <li class="nav-list-item">
               <a href="#contact">Contact</a>
             </li>
+            @if (site()->link_hellogreenweb)
             <li class="nav-list-item only-desktop">
-              <a class="green" href="">HELLOGREENWEB.HU <i class="icon-icon-open-external-link"></i></a>
+              <a class="green" href="{{ site()->link_hellogreenweb }}">HELLOGREENWEB.HU <i class="icon-icon-open-external-link"></i></a>
             </li>
+            @endif
           </ul>
         </div>
 
         <div class="nav-mobilemenu">
+          @if (site()->link_hellogreenweb)
           <div class="nav-mobilemenu-item">
-            <a href="" class="defbtn"><i class="icon-arrow-right"></i>hellogreenweb.hu</a>
+            <a href="{{ site()->link_hellogreenweb }}" class="defbtn"><i class="icon-arrow-right"></i>hellogreenweb.hu</a>
           </div>
+          @endif
+          @if (site()->link_facebook)
           <div class="nav-mobilemenu-item">
-            <a href="" class="defbtn"><i class="icon-arrow-right"></i>FACEBOOK</a>
+            <a href="{{ site()->link_facebook }}" class="defbtn"><i class="icon-arrow-right"></i>FACEBOOK</a>
           </div>
+          @endif
+          @if (site()->link_youtube)
           <div class="nav-mobilemenu-item">
-            <a href="" class="defbtn"><i class="icon-arrow-right"></i>youtube</a>
+            <a href="{{ site()->link_youtube }}" class="defbtn"><i class="icon-arrow-right"></i>youtube</a>
           </div>
+          @endif
+          @if (site()->link_linkedin)
           <div class="nav-mobilemenu-item">
-            <a href="" class="defbtn"><i class="icon-arrow-right"></i>Linkedin</a>
+            <a href="{{ site()->link_linkedin }}" class="defbtn"><i class="icon-arrow-right"></i>Linkedin</a>
           </div>
+          @endif
         </div>
 
       </div>
     </nav>
     <div class="lang-container">
-      <a href="#" class="lang-open">EN</a>
+      <a href="#" class="lang-open">{{ strtoupper(site()->locale) }}</a>
       <div class="lang-box">
-        <a href="#">HU</a>
+        <a href="{{ route('hu.index') }}">HU</a>
         <span>|</span>
-        <a href="#">EN</a>
+        <a href="{{ route('en.index') }}">EN</a>
       </div>
     </div>
   </div>
