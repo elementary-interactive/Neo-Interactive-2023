@@ -9,7 +9,7 @@
                 </div>
                 @foreach ($services as $index => $service)
                 <div class="col-12 col-xl-4 knowledge-content">
-                    <div class="count">{{ str_pad($index, 2, ' ',  STR_PAD_LEFT) }}</div>
+                    <div class="count">{{ str_pad($index + 1, 2, '0',  STR_PAD_LEFT) }}</div>
                     <div class="knowledge-list">
                         <h2>{{ $service->title }}.</h2>
                         <ul>
