@@ -1,0 +1,114 @@
+footer {
+    padding: 13.7rem 0 8rem;
+    position: relative;
+    background-color: $white;
+
+    h2 {
+        margin-bottom: 3.7rem;
+        line-height: 1.5em;
+    }
+
+    .footer-pattern {
+        background-image: url(/images/footer-pattern-mobile.svg);
+        background-repeat: repeat;
+        background-size: 1.8rem 1.8rem;
+        background-position: 1rem top;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6.8rem;
+    }
+
+    .footer-bottom {
+        margin-bottom: 5.4rem;
+
+        .contact {
+            p {
+                margin-bottom: 3.7rem;
+            }
+        }
+
+        .social {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+
+            .defbtn {
+                margin-bottom: 2rem;
+            }
+        }
+    }
+
+    .legal {
+        display: flex;
+        font-size: 1.2rem;
+
+        .pp {
+            position: relative;
+            margin-left: 2rem;
+        }
+    }
+}
+
+@media (min-width: $xl-width) {
+    footer {
+        padding: 25.6rem 0 4.5rem;
+        background: linear-gradient(to right, #fff 0%, #f5f4f5 100%);
+
+        h2 {
+            margin-bottom: 8.5rem;
+            line-height: 1.2em;
+        }
+
+        .footer-pattern {
+            background-image: url(/images/footer-pattern.svg);
+            background-size: 2.8rem 2.8rem;
+            background-position: 2rem top;
+            height: 9.8rem;
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15.4rem;
+
+            .contact {
+                p {
+                    margin-bottom: 0;
+                }
+            }
+
+            .social {
+                display: block;
+
+                .defbtn {
+                    margin-left: 3rem;
+                }
+            }
+        }
+
+        .legal {
+            display: flex;
+            font-size: 1.2rem;
+
+            .pp {
+                position: relative;
+                margin-left: 2rem;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: -.3rem;
+                    height: .1rem;
+                    width: 100%;
+                    background-color: $yellow;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+.case-study-container {
+  .case-study-row {
+    margin: 6rem 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .full-w-img {
+    background-color: rgba($color: $black, $alpha: .2);
+    height: 83rem;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    margin: 6rem 0;
+  }
+
+  .case-study-half-img {
+    background-color: rgba($color: $black, $alpha: .2);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    height: 100%;
+  }
+}
+
+@media (min-width: $xl-width) {
+
+  .case-study-container {
+    .case-study-row {
+      margin: 15rem 0;
+    }
+
+    .full-w-img {
+      height: 83rem;
+      margin: 15rem 0;
+    }
+
+    .case-study-half-img {
+      height: 100%;
+    }
+  }
+}

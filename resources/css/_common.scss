@@ -1,0 +1,138 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: inherit;
+
+    &::before,
+    &::after {
+        box-sizing: inherit;
+    }
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: $white;
+    font-family: "proxima-nova", sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    color: $black;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color .2s, background-color .2s;
+
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    &:focus {
+        outline: none;
+        //text-shadow: 0 0 4px rgba($color: $black, $alpha: .2); 
+    }
+
+    &.ul {
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -.3rem;
+            height: .1rem;
+            width: 100%;
+            background-color: $yellow;
+        }
+    }
+}
+
+img,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+.embed-youtube {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* - 16:9 aspect ratio (most common) */
+    /* padding-bottom: 62.5%; - 16:10 aspect ratio */
+    /* padding-bottom: 75%; - 4:3 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    //margin: 2em auto;
+
+    iframe {
+        border: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+a[href^="tel"] {
+    color: inherit;
+    text-decoration: none;
+}
+
+div {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: text;
+}
+
+header,
+footer,
+.intro-container,
+section.main-container {
+    max-width: $content-width;
+    margin: 0 auto;
+}
+
+.main-container {
+    overflow: hidden;
+    background-color: $lightgrey;
+}
+
+// scrollbar style
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: $lightgrey;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba($color: $yellow, $alpha: .4);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba($color: $yellow, $alpha: 1);
+}
+
+
+@media (min-width: $xl-width) {
+    .main-container {
+        background-color: $white;
+    }
+}

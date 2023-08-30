@@ -1,0 +1,81 @@
+{
+  "name": "megnevezés",
+  "Name": "Megnevezés",
+  "slug": "slug",
+  "Slug": "Slug",
+
+  "Variable": "Változó",
+  "Variables": "Változók",
+  "Validation rules": "Validálási szabályok",
+  "Attribute": "Attribútum",
+  "attribute": "Változó",
+  "Form field": "Űrlap mező",
+  "Cast as": "Változó kezelése, mint",
+  "Attribute value edit will shown with this form field.": "A változó szerkesztésekor ez a típúsú mező biztosítja az érték szerkesztését.",
+  "Scope": "Változó értelmezési terület",
+  "Only on this resource will this attribute value available.": "Csak ezen erőforráshoz kapcsolódóan lehet ilyen változót rögzíteni.",
+
+  "Site": "Weboldal",
+  "Sites": "Weboldalak",
+  
+  "Menu": "Menü",
+  "Menus": "Menük",
+  "Menu Item": "Menü elem",
+  "Menu Items": "Menü elemek",
+
+  "Link": "Oldal",
+  "Links": "Oldalak",
+
+  "Brand": "Márka",
+  "Brands": "Márkák",
+  "Brand name": "Márka megnevezése",
+  "Brand URI": "Márka elérése",
+
+  "Category": "Kategória",
+  "category": "kategória",
+  "Categories": "Kategóriák",
+  "categories": "kategóriák",
+  "Category name": "Kategória megnevezése",
+  "Category URI": "Kategória elérése",
+  "Subcategory": "Alkategória",
+  "Subcategories": "Alkategóriák",
+
+  "Product": "Termék",
+  "Products": "Termékek",
+  "product": "termék",
+  "products": "termékek",
+  "Available": "Aktív",
+  "Product ID": "Cikkszám",
+  "Product URI": "Termék URL",
+  "EAN code": "EAN kód",
+  "Product Number": "Termék szám",
+  "Description": "Leírás",
+  "Package": "Csomagolás",
+  "Price information": "Ár információk",
+  "Price": "Ár",
+  "Product Available": "Termék elérhetőség",
+  "Is on sale": "Akciós termék",
+  "SEO and social sharing information": "SEO és Social Network megosztási adatok",
+
+  "Imports": "Termék importok",
+  "Import": "Importálás",
+  "Products inserted": "Új termék",
+  "Products modified": "Termék mód.",
+  "Categories inserted": "Új kategória",
+  "Categories modified": "Kategória mód.",
+  "Brands inserted": "Új márka",
+  "Brands modified": "Márka mód.",
+  "Started at": "Elkezdve",
+  "Finished at": "Befejezve",
+  "Importer": "Feltöltő",
+
+  "Administer": "Adminisztráció",
+
+  "Administrator": "Szerkesztő",
+  "Administrators": "Szerkesztők",
+
+  "Published at": "Publikálás dátuma",
+  "Expired at": "Lejárat dátuma",
+
+  "Images": "Képek"
+}

@@ -15,14 +15,17 @@
         "laravel/tinker": "^2.8",
         "maatwebsite/excel": "^3.1",
         "neon/admin-ui": "2.0.0-alpha-4",
-        "neon/attributable": "2.0.0-alpha-2",
-        "neon/menu": "2.0.0-alpha-2",
+        "neon/attributable": "2.0.0-alpha-5",
+        "neon/menu": "2.0.0-alpha-6",
         "neon/model-uuid": "^1.0",
         "neon/site": "^2.0",
         "neon/ui": "0.1.0-alpha-1",
+        "outl1ne/nova-sortable": "^3.4",
         "spatie/laravel-medialibrary": "^10.0.0",
+        "spatie/laravel-tags": "^4.5",
+        "spatie/nova-tags-field": "^4.0",
         "symfony/intl": "^6.3",
-        "toponepercent/baum": "3.1.0"
+        "whitecube/nova-flexible-content": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -1,0 +1,14 @@
+.course-container {
+  .embed-youtube {
+    margin-bottom: 5rem;
+  }
+}
+
+@media (min-width: $xl-width) {
+
+  .course-container {
+    .embed-youtube {
+      margin-bottom: 9rem;
+    }
+  }
+}

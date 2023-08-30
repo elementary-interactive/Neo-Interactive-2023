@@ -1,0 +1,124 @@
+button:focus {
+    outline: none;
+}
+
+.defbtn {
+    display: inline-block;
+    position: relative;
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    line-height: 1em;
+    text-transform: uppercase;
+    color: $black;
+    outline: none;
+    min-height: 4.8rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 2.5rem 0.5rem 6rem;
+    border: none;
+    background-color: transparent;
+    transition: background-color .3s, color .3s, filter .3s;
+    cursor: pointer;
+
+    i {
+        position: absolute;
+        top: 50%;
+        left: 1.5rem;
+        transform: translateY(-50%);
+        transition: transform .2s;
+    }
+
+    i.icon-arrow-right,
+    i.icon-arrow-left {
+        left: 1.5rem;
+    }
+
+    i.icon-arrow-left {
+        left: 1.5rem;
+    }
+
+    i.icon-play {
+        left: 1.8rem;
+        font-size: 1.3em;
+    }
+
+    &.hover {
+        color: $yellow;
+
+        &::before {
+            width: 100%;
+            right: 0;
+        }
+
+        i {
+            transform: translate(.9rem, -50%);
+        }
+    }
+
+    &:hover,
+    &:focus {
+        color: $yellow;
+
+        &::before {
+            width: 100%;
+            right: 0;
+        }
+
+        i {
+            transform: translate(.9rem, -50%);
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 4.8rem;
+        height: 4.8rem;
+        border-radius: 2.4rem;
+        border: .3rem solid $yellow;
+        left: 0;
+        top: 0;
+        transition: all .2s;
+    }
+}
+
+@media (min-width: $xl-width) {
+    .defbtn {
+        font-size: 1.8rem;
+        padding: .5rem 3.3rem .5rem 7.5rem;
+        min-height: 6rem;
+
+        i {
+            left: 1.8rem;
+        }
+
+        i.icon-arrow-right,
+        i.icon-arrow-left {
+            left: 1.8rem;
+        }
+
+        i.icon-play {
+            left: 2.1rem;
+        }
+
+        &.hover {
+            i {
+                transform: translate(1.2rem, -50%);
+            }
+        }
+
+        &:hover,
+        &:focus {
+            i {
+                transform: translate(1.2rem, -50%);
+            }
+        }
+
+        &::before {
+            width: 6rem;
+            height: 6rem;
+            border-radius: 3rem;
+        }
+    }
+}
