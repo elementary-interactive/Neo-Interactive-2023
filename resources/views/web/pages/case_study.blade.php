@@ -43,7 +43,7 @@
 
             <div class="row case-study-row">
               <div class="col-12 col-xl-6">
-                <h2>Brief</h2>
+                <h2>{{ __('Brief') }}</h2>
                 <p>{!! $case_study->brief !!}</p>
               </div>
             </div>
@@ -56,7 +56,7 @@
 
             <div class="row case-study-row">
               <div class="col-12 col-xl-6">
-                <h2>Megvalósítás</h2>
+                <h2>{{ __('Implementation') }}</h2>
                 <p>{!! $case_study->solution !!}</p>
               </div>
               <div class="col-12 offset-xl-1 col-xl-4">
@@ -72,7 +72,7 @@
 
             <div class="row case-study-row">
               <div class="col-12 col-xl-6">
-                <h2>Eredmények</h2>
+                <h2>{{ __('Results') }}</h2>
                 <p>{!! $case_study->result !!}</p>
               </div>
             </div>

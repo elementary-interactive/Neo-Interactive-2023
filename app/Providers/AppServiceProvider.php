@@ -22,7 +22,9 @@ class AppServiceProvider extends ServiceProvider
    
  
         Relation::enforceMorphMap([
-            'case_study'    => \App\Models\CaseStudy::class,            
+            'applicants'    => \App\Models\JobApplicant::class,
+            'case_study'    => \App\Models\CaseStudy::class,
+            'jobs'          => \App\Models\JobOpportunity::class,
             'leader'        => \App\Models\Leader::class,
             'link'          => \Neon\Models\Link::class,
             'menu'          => \Neon\Models\Menu::class,

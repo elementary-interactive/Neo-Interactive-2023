@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\CaseStudyController;
+use App\Http\Controllers\JobApplicantController;
 use Illuminate\Support\Facades\Route;
 use Neon\Site\Facades\Site;
 use Neon\Site\Http\Middleware\SiteMiddleware;
@@ -32,6 +33,9 @@ Route::group([
   Route::get("/works/{slug}", [CaseStudyController::class, 'show'])
     ->name('en.case_study.show');
 
+  Route::get("/application/{slug?}", [JobApplicantController::class, 'show'])
+    ->name('en.apply.show');
+
   Route::get("/privacy", [AppController::class, 'privacy'])
     ->name('en.privacy-policy');
 });
@@ -49,6 +53,9 @@ Route::group([
 
   Route::get("/munkaink/{slug}", [CaseStudyController::class, 'show'])
     ->name('hu.case_study.show');
+
+  Route::get("/jelentkezes/{slug?}", [JobApplicantController::class, 'show'])
+    ->name('hu.apply.show');
 
   Route::get("/adatvedelem", [AppController::class, 'privacy'])
     ->name('hu.privacy-policy');

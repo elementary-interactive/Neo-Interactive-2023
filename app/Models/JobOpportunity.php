@@ -6,17 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 use Neon\Models\Traits\Statusable;
+use Neon\Models\Traits\Publishable;
 use Neon\Models\Traits\Uuid;
 use Spatie\EloquentSortable\Sortable;
-use Spatie\EloquentSortable\SortableTrait; 
+use Spatie\EloquentSortable\SortableTrait;
 
-class Service extends Model implements Sortable
+class JobOpportunity extends Model implements Sortable
 {
   use HasFactory;
   use SoftDeletes; // Laravel built in soft delete handler trait.
   use SortableTrait;
   use Statusable;
+  use Publishable;
   use Uuid;
 
   public $sortable = [
@@ -31,17 +34,25 @@ class Service extends Model implements Sortable
    * @var array
    */
   protected $fillable = [
-    'title', 'keywords'
+    'title', 'slug', 'description'
   ];
 
   /** Cast attribute to array...
    * @var array
    */
   protected $casts = [
-    'created_at'    => 'timestamp',
-    'updated_at'    => 'timestamp',
-    'deleted_at'    => 'timestamp',
+    'created_at'    => 'datetime',
+    'updated_at'    => 'datetime',
+    'deleted_at'    => 'datetime',
+    'published_at'  => 'datetime',
+    'expired_at'    => 'datetime'
   ];
+
+  public function setDescriptionAttribute($value)
+  {
+    $this->attributes['description'] = str_replace('h1>', 'h2>', $value);
+  }
+
 
   public function site(): BelongsTo
   {
@@ -53,5 +64,4 @@ class Service extends Model implements Sortable
     return static::query()
         ->where('site_id', $this->site_id);
   }
-
 }

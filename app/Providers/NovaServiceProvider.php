@@ -23,6 +23,7 @@ use App\Nova\Menu;
 use App\Nova\Product;
 use App\Nova\Site;
 use App\Nova\Dashboards\Main;
+use App\Nova\JobOpportunity;
 use App\Nova\Leader;
 use App\Nova\Partner;
 use App\Nova\Service;
@@ -89,7 +90,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
          * ...
          * 
          */
-        ])->collapsable()
+        ])->collapsable(),
+        NovaMenuSection::make('Állásajánlatok', [
+          NovaMenuItem::resource(JobOpportunity::class), // Állásajánlatok
+        ])
+          ->icon('briefcase')
+          ->collapsable(),
       ];
     });
 
