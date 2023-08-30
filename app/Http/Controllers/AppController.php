@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\CaseStudyService;
+use App\Services\JobOpportunitiesService;
 use App\Services\LeaderService;
 use App\Services\PartnerService;
 use App\Services\ProductService;
@@ -32,14 +33,21 @@ class AppController extends Controller
      */
     protected $product_service;
 
+    /** @var ServiceService
+     */
     protected $service_service;
+
+    /** @var JobOpportunitiesService
+     */
+    protected $job_service;
 
     public function __construct(
         CaseStudyService $case_study_service,
         LeaderService $leader_service,
         PartnerService $partner_service,
         ProductService $product_service,
-        ServiceService $service_service
+        ServiceService $service_service,
+        JobOpportunitiesService $job_service,
     )
     {
         $this->partner_service    = $partner_service;
@@ -47,6 +55,7 @@ class AppController extends Controller
         $this->leader_service     = $leader_service;
         $this->product_service    = $product_service;
         $this->service_service    = $service_service;
+        $this->job_service        = $job_service;
     }
 
 
@@ -61,13 +70,14 @@ class AppController extends Controller
         return View::first(
             $page_service->getViews(Arr::first(site()->domains)),
             [
-                'page'          => $page,
+                'page'              => $page,
 
-                'case_studies'  => $this->case_study_service->index(),
-                'leaders'       => $this->leader_service->index(),
-                'partners'      => $this->partner_service->index(),
-                'products'      => $this->product_service->index(),
-                'services'      => $this->service_service->index()
+                'case_studies'      => $this->case_study_service->index(),
+                'leaders'           => $this->leader_service->index(),
+                'partners'          => $this->partner_service->index(),
+                'products'          => $this->product_service->index(),
+                'services'          => $this->service_service->index(),
+                'job_opportunities' => $this->job_service->index(),
             ]
         );
     }

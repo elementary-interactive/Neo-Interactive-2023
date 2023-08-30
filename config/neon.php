@@ -24,6 +24,7 @@ return [
       \App\Nova\Flexible\Layouts\CaseStudiesLayout::class,
       \App\Nova\Flexible\Layouts\ContentLayout::class,
       \App\Nova\Flexible\Layouts\LeadersLayout::class,
+      \App\Nova\Flexible\Layouts\JobOpportunitiesLayout::class,
       \App\Nova\Flexible\Layouts\PartnersLayout::class,
       \App\Nova\Flexible\Layouts\ProductsLayout::class,
       \App\Nova\Flexible\Layouts\ServicesLayout::class,
