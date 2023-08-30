@@ -8,7 +8,7 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Whitecube\NovaFlexibleContent\Layouts\Layout;
 
-class ProductsLayout extends Layout
+class CaseStudiesLayout extends Layout
 {
 
     /**
@@ -16,14 +16,14 @@ class ProductsLayout extends Layout
      *
      * @var string
      */
-    protected $name = 'products';
+    protected $name = 'case_studies';
 
     /**
      * The displayed title
      *
      * @var string
      */
-    protected $title = 'Termékek listája';
+    protected $title = 'Case Studies';
 
     /**
      * Get the fields displayed by the layout.
@@ -33,9 +33,7 @@ class ProductsLayout extends Layout
     public function fields()
     {
         return [
-
-            Text::make('Cím', 'title'),
-            Markdown::make('Általános bevezető', 'intro'),
+            Text::make('Cím', 'title')
         ];
     }
 }

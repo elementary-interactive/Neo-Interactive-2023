@@ -209,7 +209,7 @@ class Link extends Resource
             $flexible->addLayout($layout);
         }
 
-        $fields[] = $flexible;
+        // $fields[] = $flexible;
 
 
         $tabs = Tabs::make(__('Link'), [

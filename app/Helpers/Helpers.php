@@ -19,7 +19,10 @@ if (!function_exists('block_template')) {
     }
 
     $result[] = Arr::first(app('site')->current()->domains) . ".partials.{$block->name()}.block";
+    $result[] = "web.pages.partials.{$block->name()}.block";
+    $result[] = "web.pages.partials.{$block->name()}";
     $result[] = "partials.{$block->name()}.block";
+    $result[] = "partials.{$block->name()}";
 
     // dump($result);
 
