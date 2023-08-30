@@ -17,6 +17,13 @@ class CaseStudyService
   {
   }
 
+  public function findOrFail($slug): CaseStudy
+  {
+    return CaseStudy::where('slug', $slug)
+      ->with('partner')
+      ->firstOrFail();
+  }
+
   public function index(): EloquentCollection
   {
     return CaseStudy::where('show_on_main', '=', true)
