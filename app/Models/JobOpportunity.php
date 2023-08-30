@@ -48,6 +48,12 @@ class JobOpportunity extends Model implements Sortable
     'expired_at'    => 'datetime'
   ];
 
+  public function setDescriptionAttribute($value)
+  {
+    $this->attributes['description'] = str_replace('h1>', 'h2>', $value);
+  }
+
+
   public function site(): BelongsTo
   {
     return $this->belongsTo(\Neon\Site\Models\Site::class);

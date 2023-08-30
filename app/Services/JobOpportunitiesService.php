@@ -12,8 +12,16 @@ class JobOpportunitiesService
     //...
   }
 
-  public function init($slug = null, $paginate = null)
+  public function find($slug = null)
   {
+    $result = null;
+
+    if ($slug)
+    {
+      $result = JobOpportunity::where('slug', $slug)->first();
+    }
+
+    return $result;
   }
 
   public function index(): EloquentCollection

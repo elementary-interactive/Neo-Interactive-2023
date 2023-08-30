@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\CaseStudy;
+use App\Models\JobOpportunity;
 use App\Services\CaseStudyService;
+use App\Services\JobOpportunitiesService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -15,11 +17,11 @@ use Spatie\Tags\Tag;
 
 class JobApplicantController extends Controller
 {
-    protected $case_study_service;
+    protected $job_service;
 
-    public function __construct(CaseStudyService $case_study_service)
+    public function __construct(JobOpportunitiesService $job_service)
     {
-        $this->case_study_service = $case_study_service;
+        $this->job_service = $job_service;
     }
 
     public function show(LinkService $page_service, Request $request, string $slug = null)
@@ -28,39 +30,18 @@ class JobApplicantController extends Controller
          * 
          * @var  Link $page
          */
-        $page           = $page_service->static('munka');
-        $page->template = 'case_study';
+        $page           = $page_service->static('jelentkezes');
+        $page->template = 'job_opportunity';
 
-        /** @var CaseStudy $case_study
+        /** @var JobOpportunity $job
          */
-        $case_study     = $this->case_study_service->findOrFail($slug);
+        $job            = $this->job_service->find($slug);
  
         return View::first(
             $page_service->getViews(Arr::first(site()->domains)),
             [
                 'page'          => $page,
-                'filters'       => Tag::withType(CaseStudy::TAG_TYPE)->get(),
-                'case_study'    => $case_study,
-                'media'         => $case_study->getMedia(CaseStudy::MEDIA_COLLECTION)
-            ]
-        );
-    }
-
-    public function index(LinkService $page_service, Request $request)
-    {
-        /** Geting the current page.
-         * 
-         * @var  Link $page
-         */
-        $page           = $page_service->find('munkaink');
-        $page->template = 'case_studies';
- 
-        return View::first(
-            $page_service->getViews(Arr::first(site()->domains)),
-            [
-                'page'          => $page,
-                'filters'       => Tag::withType(CaseStudy::TAG_TYPE)->get(),
-                'case_studies'  => $this->case_study_service->filter($request->query('filter')),
+                'job'           => $job,
             ]
         );
     }
