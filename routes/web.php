@@ -33,8 +33,14 @@ Route::group([
   Route::get("/works/{slug}", [CaseStudyController::class, 'show'])
     ->name('en.case_study.show');
 
+  Route::get("/application/thanks", [JobApplicantController::class, 'thanks'])
+    ->name('en.apply.thanks');
+
   Route::get("/application/{slug?}", [JobApplicantController::class, 'show'])
     ->name('en.apply.show');
+
+  Route::post("/application/{slug?}", [JobApplicantController::class, 'store'])
+    ->name('en.apply.store');
 
   Route::get("/privacy", [AppController::class, 'privacy'])
     ->name('en.privacy-policy');
@@ -54,8 +60,14 @@ Route::group([
   Route::get("/munkaink/{slug}", [CaseStudyController::class, 'show'])
     ->name('hu.case_study.show');
 
+  Route::get("/jelentkezes/koszonjuk", [JobApplicantController::class, 'thanks'])
+    ->name('hu.apply.thanks');
+
   Route::get("/jelentkezes/{slug?}", [JobApplicantController::class, 'show'])
     ->name('hu.apply.show');
+
+  Route::post("/jelentkezes/{slug?}", [JobApplicantController::class, 'store'])
+    ->name('hu.apply.store');
 
   Route::get("/adatvedelem", [AppController::class, 'privacy'])
     ->name('hu.privacy-policy');

@@ -4,8 +4,9 @@
     @push('og')
         @include('web.layouts.head.og', [
             'og' => [
-                'title' => $job->title,
-                'description' => $job->description,
+                'title' => $job?->title ?: $page->og_title,
+                'description' => $job?->description ?: $page->og_description,
+                'image' => $page->og_image,
                 'type' => 'website',
                 'url' => \Request::url(),
             ],
@@ -15,8 +16,8 @@
     @push('meta')
         @include('web.layouts.head.meta', [
             'meta' => [
-                'title' => $job->title,
-                'description' => $job->description,
+                'title' => $job?->title ?: $page->og_title,
+                'description' => $job?->description ?: $page->og_description,
                 // 'image'             => '',
                 // 'type'              => 'website',
                 // 'url'               => \Request::url()
@@ -25,7 +26,6 @@
     @endpush
 
 @section('body')
-
     <!-- carrer subpage -->
 
     <div class="carrer-container default-padding-w menu-top-margin">
@@ -53,36 +53,51 @@
 
                         <div class="col-12 col-xl-6">
                             <div class="registration-form">
-                                <h2>Apply now<span class="yellow">.</span></h2>
-                                <form action="">
+                                <h2>{{ $form->title }}<span class="yellow">.</span></h2>
+                                <form action="{{ route(site()->locale . '.apply.store') }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
                                     <div class="form-group">
-                                        <label>Your name</label>
-                                        <input placeholder="What can we call you?" name="name" type="text"
-                                            class="form-control">
+                                        <label>{{ $form->name_label }}</label>
+                                        <input placeholder="{{ $form->name_placeholder }}" name="name" type="text" value="{{ old('name') }}"
+                                            class="form-control @error('name') is-invalid @enderror">
                                     </div>
+                                    @error('name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <div class="form-group">
-                                        <label>Your email address</label>
-                                        <input placeholder="Where we can reply back to" name="email" type="email"
-                                            class="form-control">
+                                        <label>{{ $form->email_label }}</label>
+                                        <input placeholder="{{ $form->email_placeholder }}" name="email" type="email" value="{{ old('email') }}"
+                                            class="form-control @error('email') is-invalid @enderror">
                                     </div>
+                                    @error('email')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <div class="form-group">
                                         <label for="file-upload" class="custom-file-upload mb-0">
-                                            <a class="defbtn"><i class="icon-arrow-right"></i>Your CV</a>
+                                            <a class="defbtn"><i class="icon-arrow-right"></i>{{ $form->file_label }}</a>
                                         </label>
-                                        <input id="file-upload" class="form-control-file d-none" type="file">
+                                        <input id="file-upload" name="file" class="form-control-file d-none"
+                                            type="file">
                                     </div>
+                                    @error('file')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <div class="form-group">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="legal"
-                                                v-model="isArial">
-                                            <label class="form-check-label" for="legal">
-                                                I have read and agree to the <a href="" class="ul">Privacy
-                                                    Policy</a>.
+                                            <input class="form-check-input" type="checkbox" name="privacy" value="1"
+                                                id="legal" v-model="isArial">
+                                            <label class="form-check-label" for="legal">{{ $form->privacy_label }} <a
+                                                    href="{{ route(site()->locale . '.privacy-policy') }}"
+                                                    class="pp ul">{{ __('Privacy Policy') }}</a>
                                             </label>
                                         </div>
                                     </div>
-                                    <button type="submit" class="defbtn"><i class="icon-arrow-right"></i>SUBMIT
-                                        APPLICATION</button>
+                                    @error('privacy')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <button type="submit" class="defbtn"><i
+                                            class="icon-arrow-right"></i>{{ $form->submit_label }}</button>
                                 </form>
                             </div>
                         </div>
