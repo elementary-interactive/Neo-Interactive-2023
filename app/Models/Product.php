@@ -52,6 +52,10 @@ class Product extends Model implements HasMedia, Sortable
     'deleted_at'    => 'timestamp',
   ];
 
+  protected $attributes = [
+    'lead'          => '',
+  ];
+
   public function registerMediaCollections(): void
   {
     $this->addMediaCollection(self::MEDIA_COLLECTION);//->singleFile();

@@ -105,8 +105,8 @@ class Product extends Resource
         ->filterable(),
       Text::make('Név', 'title')
         ->rules('required', 'max:255'),
-      Textarea::make('Lead', 'lead')
-        ->rules('required'),
+      // Textarea::make('Lead', 'lead')
+      //   ->rules('required'),
       Image::make('Kép', 'image')
         ->store(function (Request $request, $model) {
           /**

@@ -16,8 +16,10 @@
                     @foreach ($products as $product)
                         <div class="col-6 col-md-4 col-xl-3">
                             <a href="{{ $product->link }}" target="_blank" class="making-brands-card"
-                                @if ($product->image) style="background-image: url('{{ $product->getFirstMediaUrl(App\Models\Product::MEDIA_COLLECTION, 'thumb') }}')" @endif>
+                                @if ($product->image)) style="background-image: url('{{ $product->getFirstMediaUrl(App\Models\Product::MEDIA_COLLECTION, 'thumb') }}')" @endif>
+                                @if (!$product->image) 
                                 <div class="label">{{ $product->title }}</div>
+                                @endif
                             </a>
                         </div>
                     @endforeach
