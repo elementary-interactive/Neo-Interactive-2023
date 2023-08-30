@@ -11,11 +11,11 @@
 }
 
 @media (min-width: $xl-width) {
-  .course-registration-desc {
-    padding: 0;
-  }
-
   .course-registration-container {
+    .course-registration-desc {
+      padding: 0;
+    }
+
     .registration-form {
       padding: 9rem 12rem 12rem;
     }
