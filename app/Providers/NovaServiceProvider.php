@@ -25,6 +25,7 @@ use App\Nova\Site;
 use App\Nova\Dashboards\Main;
 use App\Nova\Leader;
 use App\Nova\Partner;
+use App\Nova\Service;
 use App\Nova\Tags;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -75,11 +76,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
           ->collapsable(),
 
         NovaMenuSection::make(__('Resources'), [
-          NovaMenuItem::resource(Leader::class),
-          NovaMenuItem::resource(Partner::class),
-          NovaMenuItem::resource(Product::class),
-          NovaMenuItem::resource(CaseStudy::class),
-          NovaMenuItem::resource(Tags::class),
+          NovaMenuItem::resource(Leader::class), // Vezetőség
+          NovaMenuItem::resource(Service::class), // Szolgáltatásaink
+          NovaMenuItem::resource(Product::class), // Termékeink
+          NovaMenuItem::resource(Partner::class), // Ügyfelek
+          NovaMenuItem::resource(CaseStudy::class), // Case Study
+          NovaMenuItem::resource(Tags::class), // Címkék
           /** Here comes all the menu items...
          * 
          * ...

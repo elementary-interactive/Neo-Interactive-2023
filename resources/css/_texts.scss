@@ -41,7 +41,7 @@ h2,
 h3 {
     font-family: "itc-avant-garde-gothic-pro", sans-serif;
     line-height: 1.2em;
-    margin-bottom: 1.1em;
+    margin-bottom: .8em;
     letter-spacing: -0.01em;
 }
 
@@ -102,17 +102,34 @@ h3 {
 
     h1,
     h2,
-    h3,
-    h4 {
-        color: $green;
+    h3 {
+        margin-top: 2em;
+
+        &:first-child {
+            margin-top: 0;
+        }
     }
 
-    h1 {
-        margin-bottom: .5rem;
-    }
+    ul {
+        list-style: none;
+        padding-left: 1.5em;
 
-    .bigger-margin-bottom {
-        margin-bottom: 3rem;
+        li {
+            line-height: 1.7em;
+            margin-bottom: 1.7em;
+            position: relative;
+
+            &::before {
+                position: absolute;
+                top: .65em;
+                left: -1.9rem;
+                content: "";
+                display: inline-block;
+                background-color: $yellow;
+                width: .8rem;
+                height: .8rem;
+            }
+        }
     }
 }
 
@@ -152,12 +169,18 @@ h3 {
     }
 
     .basic-text-container {
-        h1 {
-            margin-bottom: .5rem;
-        }
 
-        .bigger-margin-bottom {
-            margin-bottom: 5rem;
+        ul {
+            padding-left: 2.2em;
+
+            li {
+                &::before {
+                    top: .5em;
+                    left: -3.4rem;
+                    width: 1.2rem;
+                    height: 1.2rem;
+                }
+            }
         }
     }
 }

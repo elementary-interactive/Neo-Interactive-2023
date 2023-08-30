@@ -22,13 +22,14 @@ class AppServiceProvider extends ServiceProvider
    
  
         Relation::enforceMorphMap([
-            'site'          => \Neon\Site\Models\Site::class,
+            'case_study'    => \App\Models\CaseStudy::class,            
+            'leader'        => \App\Models\Leader::class,
             'link'          => \Neon\Models\Link::class,
             'menu'          => \Neon\Models\Menu::class,
             'partner'       => \App\Models\Partner::class,
-            'leader'        => \App\Models\Leader::class,
-            'case_study'    => \App\Models\CaseStudy::class,
             'product'       => \App\Models\Product::class,
+            'service'       => \App\Models\Service::class,
+            'site'          => \Neon\Site\Models\Site::class,
             'user'          => \App\Models\User::class,
         ]);
     }

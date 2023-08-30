@@ -91,3 +91,14 @@ $swiperSelector.each(function(index) {
       }
    });
 });
+
+// cv upload
+
+const fileUpload = document.querySelector('#file-upload');
+
+if(fileUpload) {
+  fileUpload.addEventListener('change', function() {
+    let file = fileUpload.files[0].name;
+    fileUpload.previousElementSibling.textContent = file;
+  });
+}
