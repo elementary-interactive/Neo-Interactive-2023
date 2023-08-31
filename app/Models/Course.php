@@ -33,7 +33,7 @@ class Course extends Model implements HasMedia, Sortable
     'sort_when_creating'  => true,
     'nova_order_by'       => 'ASC',
   ];
-  
+
   /**
    * The attributes that are mass assignable.
    *
@@ -47,6 +47,7 @@ class Course extends Model implements HasMedia, Sortable
    * @var array
    */
   protected $casts = [
+    'start_at'      => 'datetime',
     'created_at'    => 'datetime',
     'updated_at'    => 'datetime',
     'deleted_at'    => 'datetime',
@@ -56,7 +57,7 @@ class Course extends Model implements HasMedia, Sortable
 
   public function registerMediaCollections(): void
   {
-    $this->addMediaCollection(self::MEDIA_COLLECTION);//->singleFile();
+    $this->addMediaCollection(self::MEDIA_COLLECTION); //->singleFile();
   }
 
   public function registerMediaConversions(?Media $media = null): void
@@ -64,6 +65,11 @@ class Course extends Model implements HasMedia, Sortable
     $this->addMediaConversion('thumb')
       ->height(300)
       ->width(300)
+      ->performOnCollections(self::MEDIA_COLLECTION)
+      ->nonQueued();
+
+    $this->addMediaConversion('responsive')
+      ->withResponsiveImages()
       ->performOnCollections(self::MEDIA_COLLECTION)
       ->nonQueued();
   }
@@ -87,6 +93,6 @@ class Course extends Model implements HasMedia, Sortable
   public function buildSortQuery()
   {
     return static::query()
-        ->where('site_id', $this->site_id);
+      ->where('site_id', $this->site_id);
   }
 }

@@ -70,11 +70,13 @@ class JobApplicantController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name'      => 'required|max:255',
+            'phone'     => 'required',
             'email'     => 'required|email|max:255',
             'file'      => 'required|file',
             'privacy'   => 'required'
         ], [
             'name.required'     => __('Please tell us your name!'),
+            'phone.required'     => __('Please tell us your name!'),
             'email.required'    => __('Please tell us your e-mail address!'),
             'email.email'       => __('Please tell us A VALID  e-mail address!'),
             'file.required'     => __('Please upload your CV!'),
@@ -88,7 +90,7 @@ class JobApplicantController extends Controller
                 ->withInput();
         }
 
-        $applicant = new JobApplicant($validator->safe()->only(['name', 'email']));
+        $applicant = new JobApplicant($validator->safe()->only(['name', 'phone', 'email']));
         $applicant->file_path = $request->file->store('cv');
         $applicant->file_name = $request->file->getClientOriginalName().'.'.$request->file->getClientOriginalExtension();
 

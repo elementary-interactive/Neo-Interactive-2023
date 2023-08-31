@@ -109,8 +109,8 @@ class CourseParticipant extends Resource
       BelongsTo::make('Képzés', 'course', \App\Nova\Course::class)
         ->filterable(),
       Text::make('Név', 'name'),
-      Text::make('E-mail', 'email'),
       Text::make('Telefonszám', 'phone'),
+      Text::make('E-mail', 'email'),
       DateTime::make('Jelentkezés ideje', 'created_at'),
     ];
 

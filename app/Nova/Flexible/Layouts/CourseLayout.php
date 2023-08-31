@@ -11,7 +11,7 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Trix;
 use Whitecube\NovaFlexibleContent\Layouts\Layout;
 
-class CouseLayout extends Layout
+class CourseLayout extends Layout
 {
 
     /**
@@ -36,6 +36,9 @@ class CouseLayout extends Layout
     public function fields()
     {
         return [
+            Heading::make('Oldal elemei:'),
+            Text::make('Az oldal címe', 'main_title'),
+            Text::make('"További kutrzusok" cím', 'more_title'),
             Heading::make('Általános jelentkezés tartalmi elemei:'),
             Text::make('Cím', 'title'),
             Trix::make('Általános leírás', 'description'),

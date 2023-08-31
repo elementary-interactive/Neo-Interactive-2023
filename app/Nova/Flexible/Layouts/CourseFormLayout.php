@@ -42,6 +42,10 @@ class CourseFormLayout extends Layout
             Text::make('Label', 'name_label')
                 ->required(),
             Text::make('Placeholder', 'name_placeholder'),
+            Heading::make('Telefonszám mező:'),
+            Text::make('Label', 'phone_label')
+                ->required(),
+            Text::make('Placeholder', 'phone_placeholder'),
             Heading::make('Email mező:'),
             Text::make('Label', 'email_label')
                 ->required(),

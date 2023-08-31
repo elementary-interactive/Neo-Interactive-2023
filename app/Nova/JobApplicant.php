@@ -109,6 +109,7 @@ class JobApplicant extends Resource
       BelongsTo::make('Állásajánlat', 'jobOpportunity', \App\Nova\JobOpportunity::class)
         ->filterable(),
       Text::make('Név', 'name'),
+      Text::make('Telefonszám', 'phone'),
       Text::make('E-mail', 'email'),
       DateTime::make('Jelentkezés ideje', 'created_at'),
     ];

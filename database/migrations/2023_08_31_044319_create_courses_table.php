@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('description');
+            $table->string('image');
 
             $table->char('status', 1)
                 ->default(BasicStatus::default()->value);

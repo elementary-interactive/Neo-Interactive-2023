@@ -38,10 +38,17 @@ class CoursesLayout extends Layout
             Markdown::make('Általános bevezető', 'intro'),
             Heading::make('Üres regisztráció'),
             Text::make('Cím', 'empty_title'),
-            Markdown::make('Általános bevezető', 'empty_intro'),
             Image::make('Kép', 'empty_image'),
-            Text::make('CTA Szövege', 'cta_title')
-                ->help('Ha nincs állásajánlat, amit megjeleníthetnénk, akkor kirakunk egy gombot az általános jelentkezések fogadására. Itt adhatjuk meg, hogy mi legyen a gomb szövege.'),
+            Text::make('CTA Szövege', 'cta_empty_title')
+                ->help('Ha nincs aktuális képzés, amit megjeleníthetnénk, akkor kirakunk egy gombot az általános jelentkezések fogadására. Itt adhatjuk meg, hogy mi legyen a gomb szövege.'),
+            Heading::make('Regisztráció'),
+            Text::make('Élő közvetítés szövege', 'stream_title')
+                ->help('A ##datum## szöveg a szövegben a stream kezdetének a dátumára fordul le.'),
+            Text::make('Regisztráció gomb', 'cta_title')
+                ->help('Esemény regisztráció gomb felirata'),
+            Text::make('Esemény megtekintése gomb', 'cta_view')
+                ->help('Esemény regisztráció gomb felirata'),
+
         ];
     }
 }

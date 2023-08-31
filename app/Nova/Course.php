@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Heading;
@@ -74,30 +75,6 @@ class Course extends Resource
     return 'Előadás';
   }
 
-  // /**
-  //  * Return the location to redirect the user after creation.
-  //  *
-  //  * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-  //  * @param  \Laravel\Nova\Resource  $resource
-  //  * @return \Laravel\Nova\URL|string
-  //  */
-  // public static function redirectAfterCreate(NovaRequest $request, $resource)
-  // {
-  //   return '/resources/' . static::uriKey();
-  // }
-
-  // /**
-  //  * Return the location to redirect the user after update.
-  //  *
-  //  * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-  //  * @param  \Laravel\Nova\Resource  $resource
-  //  * @return \Laravel\Nova\URL|string
-  //  */
-  // public static function redirectAfterUpdate(NovaRequest $request, $resource)
-  // {
-  //   return '/resources/' . static::uriKey();
-  // }
-
   /**
    * Get the fields displayed by the resource.
    *
@@ -115,6 +92,22 @@ class Course extends Resource
         ->from('title'),
       Trix::make('Leírás', 'description')
         ->rules('required'),
+      Code::make('Videó beágyazása', 'embed')
+        ->help('A stream videó - például Youtube - "embed" kódja illesztendő ide.'),
+      Image::make('Kép', 'image')
+        ->store(function (Request $request, $model) {
+          /**
+           * @todo Handle favicon via media library
+           */
+          $media = $model->addMediaFromRequest('image')->toMediaCollection(\App\Models\Course::MEDIA_COLLECTION);
+          return $media->file_name;
+        })
+        ->preview(function () {
+          return $this->getFirstMediaUrl(\App\Models\Course::MEDIA_COLLECTION, 'thumb');
+        })
+        ->thumbnail(function () {
+          return $this->getFirstMediaUrl(\App\Models\Course::MEDIA_COLLECTION, 'thumb');
+        }),
       Heading::make('Elérhetőség'),
       Boolean::make('Regisztráció nyitva', 'registration_open'),
       Boolean::make('Aktív', 'status')
@@ -151,4 +144,4 @@ class Course extends Resource
     // dd($next);
     return $next;
   }
-}   
+}

@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
             'leader'            => \App\Models\Leader::class,
             'link'              => \Neon\Models\Link::class,
             'menu'              => \Neon\Models\Menu::class,
+            'menu_item'         => \Neon\Models\MenuItem::class,
             'partner'           => \App\Models\Partner::class,
             'product'           => \App\Models\Product::class,
             'service'           => \App\Models\Service::class,

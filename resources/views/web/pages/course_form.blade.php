@@ -4,9 +4,11 @@
     @push('og')
         @include('web.layouts.head.og', [
             'og' => [
-                'title' => $job?->title ?: $page->og_title,
-                'description' => $job?->description ?: $page->og_description,
-                'image' => $page->og_image,
+                'title' => $course?->title ?: $page->og_title,
+                ,
+                'description' => $course?->description ?: $page->og_description,
+                'image' =>
+                    $course?->getFirstMediaUrl(App\Models\Course::MEDIA_COLLECTION, 'thumb') ?: $page->og_image,
                 'type' => 'website',
                 'url' => \Request::url(),
             ],
@@ -16,8 +18,8 @@
     @push('meta')
         @include('web.layouts.head.meta', [
             'meta' => [
-                'title' => $job?->title ?: $page->og_title,
-                'description' => $job?->description ?: $page->og_description,
+                'title' => $page->og_title,
+                'description' => $page->og_description,
                 // 'image'             => '',
                 // 'type'              => 'website',
                 // 'url'               => \Request::url()
@@ -26,16 +28,17 @@
     @endpush
 
 @section('body')
-    <!-- carrer subpage -->
 
-    <div class="carrer-container default-padding-w menu-top-margin">
+    <!-- courses subpage -->
+
+    <div class="course-registration-container default-padding-w menu-top-margin">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h2>We are looking for:</h2>
+                    <h2>{{ $block->main_title }}</h2>
                     <div class="row def-b-margin">
                         <div class="col-12 col-xl-9">
-                            <h1 class="mb-0">{{ $job->title }}</h1>
+                            <h1 class="mb-0">{{ $course?->title ?: $block->title }}</h1>
                         </div>
                     </div>
 
@@ -44,8 +47,8 @@
                         <!-- description -->
 
                         <div class="col-12 col-xl-6">
-                            <div class="carrer-registration-desc basic-text-container">
-                                {!! $job->description !!}
+                            <div class="course-registration-desc">
+                                {!! $course?->description ?: $block->description !!}
                             </div>
                         </div>
 
@@ -54,12 +57,13 @@
                         <div class="col-12 col-xl-6">
                             <div class="registration-form">
                                 <h2>{{ $form->title }}<span class="yellow">.</span></h2>
-                                <form action="{{ route(site()->locale . '.apply.store', ['slug' => $job?->slug]) }}" method="POST"
-                                    enctype="multipart/form-data">
+                                <form action="{{ route(site()->locale . '.courses.store', ['slug' => $course?->slug]) }}"
+                                    method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label>{{ $form->name_label }}</label>
-                                        <input placeholder="{{ $form->name_placeholder }}" name="name" type="text" value="{{ old('name') }}"
+                                        <input placeholder="{{ $form->name_placeholder }}" name="name" type="text"
+                                            value="{{ old('name') }}"
                                             class="form-control @error('name') is-invalid @enderror">
                                     </div>
                                     @error('name')
@@ -76,20 +80,11 @@
                                     @enderror
                                     <div class="form-group">
                                         <label>{{ $form->email_label }}</label>
-                                        <input placeholder="{{ $form->email_placeholder }}" name="email" type="email" value="{{ old('email') }}"
+                                        <input placeholder="{{ $form->email_placeholder }}" name="email" type="email"
+                                            value="{{ old('email') }}"
                                             class="form-control @error('email') is-invalid @enderror">
                                     </div>
                                     @error('email')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                    <div class="form-group">
-                                        <label for="file-upload" class="custom-file-upload mb-0">
-                                            <a class="defbtn"><i class="icon-arrow-right"></i>{{ $form->file_label }}</a>
-                                        </label>
-                                        <input id="file-upload" name="file" class="form-control-file d-none"
-                                            type="file">
-                                    </div>
-                                    @error('file')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                     <div class="form-group">
@@ -111,30 +106,36 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- showreel -->
-
-    <div class="main-testimony-container on-career">
-        <div class="testimony-content">
+    <!-- more courses -->
+    @if ($randoms?->count())
+        <div class="courses-container def-b-margin">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <h2>We are neo<span class="yellow">.</span><br>
-                            A full-service communication
-                            and media agency with a digital focus<span class="yellow">.</span></h2>
-                        <div class="testimony-btn">
-                            <a href="" class="defbtn"><i class="icon-arrow-right"></i>DISCOVER THE NEO METHOD</a>
+                        <h2>{{ $block->more_title }}<span class="yellow">.</span></h2>
+
+                        <div class="courses-cards">
+                            @foreach ($randoms as $random)
+                                <div class="courses-card">
+                                    <div class="courses-card-inner"
+                                        style="background-image: url('{{ $course->getFirstMediaUrl(App\Models\Course::MEDIA_COLLECTION, 'thumb') }}')">
+                                    </div>
+                                    <h3>{{ $course->title }}</h3>
+                                    <a href="{{ route(site()->locale . '.courses.show', ['slug' => $course->slug]) }}"
+                                        class="defbtn"><i class="icon-play"></i>{{ $block->cta_view }}</a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="showreel" style="background-image: url('images/main/showreel.png')">
-            <a href="" class="defbtn white"><i class="icon-play"></i>view our showreel</a>
-        </div>
-    </div>
+    @endif
+    </section>
 @endsection
