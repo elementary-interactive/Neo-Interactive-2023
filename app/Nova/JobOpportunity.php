@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
@@ -121,8 +122,9 @@ class JobOpportunity extends Resource
         ->help(__('Check this on if you want to link be available!')),
       DateTime::make(__('Published at'), 'published_at')
         ->help('Ettől az időponttól kezdődően jelenik meg az állásajánlat a honlapon.'),
-      DateTime::make(__('Expire at'), 'expired_at')
+      DateTime::make(__('Expired at'), 'expired_at')
         ->help('Nem kötelező kitölteni. Ha ki van töltve, ettől az időponttól kezdődően már nem látható az állásajánlat a honlapon.'),
+      HasMany::make('Jelentkezők', 'applicants', JobApplicant::class),
     ];
 
     return $fields;

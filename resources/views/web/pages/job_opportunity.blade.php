@@ -54,7 +54,7 @@
                         <div class="col-12 col-xl-6">
                             <div class="registration-form">
                                 <h2>{{ $form->title }}<span class="yellow">.</span></h2>
-                                <form action="{{ route(site()->locale . '.apply.store') }}" method="POST"
+                                <form action="{{ route(site()->locale . '.apply.store', ['slug' => $job?->slug]) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">

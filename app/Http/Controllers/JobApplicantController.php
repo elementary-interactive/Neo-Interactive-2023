@@ -91,12 +91,13 @@ class JobApplicantController extends Controller
         $applicant = new JobApplicant($validator->safe()->only(['name', 'email']));
         $applicant->file_path = $request->file->store('cv');
         $applicant->file_name = $request->file->getClientOriginalName().'.'.$request->file->getClientOriginalExtension();
-        $applicant->save();
 
         if ($job)
         {
-            $applicant->jobOpportunity()->save($job);
+            $applicant->jobOpportunity()->associate($job);
         }
+        
+        $applicant->save();
 
         // return View::first(
         //     $page_service->getViews(Arr::first(site()->domains)),

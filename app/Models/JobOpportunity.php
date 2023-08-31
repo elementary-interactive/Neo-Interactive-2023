@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use Neon\Models\Traits\Statusable;
@@ -57,6 +58,11 @@ class JobOpportunity extends Model implements Sortable
   public function site(): BelongsTo
   {
     return $this->belongsTo(\Neon\Site\Models\Site::class);
+  }
+
+  public function applicants(): HasMany
+  {
+    return $this->hasMany(JobApplicant::class);
   }
 
   public function buildSortQuery()
