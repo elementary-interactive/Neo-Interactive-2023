@@ -18,6 +18,8 @@ use App\Nova\Attribute;
 use App\Nova\Brand;
 use App\Nova\CaseStudy;
 use App\Nova\Category;
+use App\Nova\Course;
+use App\Nova\CourseParticipant;
 use App\Nova\Link;
 use App\Nova\Menu;
 use App\Nova\Product;
@@ -97,6 +99,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
           NovaMenuItem::resource(JobApplicant::class), // Állásajánlat jelentkezések
         ])
           ->icon('briefcase')
+          ->collapsable(),
+        NovaMenuSection::make('Előadások', [
+          NovaMenuItem::resource(Course::class), //- "Kurzusok" vagy mi a faszom.
+          NovaMenuItem::resource(CourseParticipant::class)
+        ])
+          ->icon('calendar')
           ->collapsable(),
       ];
     });
