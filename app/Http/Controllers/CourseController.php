@@ -76,6 +76,7 @@ class CourseController extends Controller
                 'course'        => $course,
                 'block'         => $page->content[0],
                 'form'          => $page->content[1],
+                'randoms'       => Course::where('id', '!=', $course?->id)->inRandomOrder()->limit(3)->get(),
             ]
         );
     }

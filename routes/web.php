@@ -49,7 +49,7 @@ Route::group([
     Route::get("/courses", [CourseController::class, 'index'])
     ->name('en.courses.index');
   
-    Route::get("/courses/{slug}", [CourseController::class, 'show'])
+    Route::get("/courses/{slug?}", [CourseController::class, 'show'])
     ->name('en.courses.show');
 
   Route::post("/courses/{slug?}", [CourseController::class, 'store'])
@@ -89,7 +89,7 @@ Route::group([
     Route::get("/kepzesek", [CourseController::class, 'index'])
     ->name('hu.courses.index');
 
-  Route::get("/kepzesek/{slug}", [CourseController::class, 'show'])
+  Route::get("/kepzesek/{slug?}", [CourseController::class, 'show'])
     ->name('hu.courses.show');
 
   Route::post("/kepzesek/{slug?}", [CourseController::class, 'store'])
