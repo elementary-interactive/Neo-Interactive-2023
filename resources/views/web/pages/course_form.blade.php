@@ -5,7 +5,6 @@
         @include('web.layouts.head.og', [
             'og' => [
                 'title' => $course?->title ?: $page->og_title,
-                ,
                 'description' => $course?->description ?: $page->og_description,
                 'image' =>
                     $course?->getFirstMediaUrl(App\Models\Course::MEDIA_COLLECTION, 'thumb') ?: $page->og_image,
