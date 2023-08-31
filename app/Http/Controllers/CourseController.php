@@ -120,10 +120,10 @@ class CourseController extends Controller
 
         if ($course)
         {
-            $$participant->course()->associate($course);
+            $participant->course()->associate($course);
         }
         
-        $$participant->save();
+        $participant->save();
 
         // return View::first(
         //     $page_service->getViews(Arr::first(site()->domains)),
