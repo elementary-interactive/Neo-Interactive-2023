@@ -122,6 +122,8 @@ class Link extends Resource
                 // ->slug('slug')
                 ->rules('required', 'max:255'),
             Text::make('URI', 'slug')
+                ->rules('required')
+                ->required()
                 ->hideFromIndex(),
             Text::make('', function() use ($model) {
                 return "<a style=\"color: inherit;\" href=\"".url($model->href)."\" target=\"_blank\" title=\"{$model->href}\">".view('nova::icon.svg-link', [

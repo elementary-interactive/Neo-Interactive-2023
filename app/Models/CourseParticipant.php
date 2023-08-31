@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
 use Neon\Models\Traits\Uuid;
 
-class JobApplicant extends Model
+class CourseParticipant extends Model
 {
     use HasFactory;
     use SoftDeletes; // Laravel built in soft delete handler trait.
@@ -33,8 +32,8 @@ class JobApplicant extends Model
         'deleted_at'    => 'datetime',
     ];
 
-    public function jobOpportunity(): BelongsTo
+    public function course(): BelongsTo
     {
-        return $this->belongsTo(JobOpportunity::class);
+        return $this->belongsTo(Course::class);
     }
 }

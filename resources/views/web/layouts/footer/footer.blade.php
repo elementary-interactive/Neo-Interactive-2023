@@ -31,7 +31,7 @@
         </div>
         <div class="legal">
           © {{ now()->year }} Neo Interactive All Rights Reserved.
-          <a href="{{ route(site()->locale.'.privacy-policy') }}" class="pp ul">Privacy Policy</a>
+          <a href="{{ route(site()->locale.'.privacy-policy') }}" class="pp ul">{{ __('Privacy Policy') }}</a>
         </div>
       </div>
     </div>

@@ -132,7 +132,7 @@
 
     .leadership-content {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         flex-wrap: wrap;
         gap: 1rem;
 
@@ -276,7 +276,7 @@
     }
 
     .pattern {
-        background-image: url('black_rect.svg');
+        background-image: url(/resources/images/main/black_rect.svg);
         background-size: 2.8rem 2.8rem;
         background-position: left top;
         background-repeat: repeat;

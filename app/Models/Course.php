@@ -13,15 +13,20 @@ use Neon\Models\Traits\Publishable;
 use Neon\Models\Traits\Uuid;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class JobOpportunity extends Model implements Sortable
+class Course extends Model implements HasMedia, Sortable
 {
   use HasFactory;
+  use InteractsWithMedia;
   use SoftDeletes; // Laravel built in soft delete handler trait.
   use SortableTrait;
   use Statusable;
-  use Publishable;
   use Uuid;
+
+  const MEDIA_COLLECTION = 'courses';
 
   public $sortable = [
     'order_column_name'   => 'order',
@@ -42,12 +47,32 @@ class JobOpportunity extends Model implements Sortable
    * @var array
    */
   protected $casts = [
+    'start_at'      => 'datetime',
     'created_at'    => 'datetime',
     'updated_at'    => 'datetime',
     'deleted_at'    => 'datetime',
     'published_at'  => 'datetime',
     'expired_at'    => 'datetime'
   ];
+
+  public function registerMediaCollections(): void
+  {
+    $this->addMediaCollection(self::MEDIA_COLLECTION); //->singleFile();
+  }
+
+  public function registerMediaConversions(?Media $media = null): void
+  {
+    $this->addMediaConversion('thumb')
+      ->height(300)
+      ->width(300)
+      ->performOnCollections(self::MEDIA_COLLECTION)
+      ->nonQueued();
+
+    $this->addMediaConversion('responsive')
+      ->withResponsiveImages()
+      ->performOnCollections(self::MEDIA_COLLECTION)
+      ->nonQueued();
+  }
 
   public function setDescriptionAttribute($value)
   {
@@ -60,14 +85,14 @@ class JobOpportunity extends Model implements Sortable
     return $this->belongsTo(\Neon\Site\Models\Site::class);
   }
 
-  public function applicants(): HasMany
+  public function participants(): HasMany
   {
-    return $this->hasMany(JobApplicant::class);
+    return $this->hasMany(CourseParticipant::class);
   }
 
   public function buildSortQuery()
   {
     return static::query()
-        ->where('site_id', $this->site_id);
+      ->where('site_id', $this->site_id);
   }
 }

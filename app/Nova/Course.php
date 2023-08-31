@@ -2,11 +2,12 @@
 
 namespace App\Nova;
 
-
+use App\Nova\CourseParticipant;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Heading;
@@ -20,7 +21,7 @@ use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
-class JobOpportunity extends Resource
+class Course extends Resource
 {
   use HasSortableRows {
     indexQuery as indexSortableQuery;
@@ -31,7 +32,7 @@ class JobOpportunity extends Resource
    *
    * @var string
    */
-  public static $model = \App\Models\JobOpportunity::class;
+  public static $model = \App\Models\Course::class;
 
   /**
    * The visual style used for the table. Available options are 'tight' and 'default'.
@@ -66,37 +67,13 @@ class JobOpportunity extends Resource
 
   public static function label()
   {
-    return 'Állásajánlatok';
+    return 'Előadások';
   }
 
   public static function singularLabel()
   {
-    return 'Állásajánlat';
+    return 'Előadás';
   }
-
-  // /**
-  //  * Return the location to redirect the user after creation.
-  //  *
-  //  * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-  //  * @param  \Laravel\Nova\Resource  $resource
-  //  * @return \Laravel\Nova\URL|string
-  //  */
-  // public static function redirectAfterCreate(NovaRequest $request, $resource)
-  // {
-  //   return '/resources/' . static::uriKey();
-  // }
-
-  // /**
-  //  * Return the location to redirect the user after update.
-  //  *
-  //  * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-  //  * @param  \Laravel\Nova\Resource  $resource
-  //  * @return \Laravel\Nova\URL|string
-  //  */
-  // public static function redirectAfterUpdate(NovaRequest $request, $resource)
-  // {
-  //   return '/resources/' . static::uriKey();
-  // }
 
   /**
    * Get the fields displayed by the resource.
@@ -109,22 +86,40 @@ class JobOpportunity extends Resource
     $fields = [
       BelongsTo::make('Weboldal', 'site', \App\Nova\Site::class)
         ->filterable(),
-      Text::make('Pozíció megnevezése', 'title')
+      Text::make('Előadás címe', 'title')
         ->rules('required', 'max:255'),
       Slug::make("", 'slug')
         ->from('title'),
-      Trix::make('Pozíció meghatározása', 'description')
+      Trix::make('Leírás', 'description')
         ->rules('required'),
+      Code::make('Videó beágyazása', 'embed')
+        ->help('A stream videó - például Youtube - "embed" kódja illesztendő ide.'),
+      Image::make('Kép', 'image')
+        ->store(function (Request $request, $model) {
+          /**
+           * @todo Handle favicon via media library
+           */
+          $media = $model->addMediaFromRequest('image')->toMediaCollection(\App\Models\Course::MEDIA_COLLECTION);
+          return $media->file_name;
+        })
+        ->preview(function () {
+          return $this->getFirstMediaUrl(\App\Models\Course::MEDIA_COLLECTION, 'thumb');
+        })
+        ->thumbnail(function () {
+          return $this->getFirstMediaUrl(\App\Models\Course::MEDIA_COLLECTION, 'thumb');
+        }),
       Heading::make('Elérhetőség'),
+      Boolean::make('Regisztráció nyitva', 'registration_open'),
       Boolean::make('Aktív', 'status')
         ->trueValue(\Neon\Models\Statuses\BasicStatus::Active->value)
         ->falseValue(\Neon\Models\Statuses\BasicStatus::Inactive->value)
         ->help(__('Check this on if you want to link be available!')),
+      DateTime::make("Kurzus kezdete", 'start_at'),
       DateTime::make(__('Published at'), 'published_at')
         ->help('Ettől az időponttól kezdődően jelenik meg az állásajánlat a honlapon.'),
       DateTime::make(__('Expired at'), 'expired_at')
         ->help('Nem kötelező kitölteni. Ha ki van töltve, ettől az időponttól kezdődően már nem látható az állásajánlat a honlapon.'),
-      HasMany::make('Jelentkezők', 'applicants', JobApplicant::class),
+      HasMany::make('Résztvevők', 'participants', CourseParticipant::class),
     ];
 
     return $fields;

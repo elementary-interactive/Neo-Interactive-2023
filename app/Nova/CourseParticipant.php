@@ -8,7 +8,6 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Heading;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
@@ -20,7 +19,7 @@ use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Outl1ne\NovaSortable\Traits\HasSortableRows;
 
-class JobOpportunity extends Resource
+class CourseParticipant extends Resource
 {
   use HasSortableRows {
     indexQuery as indexSortableQuery;
@@ -31,7 +30,7 @@ class JobOpportunity extends Resource
    *
    * @var string
    */
-  public static $model = \App\Models\JobOpportunity::class;
+  public static $model = \App\Models\CourseParticipant::class;
 
   /**
    * The visual style used for the table. Available options are 'tight' and 'default'.
@@ -45,7 +44,7 @@ class JobOpportunity extends Resource
    *
    * @var string
    */
-  public static $title = 'title';
+  public static $title = 'name';
 
   /**
    * Disable sorting cache.
@@ -61,17 +60,17 @@ class JobOpportunity extends Resource
    * @var array
    */
   public static $search = [
-    'title', 'description'
+    'title', 'email'
   ];
 
   public static function label()
   {
-    return 'Állásajánlatok';
+    return 'Képzés jelentkezések';
   }
 
   public static function singularLabel()
   {
-    return 'Állásajánlat';
+    return 'Képzés jelentkezés';
   }
 
   // /**
@@ -107,46 +106,34 @@ class JobOpportunity extends Resource
   public function fields(Request $request)
   {
     $fields = [
-      BelongsTo::make('Weboldal', 'site', \App\Nova\Site::class)
+      BelongsTo::make('Képzés', 'course', \App\Nova\Course::class)
         ->filterable(),
-      Text::make('Pozíció megnevezése', 'title')
-        ->rules('required', 'max:255'),
-      Slug::make("", 'slug')
-        ->from('title'),
-      Trix::make('Pozíció meghatározása', 'description')
-        ->rules('required'),
-      Heading::make('Elérhetőség'),
-      Boolean::make('Aktív', 'status')
-        ->trueValue(\Neon\Models\Statuses\BasicStatus::Active->value)
-        ->falseValue(\Neon\Models\Statuses\BasicStatus::Inactive->value)
-        ->help(__('Check this on if you want to link be available!')),
-      DateTime::make(__('Published at'), 'published_at')
-        ->help('Ettől az időponttól kezdődően jelenik meg az állásajánlat a honlapon.'),
-      DateTime::make(__('Expired at'), 'expired_at')
-        ->help('Nem kötelező kitölteni. Ha ki van töltve, ettől az időponttól kezdődően már nem látható az állásajánlat a honlapon.'),
-      HasMany::make('Jelentkezők', 'applicants', JobApplicant::class),
+      Text::make('Név', 'name'),
+      Text::make('Telefonszám', 'phone'),
+      Text::make('E-mail', 'email'),
+      DateTime::make('Jelentkezés ideje', 'created_at'),
     ];
 
     return $fields;
   }
 
-  /**
-   * Build an "index" query for the given resource.
-   *
-   * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-   * @param  \Illuminate\Database\Eloquent\Builder  $query
-   * @return \Illuminate\Database\Eloquent\Builder
-   */
-  public static function indexQuery(NovaRequest $request, $query)
-  {
-    $next = parent::indexQuery($request, static::indexSortableQuery($request, $query));
+  // /**
+  //  * Build an "index" query for the given resource.
+  //  *
+  //  * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+  //  * @param  \Illuminate\Database\Eloquent\Builder  $query
+  //  * @return \Illuminate\Database\Eloquent\Builder
+  //  */
+  // public static function indexQuery(NovaRequest $request, $query)
+  // {
+  //   $next = parent::indexQuery($request, static::indexSortableQuery($request, $query));
 
-    $next->withoutGlobalScopes([
-      \Neon\Models\Scopes\ActiveScope::class
-    ]);
-    $next->orderBy('order', 'ASC');
+  //   $next->withoutGlobalScopes([
+  //     \Neon\Models\Scopes\ActiveScope::class
+  //   ]);
+  //   $next->orderBy('order', 'ASC');
 
-    // dd($next);
-    return $next;
-  }
+  //   // dd($next);
+  //   return $next;
+  // }
 }
