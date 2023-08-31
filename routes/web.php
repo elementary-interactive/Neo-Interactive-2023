@@ -83,16 +83,16 @@ Route::group([
     ->name('hu.apply.store');
 
     
-    Route::get("/kepzesek/thanks", [CourseController::class, 'thanks'])
+    Route::get("/kepzes/koszonjuk", [CourseController::class, 'thanks'])
     ->name('hu.courses.thanks');
 
     Route::get("/kepzesek", [CourseController::class, 'index'])
     ->name('hu.courses.index');
 
-  Route::get("/kepzesek/{slug?}", [CourseController::class, 'show'])
+  Route::get("/kepzes/{slug?}", [CourseController::class, 'show'])
     ->name('hu.courses.show');
 
-  Route::post("/kepzesek/{slug?}", [CourseController::class, 'store'])
+  Route::post("/kepzes/{slug?}", [CourseController::class, 'store'])
     ->name('hu.courses.store');
 
 
