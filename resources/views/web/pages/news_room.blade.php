@@ -40,7 +40,7 @@
                         </div>
                     </div>
 
-                    @if ($news?->counts())
+                    @if ($news?->count())
                         <div class="newsroom-cards">
                           @foreach ($news as $article)
                             <a href="{{ route(site()->locale . '.news.show', ['slug' => $article->slug]) }}" class="newsroom-card">
