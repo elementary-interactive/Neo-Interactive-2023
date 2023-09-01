@@ -43,17 +43,23 @@ Route::group([
   Route::post("/application/{slug?}", [JobApplicantController::class, 'store'])
     ->name('en.apply.store');
 
-    Route::get("/courses/thanks", [CourseController::class, 'thanks'])
+  Route::get("/courses/thanks", [CourseController::class, 'thanks'])
     ->name('en.courses.thanks');
 
-    Route::get("/courses", [CourseController::class, 'index'])
+  Route::get("/courses", [CourseController::class, 'index'])
     ->name('en.courses.index');
-  
-    Route::get("/courses/{slug?}", [CourseController::class, 'show'])
+
+  Route::get("/courses/{slug?}", [CourseController::class, 'show'])
     ->name('en.courses.show');
 
   Route::post("/courses/{slug?}", [CourseController::class, 'store'])
     ->name('en.courses.store');
+
+  Route::get("/news", [NewsController::class, 'index'])
+    ->name('hu.news.index');
+
+  Route::get("/news/article/{slug?}", [NewsController::class, 'show'])
+    ->name('hu.news.show');
 
   Route::get("/privacy", [AppController::class, 'privacy'])
     ->name('en.privacy-policy');
@@ -82,11 +88,10 @@ Route::group([
   Route::post("/jelentkezes/{slug?}", [JobApplicantController::class, 'store'])
     ->name('hu.apply.store');
 
-    
-    Route::get("/kepzes/koszonjuk", [CourseController::class, 'thanks'])
+  Route::get("/kepzes/koszonjuk", [CourseController::class, 'thanks'])
     ->name('hu.courses.thanks');
 
-    Route::get("/kepzesek", [CourseController::class, 'index'])
+  Route::get("/kepzesek", [CourseController::class, 'index'])
     ->name('hu.courses.index');
 
   Route::get("/kepzes/{slug?}", [CourseController::class, 'show'])
@@ -95,6 +100,11 @@ Route::group([
   Route::post("/kepzes/{slug?}", [CourseController::class, 'store'])
     ->name('hu.courses.store');
 
+  Route::get("/hirek", [NewsController::class, 'index'])
+    ->name('hu.news.index');
+
+  Route::get("/hirek/cikk/{slug?}", [NewsController::class, 'show'])
+    ->name('hu.news.show');
 
   Route::get("/adatvedelem", [AppController::class, 'privacy'])
     ->name('hu.privacy-policy');

@@ -89,5 +89,4 @@
             </div>
         </div>
     @endif
-    </section>
 @endsection
