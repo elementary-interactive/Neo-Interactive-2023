@@ -28,6 +28,7 @@ use App\Nova\Dashboards\Main;
 use App\Nova\JobApplicant;
 use App\Nova\JobOpportunity;
 use App\Nova\Leader;
+use App\Nova\News;
 use App\Nova\Partner;
 use App\Nova\Service;
 use App\Nova\Tags;
@@ -85,6 +86,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
           NovaMenuItem::resource(Product::class), // Termékeink
           NovaMenuItem::resource(Partner::class), // Ügyfelek
           NovaMenuItem::resource(CaseStudy::class), // Case Study
+          NovaMenuItem::resource(News::class), // Hírek
           NovaMenuItem::resource(Tags::class), // Címkék
           /** Here comes all the menu items...
          * 

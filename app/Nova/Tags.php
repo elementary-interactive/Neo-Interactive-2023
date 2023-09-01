@@ -3,12 +3,14 @@
 namespace App\Nova;
 
 use App\Models\CaseStudy as CaseStudyModel;
+use App\Models\News;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\KeyValue;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Slug;
@@ -67,29 +69,29 @@ class Tags extends Resource
     return 'Címke';
   }
 
-  // /**
-  //  * Return the location to redirect the user after creation.
-  //  *
-  //  * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-  //  * @param  \Laravel\Nova\Resource  $resource
-  //  * @return \Laravel\Nova\URL|string
-  //  */
-  // public static function redirectAfterCreate(NovaRequest $request, $resource)
-  // {
-  //   return '/resources/' . static::uriKey();
-  // }
+  /**
+   * Return the location to redirect the user after creation.
+   *
+   * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+   * @param  \Laravel\Nova\Resource  $resource
+   * @return \Laravel\Nova\URL|string
+   */
+  public static function redirectAfterCreate(NovaRequest $request, $resource)
+  {
+    return '/resources/' . static::uriKey();
+  }
 
-  // /**
-  //  * Return the location to redirect the user after update.
-  //  *
-  //  * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-  //  * @param  \Laravel\Nova\Resource  $resource
-  //  * @return \Laravel\Nova\URL|string
-  //  */
-  // public static function redirectAfterUpdate(NovaRequest $request, $resource)
-  // {
-  //   return '/resources/' . static::uriKey();
-  // }
+  /**
+   * Return the location to redirect the user after update.
+   *
+   * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+   * @param  \Laravel\Nova\Resource  $resource
+   * @return \Laravel\Nova\URL|string
+   */
+  public static function redirectAfterUpdate(NovaRequest $request, $resource)
+  {
+    return '/resources/' . static::uriKey();
+  }
 
   /**
    * Get the fields displayed by the resource.
@@ -101,50 +103,60 @@ class Tags extends Resource
   {
     $fields = [];
 
-    foreach (config('site.available_locales') as $locale => $label)
-    {
-      $fields[] = new Panel('Címke '.$label['label'].' nyelven', [
-        Text::make('Címke', "name->{$locale}")
-          ->fillUsing(function ($request, $model, $attribute, $requestAttribute) use ($locale) {
-            return $model->getTranslation($requestAttribute, $locale);
-          })
-          ->rules('required', 'max:255')
-          ->hideFromDetail()
-          ->hideFromIndex(),
-        Slug::make('', "slug->{$locale}")
-          ->fillUsing(function ($request, $model, $attribute, $requestAttribute) use ($locale) {
-            return $model->getTranslation($requestAttribute, $locale);
-          })
-          ->from("name->{$locale}")
-          ->hideFromDetail()
-          ->hideFromIndex(),
-      ]);
+    // foreach (config('site.available_locales') as $locale => $label)
+    // {
+    //   $fields[] = new Panel('Címke '.$label['label'].' nyelven', [
+    //     Text::make('Címke', "name->{$locale}")
+    //       ->fillUsing(function ($request, $model, $attribute, $requestAttribute) use ($locale) {
+    //         return $model->getTranslation($requestAttribute, $locale);
+    //       })
+    //       ->rules('required', 'max:255')
+    //       ->hideFromDetail()
+    //       ->hideFromIndex(),
+    //     Slug::make('', "slug->{$locale}")
+    //       ->fillUsing(function ($request, $model, $attribute, $requestAttribute) use ($locale) {
+    //         return $model->getTranslation($requestAttribute, $locale);
+    //       })
+    //       ->from("name->{$locale}")
+    //       ->hideFromDetail()
+    //       ->hideFromIndex(),
+    //   ]);
+    // }
+    
+    $keys = [];
+    foreach (config('site.available_locales') as $key => $value) {
+      $keys[$key] = $this?->resource?->getTranslation('name', $key);
     }
+
+    $fields[] = KeyValue::make('Címke', 'name')
+      ->keyLabel('Nyelv')
+      ->valueLabel('Fordítás')
+      ->disableAddingRows()
+      ->disableDeletingRows()
+      ->default($keys);
 
     $fields[] = Text::make('Címke')
       ->resolveUsing(function () {
-          $result = $this->resource->getTranslation('name', config('site.default_locale'));
-          $more_t = [];
-          foreach (config('site.available_locales') as $locale => $label)
-          {
-            if ($locale != config('site.default_locale'))
-            {
-              $more_t[] = $this->resource->getTranslation('name', $locale);
-            }
+        $result = $this->resource->getTranslation('name', config('site.default_locale'));
+        $more_t = [];
+        foreach (config('site.available_locales') as $locale => $label) {
+          if ($locale != config('site.default_locale')) {
+            $more_t[] = $this->resource->getTranslation('name', $locale);
           }
-          if (!empty($more_t))
-          {
-            $result .= ' ('.implode(', ', $more_t).')';
-          }
+        }
+        if (!empty($more_t)) {
+          $result .= ' (' . implode(', ', $more_t) . ')';
+        }
 
-          return $result;
+        return $result;
       })
       ->asHtml()
       ->hideWhenCreating()
       ->hideWhenUpdating();
-    
+
     $fields[] = Select::make('Típus', 'type')->options([
-      CaseStudyModel::TAG_TYPE => 'Case Study'
+      CaseStudyModel::TAG_TYPE => 'Case Study',
+      News::TAG_TYPE => 'Hír'
     ])->displayUsingLabels();
 
     return $fields;
