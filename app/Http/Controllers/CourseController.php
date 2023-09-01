@@ -101,10 +101,12 @@ class CourseController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name'      => 'required|max:255',
+            'phone'     => 'required',
             'email'     => 'required|email|max:255',
             'privacy'   => 'required'
         ], [
             'name.required'     => __('Please tell us your name!'),
+            'phone.required'    => __('We need you phone number!'),
             'email.required'    => __('Please tell us your e-mail address!'),
             'email.email'       => __('Please tell us A VALID  e-mail address!')
         ]);
@@ -120,10 +122,10 @@ class CourseController extends Controller
 
         if ($course)
         {
-            $$participant->course()->associate($course);
+            $participant->course()->associate($course);
         }
         
-        $$participant->save();
+        $participant->save();
 
         // return View::first(
         //     $page_service->getViews(Arr::first(site()->domains)),

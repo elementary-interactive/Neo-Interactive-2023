@@ -52,26 +52,25 @@
                                     <a href="{{ route(site()->locale . '.courses.show') }}" class="defbtn hover"><i
                                             class="icon-arrow-right"></i>{{ $block->cta_title }}</a>
                                 </div>
-                            @else
-                                <div class="courses-card">
-                                    <div class="courses-card-inner"
-                                        style="background-image: url('{{ $course->getFirstMediaUrl(App\Models\Course::MEDIA_COLLECTION, 'thumb') }}')">
-                                        @if ($course->start_at)
-                                            <div class="date">
-                                                {{ str_replace('##datum##', $course->start_at->format('Y. n. j. H:i'), $block->stream_title) }}
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <h3>{{ $course->title }}</h3>
-                                    @if ($course->registration_open)
-                                        <a href="{{ route(site()->locale . '.courses.show', ['slug' => $course->slug]) }}"
-                                            class="defbtn hover"><i class="icon-arrow-right"></i>{{ $block->cta_title }}</a>
-                                    @else
-                                        <a href="{{ route(site()->locale . '.courses.show', ['slug' => $course->slug]) }}"
-                                            class="defbtn"><i class="icon-play"></i>{{ $block->cta_view }}</a>
+                            @endif
+                            <div class="courses-card">
+                                <div class="courses-card-inner"
+                                    style="background-image: url('{{ $course->getFirstMediaUrl(App\Models\Course::MEDIA_COLLECTION, 'thumb') }}')">
+                                    @if ($course->start_at)
+                                        <div class="date">
+                                            {{ str_replace('##datum##', $course->start_at->format('Y. n. j. H:i'), $block->stream_title) }}
+                                        </div>
                                     @endif
                                 </div>
-                            @endif
+                                <h3>{{ $course->title }}</h3>
+                                @if ($course->registration_open)
+                                    <a href="{{ route(site()->locale . '.courses.show', ['slug' => $course->slug]) }}"
+                                        class="defbtn hover"><i class="icon-arrow-right"></i>{{ $block->cta_title }}</a>
+                                @else
+                                    <a href="{{ route(site()->locale . '.courses.show', ['slug' => $course->slug]) }}"
+                                        class="defbtn"><i class="icon-play"></i>{{ $block->cta_view }}</a>
+                                @endif
+                            </div>
                         @empty
                             <div class="courses-card">
                                 <div class="courses-card-inner"
