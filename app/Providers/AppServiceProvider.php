@@ -30,11 +30,13 @@ class AppServiceProvider extends ServiceProvider
             'link'              => \Neon\Models\Link::class,
             'menu'              => \Neon\Models\Menu::class,
             'menu_item'         => \Neon\Models\MenuItem::class,
+            'news'              => \App\Models\News::class,
             'partner'           => \App\Models\Partner::class,
             'product'           => \App\Models\Product::class,
             'service'           => \App\Models\Service::class,
             'site'              => \Neon\Site\Models\Site::class,
             'site_dependency'   => \Neon\Site\Models\SiteDependencies::class,
+            'tag'               => \Spatie\Tags\Tag::class,
             'user'              => \App\Models\User::class,
         ]);
     }

@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CaseStudy;
-use App\Models\JobApplicant;
 use App\Models\Course;
 use App\Models\CourseParticipant;
-use App\Services\CaseStudyService;
 use App\Services\CourseService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Validator;
-
 use Neon\Services\LinkService;
 use Neon\Models\Link;
-use Spatie\Tags\Tag;
 
 class CourseController extends Controller
 {
