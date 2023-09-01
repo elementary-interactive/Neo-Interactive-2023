@@ -4,6 +4,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\JobApplicantController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 use Neon\Site\Facades\Site;
 use Neon\Site\Http\Middleware\SiteMiddleware;
