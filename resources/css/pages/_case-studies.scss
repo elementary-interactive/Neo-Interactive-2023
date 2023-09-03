@@ -5,6 +5,23 @@
     align-items: center;
     margin-bottom: 7.4rem;
     gap: 2rem;
+
+    a.active {
+      margin-right: 1.2rem;
+      font-weight: 700;
+
+      &::before {
+        position: absolute;
+        content: '+';
+        color: $yellow;
+        font-size: 3rem;
+        line-height: 1em;
+        font-weight: 300;
+        transform: rotate(45deg);
+        right: -2rem;
+        top: -.3rem;
+      }
+    }
   }
 
   .case-studies-cards {
