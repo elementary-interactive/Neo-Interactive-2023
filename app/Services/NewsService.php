@@ -25,12 +25,24 @@ class NewsService
       ->get();
   }
 
-  public function filter(string $filter = null): EloquentCollection
+  public function filter(array $filter = null): EloquentCollection
   {
     $result = null;
 
-    if ($filter) {
-      $result = News::withAnyTags([$filter], News::TAG_TYPE)
+    if (array_key_exists('filter', $filter)) {
+      $result = News::withAnyTags([$filter['filter']], News::TAG_TYPE)
+        ->orderBy('published_at', 'DESC')
+        ->get();
+    }
+
+    if (array_key_exists('partner', $filter)) {
+      $result = News::where('partner_id', '=', $filter['partner'])
+        ->orderBy('published_at', 'DESC')
+        ->get();
+    }
+    
+    if (array_key_exists('year', $filter)) {
+      $result = News::whereBetween('published_at', [$filter['year'].'-01-01 00:00:00', $filter['year'].'-12-31 23:59:59'])
         ->orderBy('published_at', 'DESC')
         ->get();
     }
@@ -40,5 +52,10 @@ class NewsService
     }
 
     return $result;
+  }
+
+  public function years(): EloquentCollection
+  {
+    return News::selectRaw('YEAR(`published_at`) AS year')->distinct()->get();
   }
 }
