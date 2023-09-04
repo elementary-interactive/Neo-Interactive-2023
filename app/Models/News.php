@@ -72,4 +72,9 @@ class News extends Model implements HasMedia
     {
         return $this->belongsTo(\Neon\Site\Models\Site::class);
     }
+
+    public function partner(): BelongsTo
+    {
+        return $this->belongsTo(Partner::class);
+    }
 }
