@@ -36,7 +36,9 @@ class NewsService
     }
 
     if (array_key_exists('partner', $filter)) {
-      $result = News::where('partner_id', '=', $filter['partner'])
+      $result = News::whereHas('partner', function($query) use ($filter) {
+        $query->where('slug', '=', $filter['partner']);
+      })
         ->orderBy('published_at', 'DESC')
         ->get();
     }

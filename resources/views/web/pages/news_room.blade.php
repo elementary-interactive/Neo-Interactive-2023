@@ -53,7 +53,7 @@
                             </button>
                             <ul class="dropdown-menu">
                               @foreach ($partners as $partner)
-                                <li><a class="dropdown-item" href="{{ route(site()->locale . '.news.index', ['partner' => $partner->id]) }}">{{ $partner->name }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route(site()->locale . '.news.index', ['partner' => $partner->slug]) }}">{{ $partner->name }}</a></li>
                               @endforeach
                             </ul>
                           </div>
