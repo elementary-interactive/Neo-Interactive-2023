@@ -32,7 +32,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <h3 class="yellow">{{ $case_study->partner->name }}</h3>
+            <h3 class="yellow">{{ $case_study->partner?->name }}</h3>
             <div class="row">
               <div class="col-12 col-xl-9">
                 <h1>{{ $case_study->title }}</h1>

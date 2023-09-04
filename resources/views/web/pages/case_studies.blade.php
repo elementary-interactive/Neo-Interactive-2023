@@ -54,7 +54,7 @@
                                     class="case-studies-card">
                                     <div class="case-studies-card-inner"
                                         style="background-image: url('{{ $case_study->getFirstMediaUrl(App\Models\CaseStudy::MEDIA_COLLECTION, 'thumb') }}')">
-                                        <div class="partner">{{ $case_study->partner->name }}</div>
+                                        <div class="partner">{{ $case_study->partner?->name }}</div>
                                         <h3>{{ $case_study->title }}</h3>
                                     </div>
                                 </a>
