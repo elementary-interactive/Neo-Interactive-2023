@@ -38,7 +38,7 @@ class Partner extends Model implements HasMedia, Sortable
    * @var array
    */
   protected $fillable = [
-    'name', 'link', 'logo', 'order'
+    'name', 'slug', 'link', 'logo', 'order'
   ];
 
   /** Cast attribute to array...

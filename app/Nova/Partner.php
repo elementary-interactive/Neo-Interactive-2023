@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Outl1ne\NovaSortable\Traits\HasSortableRows;
@@ -110,6 +110,9 @@ class Partner extends Resource
       //   }),
       Text::make('Név', 'name')
         ->rules('required', 'max:255'),
+      Slug::make('', 'slug')
+        ->from('name')
+        ->hideFromIndex(),
       Text::make('Link')
         ->rules('required', 'url', 'max:255'),
       Image::make('Logó', 'logo')
