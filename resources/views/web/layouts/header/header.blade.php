@@ -1,7 +1,14 @@
 <header>
-  <div class="nav-bg"></div>
+    <div class="nav-bg"></div>
 
-  <!-- nav -->
-  <x-neon-menu id="fomenu">
-  </x-neon-menu>
+    @if (site()->locale == 'hu')
+        <!-- nav -->
+        <x-neon-menu id="fomenu">
+        </x-neon-menu>
+    @else
+        <!-- nav -->
+        <x-neon-menu id="main">
+        </x-neon-menu>
+        ˇ
+    @endif
 </header>
