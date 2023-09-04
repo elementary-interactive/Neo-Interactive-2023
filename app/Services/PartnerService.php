@@ -22,4 +22,10 @@ class PartnerService
       ->orderBy('order')
       ->get();
   }
+
+  public function all(): EloquentCollection
+  {
+    return Partner::orderBy('order')
+      ->get();
+  }
 }

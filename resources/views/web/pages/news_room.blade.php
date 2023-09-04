@@ -36,35 +36,35 @@
 
                     <div class="row">
                         <div class="col-12 col-xl-5 newsroom-filter">
-                          <div class="filter-label">FILTER BY</div>
+                          <div class="filter-label">{{ $form->title }}</div>
                           <div class="dropdown">
                             <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              DATE
-                            </button>
+                              {{ $form->date_label }}
+                            </button> 
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="#">2023</a></li>
-                              <li><a class="dropdown-item" href="#">2022</a></li>
-                              <li><a class="dropdown-item" href="#">2021</a></li>
+                              @foreach ($years as $year)
+                                <li><a class="dropdown-item" href="{{ route(site()->locale . '.news.index', ['year' => $year->year]) }}">{{ $year->year }}</a></li>
+                              @endforeach
                             </ul>
                           </div>
                           <div class="dropdown">
                             <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              CLIENT
+                              {{ $form->partner_label }}
                             </button>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="#">2023</a></li>
-                              <li><a class="dropdown-item" href="#">2022</a></li>
-                              <li><a class="dropdown-item" href="#">2021</a></li>
+                              @foreach ($partners as $partner)
+                                <li><a class="dropdown-item" href="{{ route(site()->locale . '.news.index', ['partner' => $partner->id]) }}">{{ $partner->name }}</a></li>
+                              @endforeach
                             </ul>
                           </div>
                           <div class="dropdown">
                             <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              TAG
+                              {{ $form->tag_label }}
                             </button>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="#">2023</a></li>
-                              <li><a class="dropdown-item" href="#">2022</a></li>
-                              <li><a class="dropdown-item" href="#">2021</a></li>
+                              @foreach ($tags as $tag)
+                                <li><a class="dropdown-item" href="{{ route(site()->locale . '.news.index', ['filter' => $tag->getTranslation('slug', site()->locale)]) }}">{{ $tag->getTranslation('name', site()->locale) }}</a></li>
+                              @endforeach
                             </ul>
                           </div>
                         </div>

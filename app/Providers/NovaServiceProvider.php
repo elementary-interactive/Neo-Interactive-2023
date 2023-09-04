@@ -53,11 +53,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         NovaMenuSection::make(__('Administer'), [
           NovaMenuItem::resource(Admin::class)
             ->canSee(function (NovaRequest $request) {
-              return $request->user()->can('viewAny', \Neon\Admin\Models\Admin::class);
+              return $request->user()?->can('viewAny', \Neon\Admin\Models\Admin::class);
             }),
           NovaMenuItem::resource(Attribute::class)
             ->canSee(function (NovaRequest $request) {
-              return $request->user()->can('viewAny', \Neon\Attributable\Models\Attribute::class);
+              return $request->user()?->can('viewAny', \Neon\Attributable\Models\Attribute::class);
             }),
         ])
           ->icon('adjustments')
@@ -66,15 +66,15 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         NovaMenuSection::make(__('Website'), [
           NovaMenuItem::resource(Site::class)
             ->canSee(function (NovaRequest $request) {
-              return config('site.driver', 'file') == 'database' && $request->user()->can('viewAny', \Neon\Site\Models\Site::class);
+              return config('site.driver', 'file') == 'database' && $request->user()?->can('viewAny', \Neon\Site\Models\Site::class);
             }),
           NovaMenuItem::resource(Menu::class)
             ->canSee(function (NovaRequest $request) {
-              return $request->user()->can('viewAny', \Neon\Models\Menu::class);
+              return $request->user()?->can('viewAny', \Neon\Models\Menu::class);
             }),
           NovaMenuItem::resource(Link::class)
             ->canSee(function (NovaRequest $request) {
-              return $request->user()->can('viewAny', \Neon\Models\Link::class);
+              return $request->user()?->can('viewAny', \Neon\Models\Link::class);
             }),
         ])
           ->icon('globe')
