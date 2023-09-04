@@ -54,7 +54,7 @@ class News extends Resource
    * @var array
    */
   public static $search = [
-    'title', 'brief', 'solution', 'result'
+    'title', 'lead', 'content'
   ];
 
   public static function label()
@@ -101,6 +101,7 @@ class News extends Resource
   {
     $fields = [
       BelongsTo::make('Weboldal', 'site', \App\Nova\Site::class),
+      BelongsTo::make('Ügyfél', 'partner', \App\Nova\Partner::class),
       Text::make('Cím', 'title')
         ->rules('required', 'max:255'),
       Text::make('')
@@ -111,7 +112,7 @@ class News extends Resource
         })
         ->asHtml()
         ->onlyOnIndex(),
-      Slug::make('', 'slug')
+      Slug::make('URL', 'slug')
         ->from('title')
         ->hideFromIndex(),
       // Images::make(__('Images'), ModelsNews::MEDIA_COLLECTION) // second parameter is the media collection name
@@ -166,7 +167,7 @@ class News extends Resource
    */
   public static function indexQuery(NovaRequest $request, $query)
   {
-    $next = parent::indexQuery($request, static::indexQuery($request, $query));
+    $next = parent::indexQuery($request, $query);
 
     $next->withoutGlobalScopes([
       \Neon\Models\Scopes\ActiveScope::class,
