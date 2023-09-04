@@ -36,9 +36,39 @@
 
                     <div class="row">
                         <div class="col-12 col-xl-5 newsroom-filter">
-                            FILTER BY
+                          <div class="filter-label">FILTER BY</div>
+                          <div class="dropdown">
+                            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              DATE
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">2023</a></li>
+                              <li><a class="dropdown-item" href="#">2022</a></li>
+                              <li><a class="dropdown-item" href="#">2021</a></li>
+                            </ul>
+                          </div>
+                          <div class="dropdown">
+                            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              CLIENT
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">2023</a></li>
+                              <li><a class="dropdown-item" href="#">2022</a></li>
+                              <li><a class="dropdown-item" href="#">2021</a></li>
+                            </ul>
+                          </div>
+                          <div class="dropdown">
+                            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              TAG
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">2023</a></li>
+                              <li><a class="dropdown-item" href="#">2022</a></li>
+                              <li><a class="dropdown-item" href="#">2021</a></li>
+                            </ul>
+                          </div>
                         </div>
-                    </div>
+                      </div>
 
                     @if ($news?->count())
                         <div class="newsroom-cards">

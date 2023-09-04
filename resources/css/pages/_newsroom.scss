@@ -2,6 +2,15 @@
 
   .newsroom-filter {
     margin-bottom: 7.4rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    .filter-label {
+      margin: .2rem 0 0 0;
+      font-size: 1.4rem;
+      line-height: 1.4em;
+    }
   }
 
   .newsroom-cards {
@@ -58,6 +67,12 @@
   .newsroom-container {
     .newsroom-filter {
       margin-bottom: 12rem;
+      gap: 2.8rem;
+
+      .filter-label {
+        margin: 0;
+        font-size: 1.8rem;
+      }
     }
 
     .newsroom-cards {

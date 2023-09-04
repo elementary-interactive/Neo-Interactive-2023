@@ -27,7 +27,7 @@
 
 @section('body')
     <!-- case studies -->
-    
+
 
     <div class="case-studies-container default-padding menu-top-margin">
         <div class="container-fluid">
@@ -35,11 +35,17 @@
                 <div class="col-12">
                     <h1>{{ $page->title }}<span class="yellow">.</span></h1>
                     @if ($filters?->count())
-                    <div class="case-studies-filter">
-                        @foreach ($filters as $filter)
-                        <a href="{{ route(site()->locale . '.case_study.index', ['filter' => $filter->getTranslation('slug', site()->locale)]) }}" class="ul">{{ $filter->getTranslation('name', site()->locale) }}</a>
-                        @endforeach
-                    </div>
+                        <div class="case-studies-filter">
+                            @foreach ($filters as $filter)
+                                @if ($filter->getTranslation('slug', site()->locale) == request()->get('filter'))
+                                    <a href="{{ route(site()->locale . '.case_study.index') }}"
+                                        class="ul active">{{ $filter->getTranslation('name', site()->locale) }}</a>
+                                @else
+                                    <a href="{{ route(site()->locale . '.case_study.index', ['filter' => $filter->getTranslation('slug', site()->locale)]) }}"
+                                        class="ul">{{ $filter->getTranslation('name', site()->locale) }}</a>
+                                @endif
+                            @endforeach
+                        </div>
                     @endif
                     @if ($case_studies?->count())
                         <div class="case-studies-cards">
