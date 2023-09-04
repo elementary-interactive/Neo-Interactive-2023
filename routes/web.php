@@ -73,7 +73,7 @@ Route::group([
 
   Route::get('/', function() {
     return redirect('/en');
-  });
+  })->name('hu.index');
 
   // Route::get('/', [AppController::class, 'index'])
   //   ->name('hu.index');
