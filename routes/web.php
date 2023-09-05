@@ -57,10 +57,10 @@ Route::group([
     ->name('en.courses.store');
 
   Route::get("/news", [NewsController::class, 'index'])
-    ->name('hu.news.index');
+    ->name('en.news.index');
 
   Route::get("/news/article/{slug?}", [NewsController::class, 'show'])
-    ->name('hu.news.show');
+    ->name('en.news.show');
 
   Route::get("/privacy", [AppController::class, 'privacy'])
     ->name('en.privacy-policy');
