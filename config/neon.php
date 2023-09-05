@@ -33,6 +33,7 @@ return [
       \App\Nova\Flexible\Layouts\PartnersLayout::class,
       \App\Nova\Flexible\Layouts\ProductsLayout::class,
       \App\Nova\Flexible\Layouts\ServicesLayout::class,
+      \App\Nova\Flexible\Layouts\TestimonyLayout::class,
       // \App\Nova\Flexible\Layouts\TitleLayout::class,
       // \App\Nova\Flexible\Layouts\BrowserLayout::class,
       // \App\Nova\Flexible\Layouts\VideoLayout::class,
