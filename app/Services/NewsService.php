@@ -29,13 +29,13 @@ class NewsService
   {
     $result = null;
 
-    if (array_key_exists('filter', $filter)) {
-      $result = News::withAnyTags([$filter['filter']], News::TAG_TYPE)
+    if ($filter['tag']) {
+      $result = News::withAnyTags([$filter['tag']], News::TAG_TYPE)
         ->orderBy('published_at', 'DESC')
         ->get();
     }
 
-    if (array_key_exists('partner', $filter)) {
+    if ($filter['partner']) {
       $result = News::whereHas('partner', function($query) use ($filter) {
         $query->where('slug', '=', $filter['partner']);
       })
@@ -43,7 +43,7 @@ class NewsService
         ->get();
     }
     
-    if (array_key_exists('year', $filter)) {
+    if ($filter['year']) {
       $result = News::whereBetween('published_at', [$filter['year'].'-01-01 00:00:00', $filter['year'].'-12-31 23:59:59'])
         ->orderBy('published_at', 'DESC')
         ->get();
