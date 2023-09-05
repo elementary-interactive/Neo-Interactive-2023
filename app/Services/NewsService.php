@@ -58,6 +58,6 @@ class NewsService
 
   public function years(): EloquentCollection
   {
-    return News::selectRaw('YEAR(`published_at`) AS year')->distinct()->get();
+    return News::selectRaw('YEAR(`published_at`) AS year')->distinct()->orderBy('year', 'DESC')->get();
   }
 }

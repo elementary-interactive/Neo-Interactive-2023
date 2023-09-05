@@ -100,10 +100,14 @@ class News extends Resource
   public function fields(Request $request)
   {
     $fields = [
-      BelongsTo::make('Weboldal', 'site', \App\Nova\Site::class),
-      BelongsTo::make('Ügyfél', 'partner', \App\Nova\Partner::class),
+      BelongsTo::make('Weboldal', 'site', \App\Nova\Site::class)
+        ->filterable(),
+      BelongsTo::make('Ügyfél', 'partner', \App\Nova\Partner::class)
+        ->sortable()
+        ->filterable(),
       Text::make('Cím', 'title')
-        ->rules('required', 'max:255'),
+        ->rules('required', 'max:255')
+        ->sortable(),
       Text::make('')
         ->resolveUsing(function () {
           return '<a style="color: inherit;" href="' . route($this->resource->site->locale . '.news.show', ['slug' => $this->resource->slug]) . '" target="_blank" title="' . $this->resource->title . '">' . view('nova::icon.svg-link', [
@@ -148,9 +152,12 @@ class News extends Resource
       Boolean::make('Aktív', 'status')
         ->trueValue(\Neon\Models\Statuses\BasicStatus::Active->value)
         ->falseValue(\Neon\Models\Statuses\BasicStatus::Inactive->value)
-        ->help(__('Check this on if you want to link be available!')),
+        ->help(__('Check this on if you want to link be available!'))
+        ->sortable()
+        ->filterable(),
       DateTime::make(__('Published at'), 'published_at')
-        ->help('Ettől az időponttól kezdődően jelenik meg az állásajánlat a honlapon.'),
+        ->help('Ettől az időponttól kezdődően jelenik meg az állásajánlat a honlapon.')
+        ->sortable(),
       DateTime::make(__('Expired at'), 'expired_at')
         ->help('Nem kötelező kitölteni. Ha ki van töltve, ettől az időponttól kezdődően már nem látható az állásajánlat a honlapon.'),
     ];
