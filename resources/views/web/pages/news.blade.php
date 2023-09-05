@@ -63,13 +63,13 @@
 
                         <div class="newsroom-cards">
                             @foreach ($randoms as $random)
-                                <a href="{{ route(site()->locale . '.news.show', ['slug' => $course->slug]) }}"
+                                <a href="{{ route(site()->locale . '.news.show', ['slug' => $random->slug]) }}"
                                     class="newsroom-card">
                                     <div class="newsroom-card-inner"
-                                        style="background-image: url('{{ $course->getFirstMediaUrl(App\Models\News::MEDIA_COLLECTION, 'thumb') }}')">
+                                        style="background-image: url('{{ $random->getFirstMediaUrl(App\Models\News::MEDIA_COLLECTION, 'thumb') }}')">
                                     </div>
                                     <div class="date">
-                                        {{ __('Posted at :date', ['date' => $news->published_at->format('Y. n. j. H:i')]) }}
+                                        {{ __('Posted at :date', ['date' => $random->published_at->format('Y. n. j. H:i')]) }}
                                     </div>
                                     <h3>{{ $random->title }}</h3>
                                 </a>
