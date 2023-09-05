@@ -71,12 +71,8 @@ Route::group([
   'middleware'  => SiteMiddleware::class
 ], function () {
 
-  Route::get('/', function() {
-    return redirect('/en');
-  })->name('hu.index');
-
-  // Route::get('/', [AppController::class, 'index'])
-  //   ->name('hu.index');
+  Route::get('/', [AppController::class, 'index'])
+    ->name('hu.index');
 
   Route::get("/munkaink", [CaseStudyController::class, 'index'])
     ->name('hu.case_study.index');
