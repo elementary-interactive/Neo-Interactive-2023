@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Models\CaseStudy as CaseStudyModel;
 use App\Models\News as ModelsNews;
+use App\Nova\Actions\ModelChangeStatus;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
@@ -164,6 +165,15 @@ class News extends Resource
 
     return $fields;
   }
+
+  
+  public function actions(NovaRequest $request)
+  {
+    return [
+      new ModelChangeStatus,
+    ];
+  }
+
 
   /**
    * Build an "index" query for the given resource.

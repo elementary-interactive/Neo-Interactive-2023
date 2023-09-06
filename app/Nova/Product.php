@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-
+use App\Nova\Actions\ModelChangeStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Laravel\Nova\Fields\BelongsTo;
@@ -134,6 +134,15 @@ class Product extends Resource
 
     return $fields;
   }
+
+  
+  public function actions(NovaRequest $request)
+  {
+    return [
+      new ModelChangeStatus,
+    ];
+  }
+
 
   /**
    * Build an "index" query for the given resource.

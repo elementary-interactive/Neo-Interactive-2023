@@ -3,6 +3,8 @@
 namespace App\Nova;
 
 use App\Models\CaseStudy as CaseStudyModel;
+use App\Nova\Actions\ModelHideOnMain;
+use App\Nova\Actions\ModelShowOnMain;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
@@ -141,6 +143,14 @@ class CaseStudy extends Resource
     ];
 
     return $fields;
+  }
+  
+  public function actions(NovaRequest $request)
+  {
+    return [
+      new ModelShowOnMain(),
+      new ModelHideOnMain()
+    ];
   }
 
   /**
