@@ -81,9 +81,55 @@
                             </a>
                            @endforeach
                         </div>
+                        <div class="ajax-loading"><img src="https://loading.io/icon/wgstn7" /></div>
                     @endif
+
+                    
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+<script>
+  var SITEURL = "{{ route(site()->locale . '.news.load') }}";
+  var page = 0; //track user scroll as page number, right now page number is 1
+
+  // load_more(page); //initial content load
+  
+  $(window).scroll(function() { //detect page scroll
+     if($(window).scrollTop() + $(window).height() >= $(document).height()) { //if user scrolled from top to bottom of the page
+     page += 9; //page number increment
+     load_more(page); //load content   
+     }
+   });     
+   function load_more(page){
+       $.ajax({
+          url: SITEURL + "?offset=" + page,
+          type: "get",
+          datatype: "html",
+          beforeSend: function()
+          {
+             $('.ajax-loading').show();
+           }
+       })
+       .done(function(data)
+       {
+           if (data.length == 0)
+           {
+           console.log(data.length);
+           //notify user if nothing to load
+           $('.ajax-loading').html("No more records!");
+           
+           return;
+         }
+         $('.ajax-loading').hide(); //hide loading animation once data is received
+         $("#results").append(data); //append data into #results element          
+          console.log('data.length');
+      })
+      .fail(function(jqXHR, ajaxOptions, thrownError)
+      {
+         alert('No response from server');
+      });
+   }
+</script>

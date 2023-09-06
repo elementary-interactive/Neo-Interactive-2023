@@ -77,4 +77,12 @@ class NewsController extends Controller
             ]
         );
     }
+
+    /** Load news via ajax...
+     *
+     */
+    public function load(Request $request)
+    {
+        
+    }
 }
