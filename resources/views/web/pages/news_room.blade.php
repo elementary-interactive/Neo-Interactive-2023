@@ -106,9 +106,8 @@
 @push('scripts')
     <script type="text/javascript">
         var __url = "{{ route(site()->locale . '.news.load') }}";
-        var __query = "{{ $_SERVER['QUERY_STRING'] }}";
+        var __query = "{{ parse_url("https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", PHP_URL_QUERY) }}";
         var page = 9; //track user scroll as page number, right now page number is 1
-        var params = new URL(document.location).searchParams;
 
         // load_more(page); //initial content load
         $(document).ready(function() {
@@ -124,7 +123,7 @@
 
         function load_more(page) {
             $.ajax({
-                    url: __url + '?offset=' + page,
+                    url: __url + '?' + ((__query.length) ? __query + '&' : '') + 'offset=' + page,
                     type: "get",
                     datatype: "html",
                     beforeSend: function() {
