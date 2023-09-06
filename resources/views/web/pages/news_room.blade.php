@@ -105,7 +105,8 @@
 @endsection
 @push('scripts')
     <script type="text/javascript">
-        var url = "{{ route(site()->locale . '.news.load') }}";
+        var __url = "{{ route(site()->locale . '.news.load') }}";
+        var __query = "{{ $_SERVER['QUERY_STRING'] }}";
         var page = 9; //track user scroll as page number, right now page number is 1
         var params = new URL(document.location).searchParams;
 
@@ -122,25 +123,8 @@
         });
 
         function load_more(page) {
-            if (params.length) {
-              var first = true;
-              $.each(params, function(key, value) {
-                if (first)
-                {
-                  url += '?';
-                  first = false;
-                }
-                else {
-                  url += '&'
-                }
-                url += key + "=" + value;
-              });
-              url += '&offset=' + page;
-            } else {
-              url += '?offset=' + page;
-            }        
             $.ajax({
-                    url: SITEURL + "?offset=" + page,
+                    url: __url + '?offset=' + page,
                     type: "get",
                     datatype: "html",
                     beforeSend: function() {
