@@ -97,7 +97,7 @@ class NewsController extends Controller
         ], $request->get('offset'));
 
         foreach ($news as $article) {
-            $result[] = [
+            $result[] = (object) [
                 'href'  => route(site()->locale . '.news.show', ['slug' => $article->slug]),
                 'iurl'  => $article->getFirstMediaUrl(\App\Models\News::MEDIA_COLLECTION, 'thumb'),
                 'date'  => __('Posted at :date', ['date' => $article->published_at->format('Y. n. j. H:i')]),
