@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-
+use App\Nova\Actions\ModelChangeStatus;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -115,6 +115,15 @@ class Service extends Resource
 
     return $fields;
   }
+
+  
+  public function actions(NovaRequest $request)
+  {
+    return [
+      new ModelChangeStatus,
+    ];
+  }
+
 
   /**
    * Build an "index" query for the given resource.

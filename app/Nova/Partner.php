@@ -2,7 +2,8 @@
 
 namespace App\Nova;
 
-
+use App\Nova\Actions\ModelHideOnMain;
+use App\Nova\Actions\ModelShowOnMain;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -117,7 +118,7 @@ class Partner extends Resource
       Text::make('Link')
         ->rules('nullable', 'url', 'max:255')
         ->displayUsing(function ($value) {
-          return Str::limit($value, 32).'...';
+          return Str::limit($value, 32) . '...';
         }),
       Image::make('Logó', 'logo')
         ->store(function (Request $request, $model) {
@@ -138,6 +139,14 @@ class Partner extends Resource
     ];
 
     return $fields;
+  }
+
+  public function actions(NovaRequest $request)
+  {
+    return [
+      new ModelShowOnMain(),
+      new ModelHideOnMain()
+    ];
   }
 
   /**

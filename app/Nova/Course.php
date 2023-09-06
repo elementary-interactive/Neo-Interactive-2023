@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\ModelChangeStatus;
 use App\Nova\CourseParticipant;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
@@ -123,6 +124,13 @@ class Course extends Resource
     ];
 
     return $fields;
+  }
+
+  public function actions(NovaRequest $request)
+  {
+    return [
+      new ModelChangeStatus,
+    ];
   }
 
   /**
