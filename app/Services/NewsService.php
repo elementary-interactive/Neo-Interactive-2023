@@ -15,6 +15,7 @@ class NewsService
   public function find($slug)
   {
     return News::where('slug', $slug)
+      ->where('site_id', '=', app('site')->current()->id)
       ->firstOrFail();
   }
 
@@ -31,6 +32,7 @@ class NewsService
 
     if ($filter['tag']) {
       $result = News::withAnyTags([$filter['tag']], News::TAG_TYPE)
+        ->where('site_id', '=', app('site')->current()->id)
         ->orderBy('published_at', 'DESC')
         ->get();
     }
@@ -39,12 +41,14 @@ class NewsService
       $result = News::whereHas('partner', function($query) use ($filter) {
         $query->where('slug', '=', $filter['partner']);
       })
+        ->where('site_id', '=', app('site')->current()->id)
         ->orderBy('published_at', 'DESC')
         ->get();
     }
     
     if ($filter['year']) {
       $result = News::whereBetween('published_at', [$filter['year'].'-01-01 00:00:00', $filter['year'].'-12-31 23:59:59'])
+        ->where('site_id', '=', app('site')->current()->id)
         ->orderBy('published_at', 'DESC')
         ->get();
     }
@@ -58,6 +62,9 @@ class NewsService
 
   public function years(): EloquentCollection
   {
-    return News::selectRaw('YEAR(`published_at`) AS year')->distinct()->orderBy('year', 'DESC')->get();
+    return News::where('site_id', '=', app('site')->current()->id)
+      ->selectRaw('YEAR(`published_at`) AS year')->distinct()
+      ->orderBy('year', 'DESC')
+      ->get();
   }
 }
