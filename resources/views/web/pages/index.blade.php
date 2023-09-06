@@ -45,7 +45,7 @@
                     Established in 2002.<br>
                     Present in 27 countries worldwide.
                 </p>
-                <a href="" class="defbtn"><i class="icon-arrow-right"></i>How we can help you</a>
+                <a href="#we-are-neo" class="defbtn"><i class="icon-arrow-right"></i>How we can help you</a>
             </div>
         </div>
     </div>

@@ -1,4 +1,5 @@
 <div class="main-testimony-container">
+    <a nam="we-are-neo"></a>
     <div class="testimony-content">
         <div class="container-fluid">
             <div class="row">
@@ -7,7 +8,7 @@
                         A full-service communication
                         and media agency with a digital focus.</h2>
                     <div class="testimony-btn">
-                        <a href="" class="defbtn"><i class="icon-arrow-right"></i>Actionable knowledge</a>
+                        <a href="#actionable-knowledge" class="defbtn"><i class="icon-arrow-right"></i>Actionable knowledge</a>
                     </div>
                     <div>
                         <a href="" class="defbtn open-popup"><i class="icon-arrow-right"></i>our mission</a>
