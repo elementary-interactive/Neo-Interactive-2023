@@ -129,7 +129,8 @@
                         $('.ajax-loading').show();
                     }
                 })
-                .done(function(data) {
+                .done(function() {
+                    console.log(arguments);
                     if (data.length == 0) {
                         console.log(data);
                         //notify user if nothing to load
