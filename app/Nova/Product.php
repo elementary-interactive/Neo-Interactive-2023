@@ -107,6 +107,8 @@ class Product extends Resource
         ->rules('required', 'max:255'),
       // Textarea::make('Lead', 'lead')
       //   ->rules('required'),
+      Text::make('Link', 'link')
+        ->rules('nullable', 'url', 'max:255'),
       Image::make('Kép', 'image')
         ->store(function (Request $request, $model) {
           /**
@@ -124,8 +126,6 @@ class Product extends Resource
       Boolean::make('Aktív', 'status')
         ->trueValue(\Neon\Models\Statuses\BasicStatus::Active->value)
         ->falseValue(\Neon\Models\Statuses\BasicStatus::Inactive->value),
-      Text::make('Link', 'link')
-        ->rules('required', 'url', 'max:255'),
     ];
 
     return $fields;
