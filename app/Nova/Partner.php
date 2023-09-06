@@ -4,6 +4,7 @@ namespace App\Nova;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Image;
@@ -114,7 +115,10 @@ class Partner extends Resource
         ->from('name')
         ->hideFromIndex(),
       Text::make('Link')
-        ->rules('required', 'url', 'max:255'),
+        ->rules('url', 'max:255')
+        ->displayUsing(function ($value) {
+          return Str::limit($value, 32).'...';
+        }),
       Image::make('Logó', 'logo')
         ->store(function (Request $request, $model) {
           /**
