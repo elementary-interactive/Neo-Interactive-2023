@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use App\Services\NewsService;
 use App\Services\PartnerService;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\View;
@@ -83,6 +84,27 @@ class NewsController extends Controller
      */
     public function load(Request $request)
     {
-        
+        /** @var array
+         */
+        $result = [];
+
+        /** @var Collection Result of queried news.
+         */
+        $news = $this->news_service->filter([
+            'tag'       => $request->query('filter'),
+            'year'      => $request->query('year'),
+            'partner'   => $request->query('partner')
+        ], $request->get('offset'));
+
+        foreach ($news as $article) {
+            $result[] = [
+                'href'  => route(site()->locale . '.news.show', ['slug' => $article->slug]),
+                'iurl'  => $article->getFirstMediaUrl(\App\Models\News::MEDIA_COLLECTION, 'thumb'),
+                'date'  => __('Posted at :date', ['date' => $article->published_at->format('Y. n. j. H:i')]),
+                'ttle'  => $article->title
+            ];
+        }
+
+        return response()->json($result, 204);
     }
 }
