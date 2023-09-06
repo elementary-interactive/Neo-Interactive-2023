@@ -105,15 +105,16 @@
 @endsection
 @push('scripts')
     <script type="text/javascript">
-        var SITEURL = "{{ route(site()->locale . '.news.load') }}";
-        var page = 0; //track user scroll as page number, right now page number is 1
+        var url = "{{ route(site()->locale . '.news.load') }}";
+        var page = 9; //track user scroll as page number, right now page number is 1
+        var params = new URL(document.location).searchParams;
 
         // load_more(page); //initial content load
         $(document).ready(function() {
             $(window).scroll(function() { //detect page scroll
                 if ($(window).scrollTop() + $(window).height() >= $(document)
                     .height() - 100) { //if user scrolled from top to bottom of the page
-                    page += 9; //page number increment
+                    page += 3; //page number increment
 
                     load_more(page); //load content   
                 }
@@ -121,6 +122,23 @@
         });
 
         function load_more(page) {
+            if (params.length) {
+              var first = true;
+              $.each(params, function(key, value) {
+                if (first)
+                {
+                  url += '?';
+                  first = false;
+                }
+                else {
+                  url += '&'
+                }
+                url += key + "=" + value;
+              });
+              url += '&offset=' + page;
+            } else {
+              url += '?offset=' + page;
+            }        
             $.ajax({
                     url: SITEURL + "?offset=" + page,
                     type: "get",
