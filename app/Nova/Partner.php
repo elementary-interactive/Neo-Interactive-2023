@@ -115,7 +115,7 @@ class Partner extends Resource
         ->from('name')
         ->hideFromIndex(),
       Text::make('Link')
-        ->rules('url', 'max:255')
+        ->rules('nullable', 'url', 'max:255')
         ->displayUsing(function ($value) {
           return Str::limit($value, 32).'...';
         }),
