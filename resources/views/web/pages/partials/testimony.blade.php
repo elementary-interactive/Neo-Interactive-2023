@@ -1,5 +1,4 @@
-<div class="main-testimony-container">
-    <a nam="we-are-neo"></a>
+<div class="main-testimony-container" id="we-are-neo">
     <div class="testimony-content">
         <div class="container-fluid">
             <div class="row">

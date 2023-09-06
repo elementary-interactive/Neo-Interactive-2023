@@ -1,8 +1,7 @@
 @if ($services?->count())
     <!-- knowledge -->
 
-    <div class="main-knowledge-container">
-        <a name="actionable-knowledge"></a>
+    <div class="main-knowledge-container" id="actionable-knowledge">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 knowledge-header">
