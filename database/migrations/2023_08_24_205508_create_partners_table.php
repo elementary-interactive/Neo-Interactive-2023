@@ -15,7 +15,9 @@ return new class extends Migration
             $table->uuid('id');
             
             $table->string('name');
-            $table->string('link');
+            $table->string('link')
+                ->nullable()
+                ->default(null);
             $table->string('logo')
                 ->nullable()
                 ->default(null);
