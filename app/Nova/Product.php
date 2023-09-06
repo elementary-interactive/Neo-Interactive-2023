@@ -4,6 +4,7 @@ namespace App\Nova;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
@@ -108,7 +109,10 @@ class Product extends Resource
       // Textarea::make('Lead', 'lead')
       //   ->rules('required'),
       Text::make('Link', 'link')
-        ->rules('nullable', 'url', 'max:255'),
+        ->rules('nullable', 'url', 'max:255')
+        ->displayUsing(function ($value) {
+          return Str::limit($value, 32).'...';
+        }),
       Image::make('Kép', 'image')
         ->store(function (Request $request, $model) {
           /**
