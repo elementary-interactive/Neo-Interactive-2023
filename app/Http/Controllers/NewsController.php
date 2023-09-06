@@ -105,6 +105,7 @@ class NewsController extends Controller
             ];
         }
 
-        return response()->json($result, 204);
+        return response()
+            ->json($result);
     }
 }

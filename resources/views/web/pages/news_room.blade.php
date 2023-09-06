@@ -111,7 +111,7 @@
         // load_more(page); //initial content load
         $(document).ready(function() {
             $(window).scroll(function() { //detect page scroll
-              if ($(window).scrollTop() + $(window).height() >= $(document)
+                if ($(window).scrollTop() + $(window).height() >= $(document)
                     .height() - 100) { //if user scrolled from top to bottom of the page
                     page += 9; //page number increment
 
@@ -129,21 +129,23 @@
                         $('.ajax-loading').show();
                     }
                 })
-                .done(function() {
-                    console.log(arguments);
-                    if (data.length == 0) {
-                        console.log(data);
-                        //notify user if nothing to load
-                        $('.ajax-loading').html("No more records!");
-
-                        return;
+                .done(function(data, status) {
+                    if (data.length > 0) {
+                        $.each(data, function(index, article) {
+                            $(".newsroom-cards").append('<a href="' + article.href + '"' +
+                                'class="newsroom-card">' +
+                                '<div class="newsroom-card-inner"' +
+                                'style="background-image: url(\'' + article.irl + '\')">' +
+                                '</div>' +
+                                '<div class="date">' + article.date + '</div>' +
+                                '<h3>' + article.ttle + '</h3></a>'); //- Append article
+                        });
                     }
                     $('.ajax-loading').hide(); //hide loading animation once data is received
-                    $("#results").append(data); //append data into #results element          
-                    console.log('data.length');
                 })
                 .fail(function(jqXHR, ajaxOptions, thrownError) {
-                    alert('No response from server');
+                    $('.ajax-loading').hide();
+                    console.log(thrownError);
                 });
         }
     </script>
