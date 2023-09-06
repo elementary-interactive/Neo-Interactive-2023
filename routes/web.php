@@ -59,6 +59,9 @@ Route::group([
   Route::get("/news", [NewsController::class, 'index'])
     ->name('en.news.index');
 
+  Route::get("/news/more", [NewsController::class, 'load'])
+    ->name('en.news.load');
+
   Route::get("/news/article/{slug?}", [NewsController::class, 'show'])
     ->name('en.news.show');
 
@@ -103,6 +106,9 @@ Route::group([
 
   Route::get("/hirek", [NewsController::class, 'index'])
     ->name('hu.news.index');
+  
+  Route::get("/hirek/meg-tobb", [NewsController::class, 'load'])
+    ->name('hu.news.load');
 
   Route::get("/hirek/cikk/{slug?}", [NewsController::class, 'show'])
     ->name('hu.news.show');
