@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('title');
             $table->string('lead');
             $table->string('image');
-            $table->string('link');
+            $table->string('link')
+                ->nullable(true)
+                ->default(null);
 
             $table->char('status', 1)
                 ->default(BasicStatus::default()->value);
