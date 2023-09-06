@@ -19,14 +19,16 @@ class NewsService
       ->firstOrFail();
   }
 
-  public function index(): EloquentCollection
+  public function index($offset = 0, $limit = 9): EloquentCollection
   {
     return News::where('site_id', '=', app('site')->current()->id)
       ->orderBy('published_at', 'DESC')
+      ->offset($offset)
+      ->limit($limit)
       ->get();
   }
 
-  public function filter(array $filter = null): EloquentCollection
+  public function filter(array $filter = null, $offset = 0, $limit = 9): EloquentCollection
   {
     $result = null;
 
@@ -34,6 +36,8 @@ class NewsService
       $result = News::withAnyTags([$filter['tag']], News::TAG_TYPE)
         ->where('site_id', '=', app('site')->current()->id)
         ->orderBy('published_at', 'DESC')
+        ->offset($offset)
+        ->limit($limit)
         ->get();
     }
 
@@ -43,6 +47,8 @@ class NewsService
       })
         ->where('site_id', '=', app('site')->current()->id)
         ->orderBy('published_at', 'DESC')
+        ->offset($offset)
+        ->limit($limit)
         ->get();
     }
     
@@ -50,11 +56,13 @@ class NewsService
       $result = News::whereBetween('published_at', [$filter['year'].'-01-01 00:00:00', $filter['year'].'-12-31 23:59:59'])
         ->where('site_id', '=', app('site')->current()->id)
         ->orderBy('published_at', 'DESC')
+        ->offset($offset)
+        ->limit($limit)
         ->get();
     }
 
     if (!$result) {
-      $result = $this->index();
+      $result = $this->index($offset, $limit);
     }
 
     return $result;
