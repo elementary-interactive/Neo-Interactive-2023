@@ -90,7 +90,7 @@
         </div>
     </div>
 @endsection
-@section('scripts')
+@push('scripts')
 <script>
   var SITEURL = "{{ route(site()->locale . '.news.load') }}";
   var page = 0; //track user scroll as page number, right now page number is 1
@@ -133,4 +133,4 @@
       });
    }
 </script>
-@endsection
+@endpush
