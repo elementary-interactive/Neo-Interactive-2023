@@ -83,6 +83,12 @@ class NewsController extends Controller
      */
     public function load(Request $request)
     {
-        
+        $news           = $this->news_service->filter([
+            'tag'       => $request->query('filter'),
+            'year'      => $request->query('year'),
+            'partner'   => $request->query('partner')
+        ], $request->get('offset'));
+
+        return response()->json($news, 204);
     }
 }
