@@ -6,7 +6,7 @@
           <div class="col-12 col-xl-4 career-desc">
             <div class="career-hl">
               <h2>{!! $attributes['title'] !!}<span class="yellow">.</span></h2>
-              <img src="images/main/career_dots.svg" alt=""">
+              <img src="{{ Vite::asset('resources/images/main/career_dots.svg') }}" alt=""">
             </div>            
             <p>{!! $attributes['intro'] !!}</p>
           </div>
