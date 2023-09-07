@@ -100,7 +100,7 @@
                             $(".case-studies-cards").append('<a href="' + cs.href + '"' +
                                 'class="newsroom-card">' +
                                 '<div class="newsroom-card-inner"' +
-                                'style="background-image: url(\'' + cs.irl + '\')">' +
+                                'style="background-image: url(\'' + cs.iurl + '\')">' +
                                 '</div>' +
                                 '<div class="date">' + cs.name + '</div>' +
                                 '<h3>' + cs.ttle + '</h3></a>'); //- Append article
