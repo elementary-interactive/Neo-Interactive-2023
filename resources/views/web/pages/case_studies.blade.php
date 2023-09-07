@@ -98,12 +98,13 @@
                     if (data.length > 0) {
                         $.each(data, function(index, cs) {
                             $(".case-studies-cards").append('<a href="' + cs.href + '"' +
-                                'class="newsroom-card">' +
-                                '<div class="newsroom-card-inner"' +
+                                'class="case-studies-card">' +
+                                '<div class="case-studies-card-inner"' +
                                 'style="background-image: url(\'' + cs.iurl + '\')">' +
+                                '<div class="partner">' + cs.name + '</div>' +
+                                '<h3>' + cs.ttle + '</h3>' +
                                 '</div>' +
-                                '<div class="date">' + cs.name + '</div>' +
-                                '<h3>' + cs.ttle + '</h3></a>'); //- Append article
+                                '</a>'); //- Append article
                         });
                     }
                     $('.ajax-loading').hide(); //hide loading animation once data is received
