@@ -76,6 +76,30 @@
             margin: 0.3rem 1rem 0 0;
         }
 
+        .knowledge-hl {
+            position: relative;
+            display: inline-flex;
+
+            img {
+                width: auto;
+                height: auto;
+                transform: scale(.65);
+                transform-origin: left top;
+            }
+
+            img.know-02 {
+                position: absolute;
+                right: -11.7rem;
+                top: 1.7rem;
+            }
+
+            img.know-03 {
+                position: absolute;
+                right: -5.8rem;
+                top: -2rem;
+            }
+        }
+
         h2 {
             margin-bottom: 2rem;
         }
@@ -406,6 +430,22 @@
             .count {
                 font-size: 2rem;
                 margin: 0 0 3.8rem;
+            }
+
+            .knowledge-hl {
+                img {
+                    transform: scale(1);
+                }
+
+                img.know-02 {
+                    right: -11.4rem;
+                    top: 3rem;
+                }
+
+                img.know-03 {
+                    right: -5.3rem;
+                    top: -2.6rem;
+                }
             }
 
             h2 {

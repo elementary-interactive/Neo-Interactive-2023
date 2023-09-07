@@ -40,6 +40,25 @@
                 <h1>
                     Neo aims <br class="d-xl-none">to propel<br>
                     your business <br class="d-xl-none">forward<span class="yellow">.</span>
+                    <div class="intro-anim">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
                 </h1>
                 <p class="subline">
                     Established in 2002.<br>
