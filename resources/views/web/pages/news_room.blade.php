@@ -107,14 +107,14 @@
     <script type="text/javascript">
         var __url = "{{ route(site()->locale . '.news.load') }}";
         var __query = "{{ parse_url("https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", PHP_URL_QUERY) }}";
-        var page = 6; //track user scroll as page number, right now page number is 1
+        var page = 0; //track user scroll as page number, right now page number is 1
 
         // load_more(page); //initial content load
         $(document).ready(function() {
             $(window).scroll(function() { //detect page scroll
                 if ($(window).scrollTop() + $(window).height() >= $(document)
-                    .height() - 100) { //if user scrolled from top to bottom of the page
-                    page += 3; //page number increment
+                    .height() - 400) { //if user scrolled from top to bottom of the page
+                    page += 9; //page number increment
 
                     load_more(page); //load content   
                 }

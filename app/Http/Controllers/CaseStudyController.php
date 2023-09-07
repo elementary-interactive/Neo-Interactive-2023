@@ -64,4 +64,28 @@ class CaseStudyController extends Controller
             ]
         );
     }
+
+    public function load(Request $request)
+    {
+        
+        /** @var array
+         */
+        $result = [];
+
+        /** @var Collection Result of queried case studies.
+         */
+        $case_studies = $this->case_study_service->filter($request->query('filter'), $request->get('offset'));
+
+        foreach ($case_studies as $case_study) {
+            $result[] = (object) [
+                'href'  => route(site()->locale . '.case_study.show', ['slug' => $case_study->slug]),
+                'iurl'  => $case_study->getFirstMediaUrl(\App\Models\CaseStudy::MEDIA_COLLECTION, 'thumb'),
+                'name'  => $case_study->partner->name,
+                'ttle'  => $case_study->title
+            ];
+        }
+
+        return response()
+            ->json($result);
+    }
 }

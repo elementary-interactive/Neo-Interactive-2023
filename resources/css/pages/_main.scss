@@ -76,6 +76,30 @@
             margin: 0.3rem 1rem 0 0;
         }
 
+        .knowledge-hl {
+            position: relative;
+            display: inline-flex;
+
+            img {
+                width: auto;
+                height: auto;
+                transform: scale(.65);
+                transform-origin: left top;
+            }
+
+            img.know-02 {
+                position: absolute;
+                right: -11.7rem;
+                top: 1.7rem;
+            }
+
+            img.know-03 {
+                position: absolute;
+                right: -5.8rem;
+                top: -2rem;
+            }
+        }
+
         h2 {
             margin-bottom: 2rem;
         }
@@ -310,6 +334,39 @@
     padding: 6rem 0 11.7rem;
     background: linear-gradient(150deg, #fff 0%, #f5f4f5 100%);
 
+    .career-hl {
+        position: relative;
+        display: inline-flex;
+
+        img {
+            width: auto;
+            height: auto;
+            transform-origin: left top;
+            position: absolute;
+            right: -13.8rem;
+            top: 3.2rem;
+            animation: career-dots 3.2s ease-in-out infinite;
+        }
+
+        @keyframes career-dots {
+            0% {
+                transform: translateX(2rem) scale(.65);
+            }
+
+            30% {
+                transform: translateX(0) scale(.65);
+            }
+
+            70% {
+                transform: translateX(0) scale(.65);
+            }
+
+            100% {
+                transform: translateX(2rem) scale(.65);
+            }
+        }
+    }
+
     .career-desc {
         margin-bottom: 4.3rem;
     }
@@ -406,6 +463,22 @@
             .count {
                 font-size: 2rem;
                 margin: 0 0 3.8rem;
+            }
+
+            .knowledge-hl {
+                img {
+                    transform: scale(1);
+                }
+
+                img.know-02 {
+                    right: -11.4rem;
+                    top: 3rem;
+                }
+
+                img.know-03 {
+                    right: -5.3rem;
+                    top: -2.6rem;
+                }
             }
 
             h2 {
@@ -546,6 +619,32 @@
 
     .main-career-container {
         padding: 10.5rem 0 25rem;
+
+        .career-hl {
+            img {
+                right: -15.5rem;
+                top: 5.5rem;
+                animation: career-dots-desktop 3.2s ease-in-out infinite;
+            }
+
+            @keyframes career-dots-desktop {
+                0% {
+                    transform: translateX(3rem) scale(1);
+                }
+
+                30% {
+                    transform: translateX(0) scale(1);
+                }
+
+                70% {
+                    transform: translateX(0) scale(1);
+                }
+
+                100% {
+                    transform: translateX(3rem) scale(1);
+                }
+            }
+        }
 
         .career-desc {
             margin-bottom: 0;

@@ -24,7 +24,7 @@ class CaseStudyService
       ->firstOrFail();
   }
 
-  public function index(): EloquentCollection
+  public function index($offset = 0, $limit = 9): EloquentCollection
   {
     return CaseStudy::where('show_on_main', '=', true)
       ->with('partner')
@@ -32,32 +32,32 @@ class CaseStudyService
       ->get();
   }
 
-  public function filter(string $filter = null): EloquentCollection
+  public function filter(string $filter = null, $offset = 0, $limit = 9): EloquentCollection
   {
     $result = null;
 
     if ($filter) {
-      // $tag = Tag::find($filter);
-      // dd($tag);
-      // if ($tag) {
         $result = CaseStudy::withAnyTags([$filter], CaseStudy::TAG_TYPE)
           ->with('partner')
           ->orderBy('order')
+          ->offset($offset)
+          ->limit($limit)
           ->get();
-      // }
     }
 
     if (!$result) {
-      $result = $this->all();
+      $result = $this->all($offset, $limit);
     }
 
     return $result;
   }
 
-  public function all(): EloquentCollection
+  public function all($offset = 0, $limit = 9): EloquentCollection
   {
     return CaseStudy::with('partner')
       ->orderBy('order')
+      ->offset($offset)
+      ->limit($limit)
       ->get();
   }
 }
