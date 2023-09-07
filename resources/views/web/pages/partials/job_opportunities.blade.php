@@ -4,7 +4,10 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12 col-xl-4 career-desc">
-            <h2>{!! $attributes['title'] !!}<span class="yellow">.</span></h2>
+            <div class="career-hl">
+              <h2>{!! $attributes['title'] !!}<span class="yellow">.</span></h2>
+              <img src="images/main/career_dots.svg" alt=""">
+            </div>            
             <p>{!! $attributes['intro'] !!}</p>
           </div>
           <div class="col-12 col-xl-8">
