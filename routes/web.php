@@ -32,6 +32,9 @@ Route::group([
   Route::get("/works", [CaseStudyController::class, 'index'])
     ->name('en.case_study.index');
 
+  Route::get("/works/mmore", [CaseStudyController::class, 'load'])
+    ->name('en.case_study.load');
+
   Route::get("/works/{slug}", [CaseStudyController::class, 'show'])
     ->name('en.case_study.show');
 
@@ -79,6 +82,9 @@ Route::group([
 
   Route::get("/munkaink", [CaseStudyController::class, 'index'])
     ->name('hu.case_study.index');
+
+  Route::get("/munkaink/meg-tobb", [CaseStudyController::class, 'load'])
+    ->name('hu.case_study.load');
 
   Route::get("/munkaink/{slug}", [CaseStudyController::class, 'show'])
     ->name('hu.case_study.show');

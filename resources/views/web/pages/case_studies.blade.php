@@ -60,9 +60,58 @@
                                 </a>
                             @endforeach
                         </div>
+                        <div class="ajax-loading"><img src="https://loading.io/icon/wgstn7" /></div>
                     @endif
                 </div>
             </div>
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script type="text/javascript">
+        var __url = "{{ route(site()->locale . '.case_studies.load') }}";
+        var __query = "{{ parse_url("https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", PHP_URL_QUERY) }}";
+        var page = 0; //track user scroll as page number, right now page number is 1
+
+        // load_more(page); //initial content load
+        $(document).ready(function() {
+            $(window).scroll(function() { //detect page scroll
+                if ($(window).scrollTop() + $(window).height() >= $(document)
+                    .height() - 400) { //if user scrolled from top to bottom of the page
+                    page += 9; //page number increment
+
+                    load_more(page); //load content   
+                }
+            });
+        });
+
+        function load_more(page) {
+            $.ajax({
+                    url: __url + '?' + ((__query.length) ? __query + '&' : '') + 'offset=' + page,
+                    type: "get",
+                    datatype: "html",
+                    beforeSend: function() {
+                        $('.ajax-loading').show();
+                    }
+                })
+                .done(function(data, status) {
+                    if (data.length > 0) {
+                        $.each(data, function(index, cs) {
+                            $(".case-studies-cards").append('<a href="' + cs.href + '"' +
+                                'class="newsroom-card">' +
+                                '<div class="newsroom-card-inner"' +
+                                'style="background-image: url(\'' + cs.irl + '\')">' +
+                                '</div>' +
+                                '<div class="date">' + cs.name + '</div>' +
+                                '<h3>' + cs.ttle + '</h3></a>'); //- Append article
+                        });
+                    }
+                    $('.ajax-loading').hide(); //hide loading animation once data is received
+                })
+                .fail(function(jqXHR, ajaxOptions, thrownError) {
+                    $('.ajax-loading').hide();
+                    console.log(thrownError);
+                });
+        }
+    </script>
+@endpush

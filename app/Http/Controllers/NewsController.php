@@ -94,7 +94,7 @@ class NewsController extends Controller
             'tag'       => $request->query('filter'),
             'year'      => $request->query('year'),
             'partner'   => $request->query('partner')
-        ], $request->get('offset'), 3);
+        ], $request->get('offset'));
 
         foreach ($news as $article) {
             $result[] = (object) [

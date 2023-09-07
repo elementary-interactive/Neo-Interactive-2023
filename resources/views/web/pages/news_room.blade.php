@@ -113,7 +113,7 @@
         $(document).ready(function() {
             $(window).scroll(function() { //detect page scroll
                 if ($(window).scrollTop() + $(window).height() >= $(document)
-                    .height() - 100) { //if user scrolled from top to bottom of the page
+                    .height() - 400) { //if user scrolled from top to bottom of the page
                     page += 9; //page number increment
 
                     load_more(page); //load content   
