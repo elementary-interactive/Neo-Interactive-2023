@@ -69,7 +69,7 @@
 @endsection
 @push('scripts')
     <script type="text/javascript">
-        var __url = "{{ route(site()->locale . '.case_studies.load') }}";
+        var __url = "{{ route(site()->locale . '.case_study.load') }}";
         var __query = "{{ parse_url("https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", PHP_URL_QUERY) }}";
         var page = 0; //track user scroll as page number, right now page number is 1
 
