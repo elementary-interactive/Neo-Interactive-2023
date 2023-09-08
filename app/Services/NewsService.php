@@ -19,6 +19,15 @@ class NewsService
       ->firstOrFail();
   }
 
+  public function random(News $except, $limit = 3): EloquentCollection
+  {
+    return News::where('site_id', '=', app('site')->current()->id)
+      ->where('id', '!=', $except?->id)
+      ->inRandomOrder()
+      ->limit($limit)
+      ->get();
+  }
+  
   public function index($offset = 0, $limit = 9): EloquentCollection
   {
     return News::where('site_id', '=', app('site')->current()->id)
