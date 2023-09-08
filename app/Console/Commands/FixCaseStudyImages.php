@@ -61,10 +61,11 @@ class FixCaseStudyImages extends Command
                         {
                             list($folder, $image_path) = explode('::', $image->$field);
 
-                            dd(storage_path('old/'.$folder.'/'.$image_path), Storage::exists('old/'.$folder.'/'.$image_path));
-
-                            $cs->addMediaFromDisk(Storage::url('old/'.$folder.'/'.$image_path))
-                                ->toMediaCollection(CaseStudy::MEDIA_COLLECTION);
+                            if (Storage::exists('old/'.$folder.'/'.$image_path))
+                            {
+                                $cs->addMediaFromDisk(Storage::path('old/'.$folder.'/'.$image_path))
+                                    ->toMediaCollection(CaseStudy::MEDIA_COLLECTION);
+                            }
                         }
                     }
                 } catch (\Exception $e) {
