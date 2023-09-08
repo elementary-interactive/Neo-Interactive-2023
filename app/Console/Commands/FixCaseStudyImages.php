@@ -54,17 +54,18 @@ class FixCaseStudyImages extends Command
             {
                 try {
                     $cs = CaseStudy::where('slug', $image->slug)->first();
-
-                    foreach ($this->image_fields as $field)
-                    {
-                        if ($image->$field)
+                    if ($cs) {
+                        foreach ($this->image_fields as $field)
                         {
-                            list($folder, $image_path) = explode('::', $image->$field);
-
-                            if (Storage::exists('old/'.$folder.'/'.$image_path))
+                            if ($image->$field)
                             {
-                                $cs->addMediaFromDisk(Storage::path('old/'.$folder.'/'.$image_path))
-                                    ->toMediaCollection(CaseStudy::MEDIA_COLLECTION);
+                                list($folder, $image_path) = explode('::', $image->$field);
+
+                                if (Storage::exists('old/'.$folder.'/'.$image_path))
+                                {
+                                    $cs->addMediaFromDisk(Storage::path('old/'.$folder.'/'.$image_path))
+                                        ->toMediaCollection(CaseStudy::MEDIA_COLLECTION);
+                                }
                             }
                         }
                     }
