@@ -85,7 +85,7 @@
                                 <a href="{{ route(site()->locale . '.news.show', ['slug' => $article->slug]) }}"
                                     class="newsroom-card">
                                     <div class="newsroom-card-inner"
-                                        style="background-image: url('{{ $article->getFirstMediaUrl(App\Models\News::MEDIA_COLLECTION, 'thumb') }}')">
+                                        style="background-image: url('{{ $article->getFirstMedia(App\Models\News::MEDIA_COLLECTION)->lazy()->conversion('thumb') }}')">
                                     </div>
                                     <div class="date">
                                         {{ __('Posted at :date', ['date' => $article->published_at->format('Y. n. j. H:i')]) }}
