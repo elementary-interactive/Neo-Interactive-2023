@@ -55,7 +55,7 @@ class Partner extends Resource
    * @var array
    */
   public static $search = [
-    'name',
+    'name', 'url'
   ];
 
   public static function label()

@@ -55,7 +55,7 @@ class Service extends Resource
    * @var array
    */
   public static $search = [
-    'title', 'keyword'
+    'title', 'keywords'
   ];
 
   public static function label()

@@ -60,7 +60,7 @@ class CourseParticipant extends Resource
    * @var array
    */
   public static $search = [
-    'title', 'email'
+    'name', 'email'
   ];
 
   public static function label()
