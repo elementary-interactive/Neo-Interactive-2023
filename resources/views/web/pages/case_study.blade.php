@@ -6,7 +6,7 @@
             'og' => [
                 'title' => $case_study->title,
                 'description' => $case_study->brief,
-                'image' => (is_array($media) && count($media)) ? $media[0]->getUrl('responsive') : null,
+                'image' => $media->first()?->getUrl('responsive') : null,
                 'type' => 'website',
                 'url' => \Request::url(),
             ],
@@ -49,8 +49,8 @@
             </div>
 
             <!-- full width img -->
-            @if (is_array($media) && count($media))
-            <div class="full-w-img" style="background-image: url('{{ $media[0]->getUrl('responsive') }}')"></div>
+            @if ($media->count() > 0)
+            <div class="full-w-img" style="background-image: url('{{ $media[0]->lazy()->getUrl('responsive') }}')"></div>
             @endif
             <!-- Megvalósítás -->
 
@@ -60,15 +60,15 @@
                 <p>{!! $case_study->solution !!}</p>
               </div>
               <div class="col-12 offset-xl-1 col-xl-4">
-                @if (is_array($media) && count($media) > 1)
-                <div class="case-study-half-img" style="background-image: url('{{ $media[1]->getUrl('responsive') }}')"></div>
+                @if ($media->count() > 1)
+                <div class="case-study-half-img" style="background-image: url('{{ $media[1]->lazy()->getUrl('responsive') }}')"></div>
                 @endif
               </div>
             </div>
 
             <!-- full width img -->
-            @if (is_array($media) && count($media) > 2)
-            <div class="full-w-img" style="background-image: url('{{ $media[2]->getUrl('responsive') }}')"></div>
+            @if ($media->count() > 2)
+            <div class="full-w-img" style="background-image: url('{{ $media[2]->lazy()->getUrl('responsive') }}')"></div>
             @endif
             <!-- Eredmények -->
 
