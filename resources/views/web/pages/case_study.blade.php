@@ -6,7 +6,7 @@
             'og' => [
                 'title' => $case_study->title,
                 'description' => $case_study->brief,
-                'image' => $media->first()?->getUrl('responsive') : null,
+                'image' => $media->first()?->getUrl('responsive'),
                 'type' => 'website',
                 'url' => \Request::url(),
             ],
