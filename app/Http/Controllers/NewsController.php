@@ -74,7 +74,7 @@ class NewsController extends Controller
                 'news'       => $news,
                 // 'block'      => $page->content[0],
                 'tags'       => Tag::withType(News::TAG_TYPE)->get(),
-                'randoms'    => News::where('id', '!=', $news?->id)->inRandomOrder()->limit(3)->get(),
+                'randoms'    => $this->news_service->random($news),
             ]
         );
     }
