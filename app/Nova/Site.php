@@ -37,7 +37,7 @@ class Site extends Resource
      * @var array
      */
     public static $search = [
-        'locale', 'title', 'domain',
+        'locale', 'title', 'domains',
     ];
 
     /**
