@@ -30,7 +30,7 @@
       <div class="content-wrapper">
         <h2>{{ $attributes['popup_title'] }}</h2>
         <h3>{{ $attributes['popup_subtitle'] }}</h3>
-        {!! attributes['popup_content'] !!}
+        {!! $attributes['popup_content'] !!}
       </div>
 
     </div>
