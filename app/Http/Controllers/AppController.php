@@ -48,8 +48,7 @@ class AppController extends Controller
         ProductService $product_service,
         ServiceService $service_service,
         JobOpportunitiesService $job_service,
-    )
-    {
+    ) {
         $this->partner_service    = $partner_service;
         $this->case_study_service = $case_study_service;
         $this->leader_service     = $leader_service;
@@ -66,7 +65,7 @@ class AppController extends Controller
          * @var  Link $page
          */
         $page       = $page_service->find('index');
- 
+
         return View::first(
             $page_service->getViews(Arr::first(site()->domains)),
             [
@@ -78,6 +77,22 @@ class AppController extends Controller
                 'products'          => $this->product_service->index(),
                 'services'          => $this->service_service->index(),
                 'job_opportunities' => $this->job_service->index(),
+            ]
+        );
+    }
+
+    public function privacy(LinkService $page_service, Request $request)
+    {
+        /** Geting the current page.
+         * 
+         * @var  Link $page
+         */
+        $page       = $page_service->find('privacy');
+
+        return View::first(
+            $page_service->getViews(Arr::first(site()->domains)),
+            [
+                'page'              => $page
             ]
         );
     }
