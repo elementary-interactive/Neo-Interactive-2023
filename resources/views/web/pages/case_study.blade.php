@@ -50,7 +50,7 @@
 
             <!-- full width img -->
             @if ($media->count() > 0)
-            <div class="full-w-img" style="background-image: url('{{ $media[0]->lazy()->getUrl('responsive') }}')"></div>
+            <div class="full-w-img" style="background-image: url('{{ $media[0]->getUrl('responsive') }}')"></div>
             @endif
             <!-- Megvalósítás -->
 
@@ -61,14 +61,14 @@
               </div>
               <div class="col-12 offset-xl-1 col-xl-4">
                 @if ($media->count() > 1)
-                <div class="case-study-half-img" style="background-image: url('{{ $media[1]->lazy()->getUrl('responsive') }}')"></div>
+                <div class="case-study-half-img" style="background-image: url('{{ $media[1]->getUrl('responsive') }}')"></div>
                 @endif
               </div>
             </div>
 
             <!-- full width img -->
             @if ($media->count() > 2)
-            <div class="full-w-img" style="background-image: url('{{ $media[2]->lazy()->getUrl('responsive') }}')"></div>
+            <div class="full-w-img" style="background-image: url('{{ $media[2]->getUrl('responsive') }}')"></div>
             @endif
             <!-- Eredmények -->
 
