@@ -6,7 +6,7 @@
                     <p class="mb-0">
                         {!! trans('cookie-consent::texts.message') !!}
                     </p>
-                    <button class="defbtn">
+                    <button class="defbtn js-cookie-consent-agree cookie-consent__agree cursor-pointer">
                         <i class="icon-arrow-right"></i>{{ trans('cookie-consent::texts.agree') }}
                     </button>
                 </div>
