@@ -39,6 +39,8 @@
         border: none;
         background-color: $lightgrey;
         border-radius: 0;
+        max-height: 14.8rem;
+        overflow-y: auto;
 
         .dropdown-item {
             font-size: 1.4rem;
@@ -62,6 +64,7 @@
         .dropdown-menu {
             border: none;
             background-color: white;
+            max-height: 18.4rem;
 
             .dropdown-item {
                 font-size: 1.8rem;
