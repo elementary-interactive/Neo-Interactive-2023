@@ -343,7 +343,7 @@
             height: auto;
             transform-origin: left top;
             position: absolute;
-            right: -13.8rem;
+            left: calc(100% - .5rem);
             top: 3.2rem;
             animation: career-dots 3.2s ease-in-out infinite;
         }
@@ -622,7 +622,7 @@
 
         .career-hl {
             img {
-                right: -15.5rem;
+                left: calc(100% - 1rem);
                 top: 5.5rem;
                 animation: career-dots-desktop 3.2s ease-in-out infinite;
             }

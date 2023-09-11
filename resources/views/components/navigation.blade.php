@@ -55,11 +55,10 @@
       </div>
     </nav>
     <div class="lang-container">
-      <a href="#" class="lang-open">{{ strtoupper(site()->locale) }}</a>
-      <div class="lang-box">
-        <a href="{{ route('hu.index') }}">HU</a>
-        <span>|</span>
-        <a href="{{ route('en.index') }}">EN</a>
-      </div>
+      @if (site()->locale == 'hu')
+      <a href="{{ route('en.index') }}" class="lang-open">EN</a>
+      @else
+      <a href="{{ route('hu.index') }}" class="lang-open">HU</a>
+      @endif
     </div>
   </div>
