@@ -56,9 +56,9 @@
     </nav>
     <div class="lang-container">
       @if (site()->locale == 'hu')
-      <a href="{{ route('en.index') }}" class="lang-open">EN</a>
+      <a href="{{ route('en.index') }}">EN</a>
       @else
-      <a href="{{ route('hu.index') }}" class="lang-open">HU</a>
+      <a href="{{ route('hu.index') }}">HU</a>
       @endif
     </div>
   </div>
