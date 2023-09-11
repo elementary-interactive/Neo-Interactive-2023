@@ -29,15 +29,12 @@ header {
 
     .lang-container {
         font-size: 1.4rem;
-        display: none;
-
-        .search-open {
-            margin-right: 1.5rem;
-        }
-
-        .icon-globe {
-            margin-right: .8rem;
-        }
+        visibility: hidden;
+        opacity: 0;
+        transition-property: opacity, transform, visibility;
+        transition-duration: .3s;
+        order: 1;
+        margin-right: 2rem;
     }
 
     .lang-box {
@@ -70,6 +67,7 @@ header {
         display: flex;
         align-items: center;
         cursor: pointer;
+        order: 2;
     }
 
     .menu-icon {
@@ -94,11 +92,12 @@ header {
     }
 
     .brand-logo {
-        width: 5.6rem;
+        flex: 1;
         visibility: visible;
         opacity: 1;
         //transition-property: opacity, transform, visibility;
         //transition-duration: .2s;
+        order: 0;
 
         &.hide {
             visibility: hidden;
@@ -106,7 +105,7 @@ header {
         }
 
         img {
-            width: 100%;
+            width: 5.6rem;
             height: auto;
         }
     }
@@ -255,6 +254,11 @@ header {
             opacity: 1;
         }
 
+        .lang-container {
+            visibility: visible;
+            opacity: 1;
+        }
+
         nav {
             visibility: visible;
 
@@ -279,9 +283,12 @@ header {
 
         .lang-container {
             margin-left: 2rem;
+            margin-right: 0;
             font-size: 1.2rem;
             position: relative;
-            display: block;
+            visibility: visible;
+            opacity: 1;
+            order: 2;
         }
 
         .lang-box {
@@ -293,10 +300,10 @@ header {
         }
 
         .brand-logo {
-            width: 7.6rem;
+            flex: unset;
 
             img {
-                width: 100%;
+                width: 7.6rem;
                 height: auto;
             }
         }
@@ -307,6 +314,7 @@ header {
             flex: 1;
             padding: 0 0 0 4rem;
             position: static;
+            order: 1;
 
             .nav-content {
                 visibility: visible;

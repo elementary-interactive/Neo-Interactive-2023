@@ -12,7 +12,7 @@
                     <div class="count">{{ str_pad($index + 1, 2, '0',  STR_PAD_LEFT) }}</div>
                     <div class="knowledge-list">
                         <div class="knowledge-hl">
-                            <h2>{{ $service->title }}.</h2>
+                            <h2>{{ $service->title }}<span class="yellow">.</span></h2>
                             @if ($index > 0)
                             <img src="{{ Vite::asset('resources/images/main/know_0'.($index + 1).'.svg') }}" alt="" class="know-0{{ $index + 1}}">
                             @endif

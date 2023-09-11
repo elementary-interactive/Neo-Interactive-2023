@@ -43,11 +43,12 @@ footer {
 
     .legal {
         display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
         font-size: 1.2rem;
 
         .pp {
-            position: relative;
-            margin-left: 2rem;
+            white-space: nowrap;
         }
     }
 }
@@ -86,27 +87,6 @@ footer {
 
                 .defbtn {
                     margin-left: 3rem;
-                }
-            }
-        }
-
-        .legal {
-            display: flex;
-            font-size: 1.2rem;
-
-            .pp {
-                position: relative;
-                margin-left: 2rem;
-
-                &::after {
-                    content: '';
-                    position: absolute;
-                    left: 0;
-                    right: 0;
-                    bottom: -.3rem;
-                    height: .1rem;
-                    width: 100%;
-                    background-color: $yellow;
                 }
             }
         }
