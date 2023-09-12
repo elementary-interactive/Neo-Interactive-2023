@@ -32,7 +32,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h2>We are looking for:</h2>
+                    <h2>{{ __('We are looking for:') }}</h2>
                     <div class="row def-b-margin">
                         <div class="col-12 col-xl-9">
                             <h1 class="mb-0">{{ $job->title }}</h1>
@@ -96,10 +96,10 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="privacy" value="1"
                                                 id="legal" v-model="isArial">
-                                            <label class="form-check-label" for="legal">{{ $form->privacy_label }} <a
+                                            <label class="form-check-label" for="legal">{{ $form->privacy_label }}</label>
+                                                {{-- <a
                                                     href="{{ route(site()->locale . '.privacy-policy') }}"
-                                                    class="pp ul">{{ __('Privacy Policy') }}</a>
-                                            </label>
+                                                    class="pp ul">{{ __('Privacy Policy') }}</a> --}}
                                         </div>
                                     </div>
                                     @error('privacy')
