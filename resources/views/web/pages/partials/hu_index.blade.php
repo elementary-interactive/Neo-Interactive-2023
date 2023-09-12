@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12">
             <h1>
-                Neo célja, hogy <br class="d-xl-none">sikeressé<br>
+                A Neo célja, hogy <br class="d-xl-none">sikeressé<br>
                 tegyük <br class="d-xl-none">vállalkozását<span class="yellow">.</span>
                 <div class="intro-anim">
                     <i></i>
