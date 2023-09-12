@@ -6,8 +6,7 @@
           <div class="col-12 career-desc">
             <div class="career-hl">
               <h2>
-                {!! $attributes['title'] !!}
-                <span class="yellow">.</span>
+                {!! $attributes['title'] !!}<span class="yellow">.</span>
                 <img src="{{ Vite::asset('resources/images/main/career_dots.svg') }}" alt="">
               </h2>              
             </div>            
