@@ -34,7 +34,7 @@
 @endpush --}}
 
 @section('index')
-    @include('web.pages.partials.'site()->locale.'_index')
+    @include('web.pages.partials.'.site()->locale.'_index')
 @endsection
 
 @section('body')
