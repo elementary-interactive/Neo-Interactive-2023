@@ -19,7 +19,7 @@
             </li>
             @endforeach
             <li class="nav-list-item">
-              <a href="#contact">Contact</a>
+              <a href="#contact">{{ __("Contact") }}</a>
             </li>
             @if (site()->link_hellogreenweb)
             <li class="nav-list-item only-desktop">
