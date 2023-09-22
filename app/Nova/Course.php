@@ -68,12 +68,12 @@ class Course extends Resource
 
   public static function label()
   {
-    return 'Előadások';
+    return 'Kurzusok';
   }
 
   public static function singularLabel()
   {
-    return 'Előadás';
+    return 'Kurzus';
   }
 
   /**
