@@ -74,7 +74,7 @@ class Site extends Resource
             // MorphMany::make(__('Variables'), 'attributeValues', AttributeValue::class)
         ];
 
-        $fields_collection = \Neon\Attributable\Models\Attribute::where('class', get_class($this->resource))->get();
+        $fields_collection = \Neon\Attributable\Models\Attribute::where('class', $this->resource->getMorphClass())->get();
         
         if ($fields_collection->count())
         {
