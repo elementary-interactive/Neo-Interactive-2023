@@ -28,7 +28,8 @@ class FixCaseStudies extends Command
      */
     public function handle()
     {
-        $fuckit = CaseStudy::all();
+        $fuckit = CaseStudy::orderBy('created_at', 'desc')
+            ->get();
         $doc = new \DOMDocument();
 
         $bar = $this->output->createProgressBar(count($fuckit));
@@ -64,14 +65,14 @@ class FixCaseStudies extends Command
                     $this->line(' -'.$contents[1]);
                     $this->line(' -'.$contents[3]);
                     $this->line(' -'.$contents[5]);
-                    
+
                     if ($this->confirm('Do you wish to continue?')) {
                         $fuck->save();
                     }
                 // }
             } catch (Exception $e)
             {
-                $fuck->delete();
+                // $fuck->delete();
             }
         }
 
