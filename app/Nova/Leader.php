@@ -109,7 +109,7 @@ class Leader extends Resource
       Image::make('Kép', 'image')
         ->store(function (Request $request, $model) {
           //- Clean up first.
-          $model->clearMediaCollection(\App\Models\Course::MEDIA_COLLECTION);
+          $model->clearMediaCollection(\App\Models\Leader::MEDIA_COLLECTION);
           
           $media = $model->addMediaFromRequest('image')->toMediaCollection(\App\Models\Leader::MEDIA_COLLECTION);
           return $media->file_name;
