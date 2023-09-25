@@ -97,9 +97,9 @@ class Course extends Resource
         ->help('A stream videó - például Youtube - "embed" kódja illesztendő ide.'),
       Image::make('Kép', 'image')
         ->store(function (Request $request, $model) {
-          /**
-           * @todo Handle favicon via media library
-           */
+          //- Clean up first.
+          $model->clearMediaCollection(\App\Models\Course::MEDIA_COLLECTION);
+          
           $media = $model->addMediaFromRequest('image')->toMediaCollection(\App\Models\Course::MEDIA_COLLECTION);
           return $media->file_name;
         })
