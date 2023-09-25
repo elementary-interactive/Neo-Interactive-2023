@@ -55,7 +55,7 @@ class JobOpportunityFormLayout extends Layout
                 ->required(),
             Heading::make('Privacy Policy'),
             Text::make('Label', 'privacy_label')
-                ->help("Tartalmazhat HTML elemeket is. A @@@@@ (5*@) karaktersorozatot a privacy oldal linkjére cseréli a rendszer.")
+                ->help("Tartalmazhat HTML elemeket is. A >>...<< karaktersorozatok közötti szöveget a privacy oldal linkjére illeszti a rendszer.")
                 ->required(),
             Heading::make('Beküldés'),
             Text::make('Label', 'submit_label')
