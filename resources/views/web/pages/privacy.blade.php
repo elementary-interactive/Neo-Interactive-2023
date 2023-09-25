@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col-12 col-xl-7 order-2 order-xl-1">
                     <h2>{{ $block->attributes->subtitle }}</h2>
-                    {!! $block->attributes->content !!}
+                    {!! $block->attributes->text !!}
                 </div>
             </div>
             @endforeach
