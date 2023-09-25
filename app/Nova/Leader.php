@@ -108,9 +108,9 @@ class Leader extends Resource
         ->rules('required', 'max:255'),
       Image::make('Kép', 'image')
         ->store(function (Request $request, $model) {
-          /**
-           * @todo Handle favicon via media library
-           */
+          //- Clean up first.
+          $model->clearMediaCollection(\App\Models\Course::MEDIA_COLLECTION);
+          
           $media = $model->addMediaFromRequest('image')->toMediaCollection(\App\Models\Leader::MEDIA_COLLECTION);
           return $media->file_name;
         })

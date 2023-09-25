@@ -131,9 +131,9 @@ class News extends Resource
       //   ->enableExistingMedia(),
       Image::make('Kép', 'image')
         ->store(function (Request $request, $model) {
-          /**
-           * @todo Handle favicon via media library
-           */
+          //- Clean up first.
+          $model->clearMediaCollection(\App\Models\Course::MEDIA_COLLECTION);
+          
           $media = $model->addMediaFromRequest('image')->toMediaCollection(\App\Models\News::MEDIA_COLLECTION);
           return $media->file_name;
         })

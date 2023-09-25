@@ -30,7 +30,8 @@ class CaseStudyService
     return CaseStudy::where('show_on_main', '=', true)
       ->with('partner')
       ->where('site_id', '=', app('site')->current()->id)
-      ->orderBy('order')
+      // ->orderBy('order')
+      ->orderBy('created_at', 'desc')
       ->get();
   }
 
@@ -42,7 +43,8 @@ class CaseStudyService
         $result = CaseStudy::withAnyTags([$filter], CaseStudy::TAG_TYPE)
           ->with('partner')
           ->where('site_id', '=', app('site')->current()->id)
-          ->orderBy('order')
+          // ->orderBy('order')
+          ->orderBy('created_at', 'desc')
           ->offset($offset)
           ->limit($limit)
           ->get();
@@ -59,7 +61,8 @@ class CaseStudyService
   {
     return CaseStudy::with('partner')
       ->where('site_id', '=', app('site')->current()->id)
-      ->orderBy('order')
+      // ->orderBy('order')
+      ->orderBy('created_at', 'desc')
       ->offset($offset)
       ->limit($limit)
       ->get();

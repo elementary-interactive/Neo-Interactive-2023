@@ -115,9 +115,9 @@ class Product extends Resource
         }),
       Image::make('Kép', 'image')
         ->store(function (Request $request, $model) {
-          /**
-           * @todo Handle favicon via media library
-           */
+          //- Clean up first.
+          $model->clearMediaCollection(\App\Models\Course::MEDIA_COLLECTION);
+          
           $media = $model->addMediaFromRequest('image')->toMediaCollection(\App\Models\Product::MEDIA_COLLECTION);
           return $media->file_name;
         })
