@@ -53,14 +53,22 @@ class FixCaseStudies extends Command
                     }
                 };
 
-                if (count($contents) == 6)
-                {
+                // if (count($contents) == 6)
+                // {
                     $fuck->brief    = $contents[1];
                     $fuck->solution = $contents[3];
                     $fuck->result   = $contents[5];
 
-                    $fuck->save();
-                }
+                    $this->line('');
+                    $this->line($fuck->title, 'info');
+                    $this->line(' -'.$contents[1]);
+                    $this->line(' -'.$contents[3]);
+                    $this->line(' -'.$contents[5]);
+                    
+                    if ($this->confirm('Do you wish to continue?')) {
+                        $fuck->save();
+                    }
+                // }
             } catch (Exception $e)
             {
                 $fuck->delete();
