@@ -1,4 +1,4 @@
-@extends('web.layouts.index')
+@extends('web.layouts.default')
 
 {{-- @section('title')
 @push('og')
@@ -42,7 +42,7 @@
                 <div class="col-12">
                     <h1>404<span class="yellow">.</span></h1>
                     <h3>The content you're looking for can't be found. Sorry about that.</h3>
-                    <a href="" class="defbtn"><i class="icon-arrow-left"></i>go to homepage</a>
+                    <a href="/" class="defbtn"><i class="icon-arrow-left"></i>go to homepage</a>
                 </div>
             </div>
         </div>
