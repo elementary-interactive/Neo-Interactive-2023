@@ -92,7 +92,7 @@
                                                 id="legal" v-model="isArial">
                                             <label class="form-check-label" for="legal">{{ $form->privacy_label }} <a
                                                     href="{{ route(site()->locale . '.privacy-policy') }}"
-                                                    class="pp ul">{{ __('Privacy Policy') }}</a>
+                                                    target="_blank" class="pp ul">{{ __('Privacy Policy') }}</a>
                                             </label>
                                         </div>
                                     </div>
