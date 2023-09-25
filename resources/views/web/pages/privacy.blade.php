@@ -6,8 +6,7 @@
             'og' => [
                 'title' => $page->title,
                 'description' => $page->lead,
-                'image' =>
-                    $page?->getFirstMediaUrl(App\Models\Course::MEDIA_COLLECTION, 'thumb') ?: $page->og_image,
+                'image' => $page->og_image,
                 'type' => 'website',
                 'url' => \Request::url(),
             ],
@@ -34,10 +33,17 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-xl-7 order-2 order-xl-1">
-                    <h1>{{ $page->title }}</h1>
+                    <h1>{{ $page->content->first()->title }}</h1>
                 </div>
             </div>
+            @foreach ($page->content->first()->blocks as $block)
+            <div class="row">
+                <div class="col-12 col-xl-7 order-2 order-xl-1">
+                    <h2>{{ $block->attributes->subtitle }}</h2>
+                    {!! $block->attributes->content !!}
+                </div>
+            </div>
+            @endforeach
         </div>
     </div>
-    {{ dd($page) }}
 @endsection
