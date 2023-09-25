@@ -38,7 +38,8 @@ class CourseLayout extends Layout
         return [
             Heading::make('Oldal elemei:'),
             Text::make('Az oldal címe', 'main_title'),
-            Text::make('"További kutrzusok" cím', 'more_title'),
+            Text::make('"További kurzusok" cím', 'more_title'),
+            Text::make('"További kurzusok" megtekintés gomb', 'cta_view'),
             Heading::make('Általános jelentkezés tartalmi elemei:'),
             Text::make('Cím', 'title'),
             Trix::make('Általános leírás', 'description'),

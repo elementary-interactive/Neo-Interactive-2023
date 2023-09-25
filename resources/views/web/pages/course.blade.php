@@ -80,7 +80,7 @@
                                     </div>
                                     <h3>{{ $random->title }}</h3>
                                     <a href="{{ route(site()->locale . '.courses.show', ['slug' => $random->slug]) }}"
-                                        class="defbtn"><i class="icon-play"></i>{{ $random->cta_view }}</a>
+                                        class="defbtn"><i class="icon-play"></i>{{ $block->cta_view }}</a>
                                 </div>
                             @endforeach
                         </div>
