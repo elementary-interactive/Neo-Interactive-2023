@@ -96,7 +96,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="privacy" value="1"
                                                 id="legal" v-model="isArial">
-                                            <label class="form-check-label" for="legal">{{ str_replace('>>', '<a href="'.route(site()->locale . '.privacy-policy').'" target="_blank">', str_replace('<<', '</a>', $form->privacy_label)) }}</label>
+                                            <label class="form-check-label" for="legal">{!! str_replace('>>', '<a href="'.route(site()->locale . '.privacy-policy').'" target="_blank">', str_replace('<<', '</a>', $form->privacy_label)) !!}</label>
                                                 {{-- <a
                                                     href="{{ route(site()->locale . '.privacy-policy') }}"
                                                     class="pp ul">{{ __('Privacy Policy') }}</a> --}}
