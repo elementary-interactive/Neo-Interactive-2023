@@ -46,50 +46,45 @@ class ContentLayout extends Layout
     public function fields()
     {
         return [
-            Text::make(__('Title'), 'title')
+            Text::make('Cím', 'title')
                 ->required()
                 ->rules('required', 'string'),
-            Flexible::make(__('Content'), 'blocks')
+            Flexible::make('Blokkok', 'blocks')
                 ->addLayout('Blokkok', 'blocks', [
-                    Text::make(__('Subtitle'), 'subtitle'),
-                    Select::make(__('Design'), 'class')
-                        ->options([
-                            '' => '',
-                            'background-white'  => __('White Background'),
-                            'background-gray'  => __('Gray Background'),
-                        ]),
-                    Markdown::make(__('Text'), 'text')
+                    Text::make('Alcím', 'subtitle'),
+                    Trix::make('Tartalom', 'text')
                         ->required()
-                        ->rules('required'),
-                    Image::make(__('Image'), 'image')
-                        ->store(function(Request $request) {
-                            $request->file('image')->storeAs('contents', $request->file('image')->getFilename().'_'.$request->file('image')->getClientOriginalName(), config('nova.storage_disk'));
-                            // dd($file);
+                        ->rules('required')
+                        ->withFiles('public'),
+                    // Image::make(__('Image'), 'image')
+                    //     ->store(function(Request $request) {
+                    //         $request->file('image')->storeAs('contents', $request->file('image')->getFilename().'_'.$request->file('image')->getClientOriginalName(), config('nova.storage_disk'));
+                    //         // dd($file);
         
-                            return [
-                                'image' => asset('storage/contents/'.$request->file('image')->getFilename().'_'.$request->file('image')->getClientOriginalName()),
-                            ];
-                        }),
-                    Select::make(__('Image alignment'), 'align')
-                        ->options([
-                            'left'  => __('Left'),
-                            'right' => __('Right')
-                        ]),
-                    Text::make(__('Image alternative text'), 'alt')
+                    //         return [
+                    //             'image' => asset('storage/contents/'.$request->file('image')->getFilename().'_'.$request->file('image')->getClientOriginalName()),
+                    //         ];
+                    //     }),
+                    // Select::make(__('Image alignment'), 'align')
+                    //     ->options([
+                    //         'left'  => __('Left'),
+                    //         'right' => __('Right')
+                    //     ]),
+                    // Text::make(__('Image alternative text'), 'alt')
                 ])
-                ->button(__('Add block')),
-            Heading::make(__('Shortcut')),
-            Boolean::make(__('Create Shortcut'), 'shortcut_need')
-                ->help(__("If you want to put a navigation bar somewhere on the page, and if you would like to include this there, you should mark here yes.")),
-            Image::make(__('Shortcut Image'), 'shortcut_image')
-                ->store(function(Request $request) {
-                    $request->file('shortcut_image')->storeAs('shortcuts', $request->file('shortcut_image')->getFilename().'_'.$request->file('shortcut_image')->getClientOriginalName(), config('nova.storage_disk'));
-                    // dd($file);
+                ->button('Blokk hozzáadása'),
+            // Heading::make(__('Shortcut')),
+            // Boolean::make(__('Create Shortcut'), 'shortcut_need')
+            //     ->help(__("If you want to put a navigation bar somewhere on the page, and if you would like to include this there, you should mark here yes.")),
+            // Image::make(__('Shortcut Image'), 'shortcut_image')
+            //     ->store(function(Request $request) {
+            //         $request->file('shortcut_image')->storeAs('shortcuts', $request->file('shortcut_image')->getFilename().'_'.$request->file('shortcut_image')->getClientOriginalName(), config('nova.storage_disk'));
+            //         // dd($file);
 
-                    return [
-                        'shortcut_image' => asset('storage/shortcuts/'.$request->file('shortcut_image')->getFilename().'_'.$request->file('shortcut_image')->getClientOriginalName()),
-                    ];
-                }),
+            //         return [
+            //             'shortcut_image' => asset('storage/shortcuts/'.$request->file('shortcut_image')->getFilename().'_'.$request->file('shortcut_image')->getClientOriginalName()),
+            //         ];
+            //     }),
         ];
     }
 }
