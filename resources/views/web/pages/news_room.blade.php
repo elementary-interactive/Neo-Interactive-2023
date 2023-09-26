@@ -117,6 +117,8 @@
 
         // load_more(page); //initial content load
         $(document).ready(function() {
+            $('.ajax-loading').hide();
+            
             $(window).scroll(function() { //detect page scroll
                 if ($(window).scrollTop() + $(window).height() >= $(document).height() - 200) { //if user scrolled from top to bottom of the page
                     console.log($('.ajax-loading').is(":hidden"));
