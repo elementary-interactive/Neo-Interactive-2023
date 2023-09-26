@@ -119,7 +119,8 @@
         $(document).ready(function() {
             $(window).scroll(function() { //detect page scroll
                 if ($(window).scrollTop() + $(window).height() >= $(document).height() - 200) { //if user scrolled from top to bottom of the page
-                    $('.ajax-loading').is(":hidden")
+                    console.log($('.ajax-loading').is(":hidden"));
+                    if ($('.ajax-loading').is(":hidden"))
                     {
                         page += 9; //page number increment
                         load_more(page); //load content   
@@ -151,7 +152,7 @@
                     }
                     window.setTimeout(function() {
                         $('.ajax-loading').hide(); //hide loading animation once data is received
-                    }, 1000);
+                    }, 2000);
                 })
                 .fail(function(jqXHR, ajaxOptions, thrownError) {
                     $('.ajax-loading').hide();
