@@ -123,7 +123,7 @@ class Partner extends Resource
       Image::make('Logó', 'logo')
         ->store(function (Request $request, $model) {
           //- Clean up first.
-          $model->clearMediaCollection(\App\Models\Patner::MEDIA_COLLECTION);
+          $model->clearMediaCollection('partners');
           
           $media = $model->addMediaFromRequest('logo')->toMediaCollection('partners');
 
