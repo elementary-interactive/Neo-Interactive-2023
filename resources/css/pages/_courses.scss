@@ -1,5 +1,4 @@
 .courses-container {
-
   .courses-desc {
     margin-bottom: 7.4rem;
   }
@@ -38,7 +37,7 @@
       font-size: 1.8rem;
       text-transform: uppercase;
       text-overflow: ellipsis;
-      overflow: hidden;
+      //overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 3;
     }
@@ -55,7 +54,6 @@
 }
 
 @media (min-width: $xl-width) {
-
   .courses-container {
     .courses-desc {
       margin-bottom: 12rem;
