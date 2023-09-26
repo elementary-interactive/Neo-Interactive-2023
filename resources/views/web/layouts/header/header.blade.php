@@ -1,7 +1,7 @@
 <header>
     <div class="nav-bg"></div>
 
-    @if (site()->locale == 'hu')
+    @if (site()?->locale == 'hu')
         <!-- nav -->
         <x-neon-menu id="fomenu">
         </x-neon-menu>
