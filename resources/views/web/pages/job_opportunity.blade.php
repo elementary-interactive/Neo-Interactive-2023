@@ -96,7 +96,7 @@
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="privacy" value="1"
                                                 id="legal" v-model="isArial">
-                                            <label class="form-check-label" for="legal">{{ $form->privacy_label }}</label>
+                                            <label class="form-check-label" for="legal">{!! str_replace('>>', '<a href="'.route(site()->locale . '.privacy-policy').'" target="_blank" class="pp ul">', str_replace('<<', '</a>', $form->privacy_label)) !!}</label>
                                                 {{-- <a
                                                     href="{{ route(site()->locale . '.privacy-policy') }}"
                                                     class="pp ul">{{ __('Privacy Policy') }}</a> --}}
@@ -113,28 +113,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- showreel -->
-
-    <div class="main-testimony-container on-career">
-        <div class="testimony-content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <h2>We are neo<span class="yellow">.</span><br>
-                            A full-service communication
-                            and media agency with a digital focus<span class="yellow">.</span></h2>
-                        <div class="testimony-btn">
-                            <a href="" class="defbtn"><i class="icon-arrow-right"></i>DISCOVER THE NEO METHOD</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="showreel" style="background-image: url('images/main/showreel.png')">
-            <a href="" class="defbtn white"><i class="icon-play"></i>view our showreel</a>
         </div>
     </div>
 @endsection

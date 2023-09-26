@@ -122,9 +122,9 @@ class Partner extends Resource
         }),
       Image::make('Logó', 'logo')
         ->store(function (Request $request, $model) {
-          /**
-           * @todo Handle favicon via media library
-           */
+          //- Clean up first.
+          $model->clearMediaCollection('partners');
+          
           $media = $model->addMediaFromRequest('logo')->toMediaCollection('partners');
 
           return $media->file_name;

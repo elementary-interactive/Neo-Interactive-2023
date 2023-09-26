@@ -102,7 +102,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         ])
           ->icon('briefcase')
           ->collapsable(),
-        NovaMenuSection::make('Előadások', [
+        NovaMenuSection::make('Kurzusok', [
           NovaMenuItem::resource(Course::class), //- "Kurzusok" vagy mi a faszom.
           NovaMenuItem::resource(CourseParticipant::class)
         ])

@@ -76,10 +76,10 @@
                             @foreach ($randoms as $random)
                                 <div class="courses-card">
                                     <div class="courses-card-inner"
-                                        style="background-image: url('{{ $course->getFirstMediaUrl(App\Models\Course::MEDIA_COLLECTION, 'thumb') }}')">
+                                        style="background-image: url('{{ $random->getFirstMediaUrl(App\Models\Course::MEDIA_COLLECTION, 'thumb') }}')">
                                     </div>
-                                    <h3>{{ $course->title }}</h3>
-                                    <a href="{{ route(site()->locale . '.courses.show', ['slug' => $course->slug]) }}"
+                                    <h3>{{ $random->title }}</h3>
+                                    <a href="{{ route(site()->locale . '.courses.show', ['slug' => $random->slug]) }}"
                                         class="defbtn"><i class="icon-play"></i>{{ $block->cta_view }}</a>
                                 </div>
                             @endforeach

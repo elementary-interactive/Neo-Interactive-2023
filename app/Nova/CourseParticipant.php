@@ -65,12 +65,12 @@ class CourseParticipant extends Resource
 
   public static function label()
   {
-    return 'Képzés jelentkezések';
+    return 'Kurzus jelentkezések';
   }
 
   public static function singularLabel()
   {
-    return 'Képzés jelentkezés';
+    return 'Kurzus jelentkezés';
   }
 
   // /**
