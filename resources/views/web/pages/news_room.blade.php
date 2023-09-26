@@ -118,11 +118,10 @@
         // load_more(page); //initial content load
         $(document).ready(function() {
             $(window).scroll(function() { //detect page scroll
-                if ($(window).scrollTop() + $(window).height() >= $(document)
-                    .height() - 100) { //if user scrolled from top to bottom of the page
-                    page += 9; //page number increment
+                if ($(window).scrollTop() + $(window).height() >= $(document).height() - 200) { //if user scrolled from top to bottom of the page
                     $('.ajax-loading').is(":hidden")
                     {
+                        page += 9; //page number increment
                         load_more(page); //load content   
                     }
                 }
@@ -144,13 +143,15 @@
                             $(".newsroom-cards").append('<a href="' + article.href + '"' +
                                 'class="newsroom-card">' +
                                 '<div class="newsroom-card-inner"' +
-                                'style="background-image: url(\'' + article.irl + '\')">' +
+                                'style="background-image: url(\'' + article.iurl + '\')">' +
                                 '</div>' +
                                 '<div class="date">' + article.date + '</div>' +
                                 '<h3>' + article.ttle + '</h3></a>'); //- Append article
                         });
                     }
-                    $('.ajax-loading').hide(); //hide loading animation once data is received
+                    window.setTimeout(function() {
+                        $('.ajax-loading').hide(); //hide loading animation once data is received
+                    }, 1000);
                 })
                 .fail(function(jqXHR, ajaxOptions, thrownError) {
                     $('.ajax-loading').hide();
