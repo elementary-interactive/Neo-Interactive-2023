@@ -122,16 +122,12 @@
     <script type="text/javascript">
         var __url = "{{ route(site()->locale . '.news.load') }}";
         var __query = "{{ parse_url("https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", PHP_URL_QUERY) }}";
-        var page = 0; //track user scroll as page number, right now page number is 1
+        var page = 0; // 
 
-        // load_more(page); //initial content load
         $(document).ready(function() {
             $('#more-loading').click(function() { //detect page scroll
-                if ($('#more-loading').is(":enabled"))
-                {
-                    page += 9; //page number increment
-                    load_more(page); //load content   
-                }
+                page += 9; //page number increment
+                load_more(page); //load content   
             });
         });
 
@@ -155,9 +151,14 @@
                                 '<div class="date">' + article.date + '</div>' +
                                 '<h3>' + article.ttle + '</h3></a>'); //- Append article
                         });
+
+                        if (data.length == 9)
+                        {
+                            $('#more-loading').prop('disabled', false); 
+                        }
                     }
                     // window.setTimeout(function() {
-                        $('#more-loading').prop('disabled', false); //hide loading animation once data is received
+                        // $('#more-loading').prop('disabled', false); //hide loading animation once data is received
                     // }, 2000);
                 })
                 .fail(function(jqXHR, ajaxOptions, thrownError) {
