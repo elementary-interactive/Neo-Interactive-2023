@@ -60,6 +60,11 @@
                                 </a>
                             @endforeach
                         </div>
+                        <div class="more-btn-container text-center def-t-margin">
+                            <div class="defbtn"><i class="icon-arrow-right"></i>{{ __('More case studies...') }}</div>
+                        </div>
+                        {{--
+                            
                         <div class="ajax-loading def-t-margin">
                             <div class="square-container">
                                 <div class="square-1 square"></div>
@@ -67,6 +72,8 @@
                                 <div class="square-3 square"></div>
                             </div>
                         </div>
+                        
+                        --}}
                     @endif
                 </div>
             </div>
