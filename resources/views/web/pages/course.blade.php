@@ -41,6 +41,7 @@
               </div>
             </div>
 
+            @if ($course->embed)
             <!-- video -->
             <div class="embed-youtube">
             {!! $course->embed !!}
@@ -51,7 +52,7 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
             </div> --}}
-
+            @endif
             <!-- content -->
 
             <div class="row">
