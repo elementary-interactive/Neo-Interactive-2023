@@ -14,19 +14,19 @@ return new class extends Migration
     public function up()
     {
         Schema::table('case_studies', function (Blueprint $table) {
-            $table->string('brief')
+            $table->text('brief')
                 ->nullable(true)
                 ->default(null)
                 ->change();
-            $table->string('solution')
+            $table->text('solution')
                 ->nullable(true)
                 ->default(null)
                 ->change();
-            $table->string('result')
+            $table->text('result')
                 ->nullable(true)
                 ->default(null)
                 ->change();
-            $table->string('old_content')
+            $table->text('old_content')
                 ->nullable(true)
                 ->default(null)
                 ->change();
@@ -41,16 +41,16 @@ return new class extends Migration
     public function down()
     {
         Schema::table('case_studies', function (Blueprint $table) {
-            $table->string('brief')
+            $table->text('brief')
                 ->nullable(false)
                 ->change();
-            $table->string('solution')
+            $table->text('solution')
                 ->nullable(false)
                 ->change();
-            $table->string('result')
+            $table->text('result')
                 ->nullable(false)
                 ->change();
-            $table->string('old_content')
+            $table->text('old_content')
                 ->nullable(false)
                 ->change();
         });

@@ -95,16 +95,21 @@
                             @endforeach
                         </div>
                         <div class="more-btn-container text-center def-t-margin">
+                            <div class="defbtn" id="more-loading"><i class="icon-arrow-right"></i>{{ __('More news...') }}</div>
+                        </div>
+                        {{--
+                            
+                        <div class="ajax-loading def-t-margin">
                             <div class="defbtn"><i class="icon-arrow-right"></i>További hírek ...</div>
                         </div>
-
-                        {{-- <div class="ajax-loading def-t-margin">
                             <div class="square-container">
                                 <div class="square-1 square"></div>
                                 <div class="square-2 square"></div>
                                 <div class="square-3 square"></div>
                             </div>
-                        </div> --}}
+                        </div>
+                        
+                        --}}
                     @endif
 
 
@@ -121,15 +126,11 @@
 
         // load_more(page); //initial content load
         $(document).ready(function() {
-            $('.ajax-loading').hide();
-
-            $(window).scroll(function() { //detect page scroll
-                if ($(window).scrollTop() + $(window).height() >= $(document).height() - 200) { //if user scrolled from top to bottom of the page
-                    if ($('.ajax-loading').is(":hidden"))
-                    {
-                        page += 9; //page number increment
-                        load_more(page); //load content   
-                    }
+            $('#more-loading').click(function() { //detect page scroll
+                if ($('#more-loading').is(":enabled"))
+                {
+                    page += 9; //page number increment
+                    load_more(page); //load content   
                 }
             });
         });
@@ -140,7 +141,7 @@
                     type: "get",
                     datatype: "html",
                     beforeSend: function() {
-                        $('.ajax-loading').show();
+                        $('#more-loading').prop('disabled', true);
                     }
                 })
                 .done(function(data, status) {
@@ -155,12 +156,12 @@
                                 '<h3>' + article.ttle + '</h3></a>'); //- Append article
                         });
                     }
-                    window.setTimeout(function() {
-                        $('.ajax-loading').hide(); //hide loading animation once data is received
-                    }, 2000);
+                    // window.setTimeout(function() {
+                        $('#more-loading').prop('disabled', false); //hide loading animation once data is received
+                    // }, 2000);
                 })
                 .fail(function(jqXHR, ajaxOptions, thrownError) {
-                    $('.ajax-loading').hide();
+                    $('#more-loading').prop('disabled', false);
                     console.log(thrownError);
                 });
         }

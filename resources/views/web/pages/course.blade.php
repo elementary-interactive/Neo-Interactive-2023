@@ -46,12 +46,6 @@
             <div class="embed-youtube">
             {!! $course->embed !!}
             </div>
-            {{-- <div class="embed-youtube">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/2kPJU06DWLA?si=B9ywrQfy-qkzDVge"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-            </div> --}}
             @endif
             <!-- content -->
 
