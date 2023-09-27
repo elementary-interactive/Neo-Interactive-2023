@@ -94,13 +94,17 @@
                                 </a>
                             @endforeach
                         </div>
-                        <div class="ajax-loading def-t-margin">
+                        <div class="more-btn-container text-center def-t-margin">
+                            <div class="defbtn"><i class="icon-arrow-right"></i>További hírek ...</div>
+                        </div>
+
+                        {{-- <div class="ajax-loading def-t-margin">
                             <div class="square-container">
                                 <div class="square-1 square"></div>
                                 <div class="square-2 square"></div>
                                 <div class="square-3 square"></div>
                             </div>
-                        </div>
+                        </div> --}}
                     @endif
 
 
