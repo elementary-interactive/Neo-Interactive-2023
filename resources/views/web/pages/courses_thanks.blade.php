@@ -48,7 +48,10 @@
             </div>
         </div>
         <div class="showreel" style="background-image: url('images/main/showreel.png')">
-            <a href="" class="defbtn white"><i class="icon-play"></i>view our showreel</a>
+            <a href="" class="defbtn white showreel-btn"><i class="icon-play"></i>{{ $attributes['main_cta-showreel_title'] }}</a>
+            <div class="embed-youtube">
+            <iframe width="560" height="315" class="video-iframe" src="https://www.youtube.com/embed/2kPJU06DWLA?si=3WKzv3dj8Ip2G5yt" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 @endsection

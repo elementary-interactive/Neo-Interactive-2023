@@ -18,10 +18,29 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        min-height: 71vw;
+        height: 55.5vw;
         display: flex;
         align-items: center;
         justify-content: center;
+
+        .defbtn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: max-content;
+        }
+
+        .embed-youtube {
+            visibility: hidden;
+            opacity: 0;
+            width: 100%;
+
+            &.active {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
     }
 }
 
@@ -419,10 +438,35 @@
 
         .testimony-content {
             flex: 1;
-            padding: 12rem 12rem 12rem calc((100vw - $row-width) / 2);
+            padding: clamp(2rem, 3.153vw, 6rem) 12rem clamp(2rem, 3.153vw, 6rem) calc((100vw - $row-width) / 2);
 
             h2 {
-                margin-bottom: 4.5rem;
+                margin-bottom: clamp(2.5rem, 2.102vw, 4rem);
+                font-size: clamp(2.5rem, 2.102vw, 4rem);
+            }
+
+            .defbtn {
+                font-size: clamp(1rem, 0.946vw, 1.8rem);
+                padding: clamp(.1rem, 0.263vw, .5rem) clamp(1rem, 1.734vw, 3.3rem) clamp(.1rem, 0.263vw, .5rem) clamp(1rem, 3.941vw, 7.5rem);
+                min-height: clamp(2rem, 3.153vw, 6rem);
+
+                &:hover,
+                &:focus {
+                    &::before {
+                        width: 100%;
+                    }
+                }
+
+                i.icon-arrow-right,
+                i.icon-arrow-left {
+                    left: clamp(1rem, 0.946vw, 1.8rem);
+                }
+
+                &::before {
+                    width: clamp(2rem, 3.153vw, 6rem);
+                    height: clamp(2rem, 3.153vw, 6rem);
+                    border-radius: clamp(1rem, 1.576vw, 3rem);
+                }
             }
 
             .testimony-btn {
@@ -432,7 +476,7 @@
 
         .showreel {
             flex: 0 0 53%;
-            min-height: 73.2rem;
+            height: clamp(30rem, 29.6vw, 57rem);
         }
     }
 
@@ -667,7 +711,7 @@
 @media (min-width: $content-width) {
     .main-testimony-container {
         .testimony-content {
-            padding: 12rem 12rem 15rem calc(($content-width - $row-width) / 2);
+            padding: 6rem 12rem 6rem calc(($content-width - $row-width) / 2);
         }
     }
 
