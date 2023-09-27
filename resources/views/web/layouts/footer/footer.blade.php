@@ -31,7 +31,9 @@
         </div>
         <div class="legal">
           © {{ now()->year }} Neo Interactive All Rights Reserved.
+          @if (site()->locale == 'hu')
           <a href="{{ route(site()->locale.'.privacy-policy') }}" class="pp ul">{{ __('Privacy Policy') }}</a>
+          @endif
         </div>
       </div>
     </div>
