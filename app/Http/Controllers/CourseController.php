@@ -58,11 +58,6 @@ class CourseController extends Controller
          */
         $course            = $this->course_service->find($slug);
 
-        if (is_null($course))
-        {
-            abort(404);
-        }
-
         if ((!is_null($course) && $course->registration_open) || is_null($slug))
         {
             $page->template = 'course_form';

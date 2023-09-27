@@ -131,12 +131,9 @@ class CaseStudy extends Resource
         ->singleImageRules('dimensions:min_width=100')
         ->withResponsiveImages()
         ->enableExistingMedia(),
-      Trix::make('Brief', 'brief')
-        ->rules('required'),
-      Trix::make('Megoldás', 'solution')
-        ->rules('required'),
-      Trix::make('Eredmény', 'result')
-        ->rules('required'),
+      Trix::make('Brief', 'brief'),
+      Trix::make('Megoldás', 'solution'),
+      Trix::make('Eredmény', 'result'),
       Boolean::make('Kezdőoldalra', 'show_on_main'),
       Tags::make('Címkék', 'tags')
         ->type(CaseStudyModel::TAG_TYPE),

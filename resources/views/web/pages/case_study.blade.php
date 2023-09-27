@@ -50,7 +50,7 @@
                         </div>
 
                         <!-- full width img -->
-                        @if ($media->count() > 0)
+                        @if ($media->count() > 1)
                             <div class="full-w-img" style="background-image: url('{{ $media[0]->getUrl('responsive') }}')">
                             </div>
                         @endif
@@ -62,9 +62,9 @@
                                 <p>{!! $case_study->solution !!}</p>
                             </div>
                             <div class="col-12 offset-xl-1 col-xl-4">
-                                @if ($media->count() > 1)
+                                @if ($media->count() >= 1)
                                     <div class="case-study-half-img"
-                                        style="background-image: url('{{ $media[1]->getUrl('responsive') }}')"></div>
+                                        style="background-image: url('{{ ($media->count() == 1) ? $media[0]->getUrl('responsive') : $media[1]->getUrl('responsive') }}')"></div>
                                 @endif
                             </div>
                         </div>
