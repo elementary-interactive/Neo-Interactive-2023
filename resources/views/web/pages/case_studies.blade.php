@@ -61,7 +61,7 @@
                             @endforeach
                         </div>
                         <div class="more-btn-container text-center def-t-margin">
-                            <div class="defbtn"><i class="icon-arrow-right"></i>{{ __('More case studies...') }}</div>
+                            <div class="defbtn" id="more-loading"><i class="icon-arrow-right"></i>{{ __('More case studies...') }}</div>
                         </div>
                         {{--
                             
@@ -82,22 +82,12 @@
     <script type="text/javascript">
         var __url = "{{ route(site()->locale . '.case_study.load') }}";
         var __query = "{{ parse_url("https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", PHP_URL_QUERY) }}";
-        var page = 0; //track user scroll as page number, right now page number is 1
+        var page = 0; //
 
-        // load_more(page); //initial content load
         $(document).ready(function() {
-            $('.ajax-loading').hide();
-
-            $(window).scroll(function() { //detect page scroll
-                if ($(window).scrollTop() + $(window).height() >= $(document)
-                    .height() - 100) { //if user scrolled from top to bottom of the page
-                    if ($('.ajax-loading').is(":hidden"))
-                    {
-                        page += 9; //page number increment
-
-                        load_more(page); //load content   
-                    }
-                }
+            $('#more-loading').click(function() { //detect page scroll
+                page += 9; //page number increment
+                load_more(page); //load content   
             });
         });
 
@@ -107,7 +97,7 @@
                     type: "get",
                     datatype: "html",
                     beforeSend: function() {
-                        $('.ajax-loading').show();
+                        $('#more-loading').prop('disabled', true);
                     }
                 })
                 .done(function(data, status) {
@@ -122,13 +112,18 @@
                                 '</div>' +
                                 '</a>'); //- Append article
                         });
+                        
+                        if (data.length == 9)
+                        {
+                            $('#more-loading').prop('disabled', false); 
+                        }
                     }
                     window.setTimeout(function() {
-                        $('.ajax-loading').hide(); //hide loading animation once data is received
+                        $('#more-loading').hide(); //hide loading animation once data is received
                     }, 2000);
                 })
                 .fail(function(jqXHR, ajaxOptions, thrownError) {
-                    $('.ajax-loading').hide();
+                    $('#more-loading').prop('disabled', true);
                     console.log(thrownError);
                 });
         }
