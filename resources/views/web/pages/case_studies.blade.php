@@ -81,12 +81,17 @@
 
         // load_more(page); //initial content load
         $(document).ready(function() {
+            $('.ajax-loading').hide();
+
             $(window).scroll(function() { //detect page scroll
                 if ($(window).scrollTop() + $(window).height() >= $(document)
                     .height() - 100) { //if user scrolled from top to bottom of the page
-                    page += 9; //page number increment
+                    if ($('.ajax-loading').is(":hidden"))
+                    {
+                        page += 9; //page number increment
 
-                    load_more(page); //load content   
+                        load_more(page); //load content   
+                    }
                 }
             });
         });
@@ -113,7 +118,9 @@
                                 '</a>'); //- Append article
                         });
                     }
-                    $('.ajax-loading').hide(); //hide loading animation once data is received
+                    window.setTimeout(function() {
+                        $('.ajax-loading').hide(); //hide loading animation once data is received
+                    }, 2000);
                 })
                 .fail(function(jqXHR, ajaxOptions, thrownError) {
                     $('.ajax-loading').hide();
