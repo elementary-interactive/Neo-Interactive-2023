@@ -102,3 +102,14 @@ if(fileUpload) {
     fileUpload.previousElementSibling.textContent = file;
   });
 }
+
+// showreel
+
+const showreelBtn = document.querySelector('.showreel-btn');
+
+if(showreelBtn) {
+  showreelBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector('.embed-youtube').classList.add("active")
+  });
+}
