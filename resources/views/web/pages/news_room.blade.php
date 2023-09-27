@@ -100,6 +100,8 @@
                         {{--
                             
                         <div class="ajax-loading def-t-margin">
+                            <div class="defbtn"><i class="icon-arrow-right"></i>További hírek ...</div>
+                        </div>
                             <div class="square-container">
                                 <div class="square-1 square"></div>
                                 <div class="square-2 square"></div>
