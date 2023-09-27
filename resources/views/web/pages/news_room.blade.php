@@ -162,7 +162,7 @@
                     // }, 2000);
                 })
                 .fail(function(jqXHR, ajaxOptions, thrownError) {
-                    $('#more-loading').prop('disabled', false);
+                    $('#more-loading').prop('disabled', true);
                     console.log(thrownError);
                 });
         }
