@@ -20,7 +20,7 @@
 
                         <div class="col-12 col-xl-6">
                             <div class="carrer-registration-desc basic-text-container">
-                                Állásajánlatod fölött most álmatlan éjszakák tömkelegét töltjük majd el.
+                                Köszönjük szépen, megkaptuk a jelentkezésed! Visszajelzésünkig szíves türelmedet kérjük.
                             </div>
                         </div>
 
