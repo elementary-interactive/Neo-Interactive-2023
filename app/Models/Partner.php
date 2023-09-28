@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Neon\Models\Traits\Uuid;
 use Neon\Site\Models\Traits\SiteDependencies;
@@ -61,6 +62,11 @@ class Partner extends Model implements HasMedia, Sortable
       ->width(200)
       ->performOnCollections(self::MEDIA_COLLECTION)
       ->nonQueued();
+  }
+
+  public function news(): HasMany
+  {
+    return $this->hasMany(News::class);
   }
 
 }
