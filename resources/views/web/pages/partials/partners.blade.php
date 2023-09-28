@@ -10,11 +10,15 @@
                             @if ($partner->getFirstMedia(App\Models\Partner::MEDIA_COLLECTION))
                                 @if ($partner->link)
                                     <a class="partners-item" href="{{ $partner->link }}">
+                                @else
+                                    <div class="partners-item">
                                 @endif
                                 {{ $partner->getFirstMedia(App\Models\Partner::MEDIA_COLLECTION) }}
                                 @if ($partner->link)
                                     </a>
-                                @endif
+                                @else
+                                    </div>
+                               @endif
                             @endif
                         @endforeach
                     </div>
