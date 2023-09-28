@@ -41,7 +41,7 @@ class NewsService
 
     if (is_null($result))
     {
-      $result = News::all()->count();
+      $result = News::where('site_id', '=', app('site')->current()->id)->count();
     }
     
     return $result;
