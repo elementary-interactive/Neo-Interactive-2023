@@ -25,7 +25,8 @@ class PartnerService
 
   public function all(): EloquentCollection
   {
-    return Partner::orderBy('order')
+    return Partner::has('news')
+      ->orderBy('name')
       ->get();
   }
 }

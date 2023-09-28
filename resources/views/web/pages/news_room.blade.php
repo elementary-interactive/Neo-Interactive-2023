@@ -36,11 +36,11 @@
 
                     <div class="row">
                         <div class="col-12 col-xl-5 newsroom-filter">
-                            <div class="filter-label">{{ $form->title }}</div>
+                            <div class="filter-label">{{ $form?->title }}</div>
                             <div class="dropdown">
                                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    {{ $form->date_label }}
+                                    {{ $form?->date_label }}
                                 </button>
                                 <ul class="dropdown-menu">
                                     @foreach ($years as $year)
@@ -53,7 +53,7 @@
                             <div class="dropdown">
                                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    {{ $form->partner_label }}
+                                    {{ $form?->partner_label }}
                                 </button>
                                 <ul class="dropdown-menu">
                                     @foreach ($partners as $partner)
@@ -66,7 +66,7 @@
                             <div class="dropdown">
                                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    {{ $form->tag_label }}
+                                    {{ $form?->tag_label }}
                                 </button>
                                 <ul class="dropdown-menu">
                                     @foreach ($tags as $tag)
@@ -123,11 +123,15 @@
         var __url = "{{ route(site()->locale . '.news.load') }}";
         var __query = "{{ parse_url("https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", PHP_URL_QUERY) }}";
         var page = 0; // 
+        var max_page = {{ $count }};
 
         $(document).ready(function() {
             $('#more-loading').click(function() { //detect page scroll
-                page += 9; //page number increment
-                load_more(page); //load content   
+                if (page < page_max - 9)
+                {
+                    page += 9; //page number increment
+                    load_more(page); //load content   
+                }
             });
         });
 

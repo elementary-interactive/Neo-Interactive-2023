@@ -49,7 +49,12 @@ class NewsController extends Controller
                 'tags'       => Tag::withType(News::TAG_TYPE)->get(),
                 'years'      => $this->news_service->years(),
                 'partners'   => $this->partner_service->all(),
-                'news'       => $news
+                'news'       => $news,
+                'count'      => $this->news_service->count([
+                    'tag'       => $request->query('filter'),
+                    'year'      => $request->query('year'),
+                    'partner'   => $request->query('partner')
+                ]),
             ]
         );
     }

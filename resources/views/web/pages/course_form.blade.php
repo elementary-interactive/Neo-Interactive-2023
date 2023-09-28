@@ -34,7 +34,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h2>{{ $block->main_title }}</h2>
+                    <h2>{{ $block->main_title }}<span class="yellow">.</span></h2>
                     <div class="row def-b-margin">
                         <div class="col-12 col-xl-9">
                             <h1 class="mb-0">{{ $course?->title ?: $block->title }}</h1>

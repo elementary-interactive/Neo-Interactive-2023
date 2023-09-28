@@ -12,6 +12,41 @@ class NewsService
     //...
   }
 
+  public function count(array $filter = null): int
+  {
+    $result = null;
+
+    if ($filter['tag']) {
+      $result = News::withAnyTags([$filter['tag']], News::TAG_TYPE)
+        ->where('site_id', '=', app('site')->current()->id)
+        ->orderBy('published_at', 'DESC')
+        ->count();
+    }
+
+    if ($filter['partner']) {
+      $result = News::whereHas('partner', function($query) use ($filter) {
+        $query->where('slug', '=', $filter['partner']);
+      })
+        ->where('site_id', '=', app('site')->current()->id)
+        ->orderBy('published_at', 'DESC')
+        ->count();
+    }
+    
+    if ($filter['year']) {
+      $result = News::whereBetween('published_at', [$filter['year'].'-01-01 00:00:00', $filter['year'].'-12-31 23:59:59'])
+        ->where('site_id', '=', app('site')->current()->id)
+        ->orderBy('published_at', 'DESC')
+        ->count();
+    }
+
+    if (is_null($result))
+    {
+      $result = News::all()->count();
+    }
+    
+    return $result;
+  }
+
   public function find($slug)
   {
     return News::where('slug', $slug)
