@@ -119,7 +119,7 @@
                                 '</a>'); //- Append article
                         });
                         
-                        if (data.length == 9)
+                        if (page < page_max - 9)
                         {
                             $('#more-loading').prop('disabled', false); 
                         }
