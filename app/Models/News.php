@@ -59,11 +59,13 @@ class News extends Model implements HasMedia
     {
         $this->addMediaConversion('thumb')
             ->height(680)
+            ->preservingOriginal()
             ->performOnCollections(self::MEDIA_COLLECTION)
             ->nonQueued();
 
         $this->addMediaConversion('responsive')
             ->withResponsiveImages()
+            ->preservingOriginal()
             ->performOnCollections(self::MEDIA_COLLECTION)
             ->nonQueued();
     }
