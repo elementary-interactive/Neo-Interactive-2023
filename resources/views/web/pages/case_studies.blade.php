@@ -60,9 +60,11 @@
                                 </a>
                             @endforeach
                         </div>
+                        @if ($count > 9)
                         <div class="more-btn-container text-center def-t-margin">
                             <div class="defbtn" id="more-loading"><i class="icon-arrow-right"></i>{{ __('More case studies...') }}</div>
                         </div>
+                        @endif
                         {{--
                             
                             <div class="square-container">
