@@ -23,7 +23,7 @@ class CaseStudyService
     if ($filter) {
       $result = CaseStudy::withAnyTags([$filter], CaseStudy::TAG_TYPE);
     } else {
-      $result = CaseStudy::all();
+      $result = CaseStudy::where('site_id', '=', app('site')->current()->id);
     }
     return $result->count();
   }
