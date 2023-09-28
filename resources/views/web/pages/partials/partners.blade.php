@@ -8,9 +8,13 @@
                     <div class="partners-items">
                         @foreach ($partners as $partner)
                             @if ($partner->getFirstMedia(App\Models\Partner::MEDIA_COLLECTION))
-                            <a class="partners-item" href="{{ $partner->link }}">
+                                @if ($partner->link)
+                                    <a class="partners-item" href="{{ $partner->link }}">
+                                @endif
                                 {{ $partner->getFirstMedia(App\Models\Partner::MEDIA_COLLECTION) }}
-                            </a>
+                                @if ($partner->link)
+                                    </a>
+                                @endif
                             @endif
                         @endforeach
                     </div>
