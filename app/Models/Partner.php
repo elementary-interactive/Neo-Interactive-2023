@@ -60,7 +60,6 @@ class Partner extends Model implements HasMedia, Sortable
   {
     $this->addMediaConversion('thumb')
       ->width(200)
-      ->preservingOriginal()
       ->performOnCollections(self::MEDIA_COLLECTION)
       ->nonQueued();
   }

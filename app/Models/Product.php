@@ -66,7 +66,6 @@ class Product extends Model implements HasMedia, Sortable
     $this->addMediaConversion('thumb')
       ->height(300)
       ->width(300)
-      ->preservingOriginal()
       ->performOnCollections(self::MEDIA_COLLECTION)
       ->nonQueued();
   }

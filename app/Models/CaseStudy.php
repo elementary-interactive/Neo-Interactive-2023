@@ -64,13 +64,11 @@ class CaseStudy extends Model implements HasMedia, Sortable
   {
     $this->addMediaConversion('thumb')
       ->height(680)
-      ->preservingOriginal()
       ->performOnCollections(self::MEDIA_COLLECTION)
       ->nonQueued();
 
     $this->addMediaConversion('responsive')
       ->withResponsiveImages()
-      ->preservingOriginal()
       ->performOnCollections(self::MEDIA_COLLECTION)
       ->nonQueued();
   }
