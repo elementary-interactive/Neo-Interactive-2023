@@ -32,6 +32,7 @@ use App\Nova\News;
 use App\Nova\Partner;
 use App\Nova\Service;
 use App\Nova\Tags;
+use Laravel\Nova\Badge;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -98,13 +99,15 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         ])->collapsable(),
         NovaMenuSection::make('Állásajánlatok', [
           NovaMenuItem::resource(JobOpportunity::class), // Állásajánlatok
-          NovaMenuItem::resource(JobApplicant::class), // Állásajánlat jelentkezések
+          NovaMenuItem::resource(JobApplicant::class) // Állásajánlat jelentkezések
+            ->withBadgeIf('New!', 'info', fn() => JobApplicant::newModel()->count() > 0),
         ])
           ->icon('briefcase')
           ->collapsable(),
         NovaMenuSection::make('Kurzusok', [
           NovaMenuItem::resource(Course::class), //- "Kurzusok" vagy mi a faszom.
           NovaMenuItem::resource(CourseParticipant::class)
+            ->withBadgeIf('New!', 'info', fn() => CourseParticipant::newModel()->count() > 0),
         ])
           ->icon('calendar')
           ->collapsable(),
