@@ -4,6 +4,7 @@ namespace App\Nova;
 
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Actions\ExportAsCsv;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
@@ -115,6 +116,19 @@ class CourseParticipant extends Resource
     ];
 
     return $fields;
+  }
+
+  /**
+   * Get the actions available for the resource.
+   *
+   * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+   * @return array
+   */
+  public function actions(NovaRequest $request)
+  {
+    return [
+      ExportAsCsv::make()->nameable(),
+    ];
   }
 
   // /**
