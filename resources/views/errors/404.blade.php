@@ -1,37 +1,4 @@
-@extends('web.layouts.default')
-
-{{-- @section('title')
-@push('og')
-    @include('web.layouts.head.og', [
-        'og' => [
-            'title' => $product->name,
-            'description' => $product->description,
-            'image' => '',
-            'type' => 'website',
-            'url' => \Request::url(),
-        ],
-    ])
-@endpush
-
-@push('meta')
-    @include('web.layouts.head.meta', [
-        'meta' => [
-            'title' => $product->name,
-            'description' => $product->description,
-            // 'image'             => '',
-            // 'type'              => 'website',
-            // 'url'               => \Request::url()
-        ],
-    ])
-@endpush
-
-@push('breadcrumb')
-    @include('components.breadcrumb', [
-        'path' => $path,
-        'brand' => isset($brand) ? $brand : null,
-        'is_product' => true,
-    ])
-@endpush --}}
+@extends('web.layouts.error')
 
 @section('body')
     <!-- error page -->
