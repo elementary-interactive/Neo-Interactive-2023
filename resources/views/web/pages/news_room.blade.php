@@ -123,11 +123,15 @@
         var __url = "{{ route(site()->locale . '.news.load') }}";
         var __query = "{{ parse_url("https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", PHP_URL_QUERY) }}";
         var page = 0; // 
+        var max_page = {{ $count }};
 
         $(document).ready(function() {
             $('#more-loading').click(function() { //detect page scroll
-                page += 9; //page number increment
-                load_more(page); //load content   
+                if (page < page_max - 9)
+                {
+                    page += 9; //page number increment
+                    load_more(page); //load content   
+                }
             });
         });
 

@@ -17,6 +17,17 @@ class CaseStudyService
   {
   }
 
+  public function count(string $filter = null): int
+  {
+    
+    if ($filter) {
+      $result = CaseStudy::withAnyTags([$filter], CaseStudy::TAG_TYPE);
+    } else {
+      $result = CaseStudy::all();
+    }
+    return $result->count();
+  }
+
   public function findOrFail($slug): CaseStudy
   {
     return CaseStudy::where('slug', $slug)

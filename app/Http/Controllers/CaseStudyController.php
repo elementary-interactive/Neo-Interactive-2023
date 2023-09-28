@@ -61,6 +61,7 @@ class CaseStudyController extends Controller
                 'page'          => $page,
                 'filters'       => Tag::withType(CaseStudy::TAG_TYPE)->get(),
                 'case_studies'  => $this->case_study_service->filter($request->query('filter')),
+                'count'         => $this->case_study_service->count($request->query('filter')),
             ]
         );
     }
