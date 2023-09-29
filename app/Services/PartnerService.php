@@ -25,7 +25,9 @@ class PartnerService
 
   public function all(): EloquentCollection
   {
-    return Partner::has('news')
+    return Partner::whereHas('news', function($query) {
+      $query->where('site_id', '=', app('site')->current()->id);
+    })
       ->orderBy('name')
       ->get();
   }
