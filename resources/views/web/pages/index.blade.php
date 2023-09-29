@@ -1,6 +1,10 @@
 @extends('web.layouts.index')
 
-{{-- @section('title')
+@section('title')
+    {{ $page->title}}
+@endsection
+
+{{-- 
 @push('og')
     @include('web.layouts.head.og', [
         'og' => [
