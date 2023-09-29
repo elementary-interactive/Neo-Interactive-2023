@@ -8,17 +8,17 @@
                     <div class="partners-items">
                         @foreach ($partners as $partner)
                             @if ($partner->getFirstMedia(App\Models\Partner::MEDIA_COLLECTION))
-                                @if ($partner->link)
+                                {{-- @if ($partner->link)
                                     <a class="partners-item" href="{{ $partner->link }}">
-                                @else
+                                @else --}}
                                     <div class="partners-item">
-                                @endif
+                                {{-- @endif --}}
                                 {{ $partner->getFirstMedia(App\Models\Partner::MEDIA_COLLECTION) }}
-                                @if ($partner->link)
+                                {{-- @if ($partner->link)
                                     </a>
-                                @else
+                                @else --}}
                                     </div>
-                               @endif
+                               {{-- @endif --}}
                             @endif
                         @endforeach
                     </div>
