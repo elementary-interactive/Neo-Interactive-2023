@@ -23,7 +23,7 @@
             </li>
             @if (site()->link_hellogreenweb)
             <li class="nav-list-item only-desktop">
-              <a class="green" href="{{ site()->link_hellogreenweb }}">HELLOGREENWEB.HU <i class="icon-icon-open-external-link"></i></a>
+              <a class="green" href="{{ site()->link_hellogreenweb }}" target="_blank">HELLOGREENWEB.HU <i class="icon-icon-open-external-link"></i></a>
             </li>
             @endif
           </ul>
@@ -32,22 +32,22 @@
         <div class="nav-mobilemenu">
           @if (site()->link_hellogreenweb)
           <div class="nav-mobilemenu-item">
-            <a href="{{ site()->link_hellogreenweb }}" class="defbtn"><i class="icon-arrow-right"></i>hellogreenweb.hu</a>
+            <a href="{{ site()->link_hellogreenweb }}" class="defbtn" target="_blank"><i class="icon-arrow-right"></i>hellogreenweb.hu</a>
           </div>
           @endif
           @if (site()->link_facebook)
           <div class="nav-mobilemenu-item">
-            <a href="{{ site()->link_facebook }}" class="defbtn"><i class="icon-arrow-right"></i>FACEBOOK</a>
+            <a href="{{ site()->link_facebook }}" class="defbtn" target="_blank"><i class="icon-arrow-right"></i>FACEBOOK</a>
           </div>
           @endif
           @if (site()->link_youtube)
           <div class="nav-mobilemenu-item">
-            <a href="{{ site()->link_youtube }}" class="defbtn"><i class="icon-arrow-right"></i>youtube</a>
+            <a href="{{ site()->link_youtube }}" class="defbtn" target="_blank"><i class="icon-arrow-right"></i>youtube</a>
           </div>
           @endif
           @if (site()->link_linkedin)
           <div class="nav-mobilemenu-item">
-            <a href="{{ site()->link_linkedin }}" class="defbtn"><i class="icon-arrow-right"></i>Linkedin</a>
+            <a href="{{ site()->link_linkedin }}" class="defbtn" target="_blank"><i class="icon-arrow-right"></i>Linkedin</a>
           </div>
           @endif
         </div>

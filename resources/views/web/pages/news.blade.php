@@ -59,7 +59,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <h2>More<span class="yellow">.</span></h2>
+                        <h2>{{ __('More') }}<span class="yellow">.</span></h2>
 
                         <div class="newsroom-cards">
                             @foreach ($randoms as $random)
