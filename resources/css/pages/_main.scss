@@ -359,7 +359,7 @@
         display: inline-flex;
 
         img {
-            width: auto;
+            width: 9.4rem;;
             height: auto;
             transform-origin: left top;
             //position: absolute;
@@ -370,19 +370,19 @@
 
         @keyframes career-dots {
             0% {
-                transform: translateX(1rem) translateY(1.6rem) scale(.65);
+                transform: translateX(1rem) translateY(.5rem);
             }
 
             30% {
-                transform: translateX(-1.3rem) translateY(1.6rem) scale(.65);
+                transform: translateX(-1.3rem) translateY(.5rem);
             }
 
             70% {
-                transform: translateX(-1.3rem) translateY(1.6rem) scale(.65);
+                transform: translateX(-1.3rem) translateY(.5rem);
             }
 
             100% {
-                transform: translateX(1rem) translateY(1.6rem) scale(.65);
+                transform: translateX(1rem) translateY(.5rem);
             }
         }
     }
@@ -667,6 +667,7 @@
 
         .career-hl {
             img {
+                width: auto;
                 //left: calc(100% - 1rem);
                 //top: 5.5rem;
                 animation: career-dots-desktop 3.2s ease-in-out infinite;
