@@ -12,15 +12,15 @@
     background-color: $lightgrey;
 
     h1 {
-        font-size: 4.8rem;
+        font-size: 3.5rem;
         font-weight: 700;
-        line-height: 1.2em;
+        line-height: 1.1em;
         color: $black;
         margin-bottom: 4rem;
 
         .intro-anim {
             display: inline-flex;
-            margin: 0 0 0 -.6rem;
+            margin: 0 0 0 -.2rem;
             vertical-align: baseline;
             overflow: hidden;
             white-space: nowrap;
@@ -29,8 +29,8 @@
 
         i {
             display: inline-block;
-            width: 9px;
-            height: 9px;
+            width: 6px;
+            height: 6px;
             background: #DFDFDF;
             animation: kn 2s ease-in-out infinite;
             margin: 0 .8rem 0 0;
@@ -177,6 +177,7 @@
 
         h1 {
             font-size: clamp(5rem, 4.8vw, 7.2rem);
+            line-height: 1.2em;
             margin-bottom: 5.2vw;
 
             .intro-anim {
