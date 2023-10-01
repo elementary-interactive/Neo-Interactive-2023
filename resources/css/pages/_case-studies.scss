@@ -22,14 +22,23 @@
         width: 100%;
         overflow-x: auto;
         overflow-y: hidden;
+        padding-bottom: 1.5rem;
 
         a {
             white-space: nowrap;
+
+            &:last-child {
+                margin-right: 3.5rem;
+            }
         }
 
         a.active {
             margin-right: 1.2rem;
             font-weight: 700;
+
+            &:last-child {
+                margin-right: 5rem;
+            }
 
             &::before {
                 position: absolute;
@@ -114,6 +123,7 @@
         .case-studies-filter {
             margin-bottom: 12rem;
             gap: 3.4rem;
+            padding-bottom: 0;
         }
 
         .case-studies-cards {
