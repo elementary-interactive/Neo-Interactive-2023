@@ -89,10 +89,12 @@
                             </div>
                         </div>
                         <!-- full width img -->
-                        @if ($media->count() > 0)
-                            @foreach ($media as $medium)
+                        @if ($media->count() > 1)
+                            @foreach ($media as $index => $medium)
+                                @if ($index > 0)
                                 <div class="full-w-img"
                                     style="background-image: url('{{ $medium->getUrl('responsive') }}')"></div>
+                                @endif
                             @endforeach
                         @endif
                     @endif
