@@ -17,9 +17,9 @@
           <div class="col-12 col-xl-8">
             <div class="positions">
               @forelse ($job_opportunities as $job)
-              <a href="{{ route('hu.apply.show', ['slug' => $job->slug]) }}" class="defbtn"><i class="icon-arrow-right"></i>{{ $job->title }}</a>
+              <a href="{{ route(site()->locale.'.apply.show', ['slug' => $job->slug]) }}" class="defbtn"><i class="icon-arrow-right"></i>{{ $job->title }}</a>
               @empty
-              <a href="{{ route('hu.apply.show') }}" class="defbtn"><i class="icon-arrow-right"></i>{{ $attributes['cta_title'] }}</a>
+              <a href="{{ route(site()->locale.'.apply.show') }}" class="defbtn"><i class="icon-arrow-right"></i>{{ $attributes['cta_title'] }}</a>
               @endforelse
             </div>
           </div>
