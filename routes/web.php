@@ -26,7 +26,7 @@ Route::group([
   'middleware'  => SiteMiddleware::class
 ], function () {
 
-  Route::get('/', [AppController::class, 'index'])
+  Route::get('/', [AppController::class, 'english_index'])
     ->name('en.index');
 
   Route::get("/works", [CaseStudyController::class, 'index'])
@@ -79,6 +79,9 @@ Route::group([
 
   Route::get('/', [AppController::class, 'index'])
     ->name('hu.index');
+ 
+    Route::get('/hu', [AppController::class, 'change'])
+    ->name('hu.change');
 
   Route::get("/munkaink", [CaseStudyController::class, 'index'])
     ->name('hu.case_study.index');

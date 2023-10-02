@@ -57,8 +57,7 @@ class AppController extends Controller
         $this->job_service        = $job_service;
     }
 
-
-    public function index(LinkService $page_service, Request $request)
+    public function english_index(LinkService $page_service, Request $request)
     {
         /** Geting the current page.
          * 
@@ -79,6 +78,40 @@ class AppController extends Controller
                 'job_opportunities' => $this->job_service->index(),
             ]
         );
+    }
+
+    public function index(LinkService $page_service, Request $request)
+    {
+        if ($request->session()->has('change-to')) {
+            /** Geting the current page.
+             * 
+             * @var  Link $page
+             */
+            $page       = $page_service->find('index');
+
+            return View::first(
+                $page_service->getViews(Arr::first(site()->domains)),
+                [
+                    'page'              => $page,
+
+                    'case_studies'      => $this->case_study_service->index(),
+                    'leaders'           => $this->leader_service->index(),
+                    'partners'          => $this->partner_service->index(),
+                    'products'          => $this->product_service->index(),
+                    'services'          => $this->service_service->index(),
+                    'job_opportunities' => $this->job_service->index(),
+                ]
+            );
+        } else {
+            return redirect(route('en.index'));
+        }
+    }
+
+    public function change(Request $request)
+    {
+        $request->session()->put('change-to', 'hu');
+
+        return redirect(route('hu.index'));
     }
 
     public function privacy(LinkService $page_service, Request $request)
