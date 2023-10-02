@@ -55,7 +55,7 @@
                                 <a href="{{ route(site()->locale . '.case_study.show', ['slug' => $case_study->slug]) }}"
                                     class="case-studies-card">
                                     <div class="case-studies-card-inner"
-                                        style="background-image: url('{{ ($case_study->getMedia(App\Models\CaseStudy::MEDIA_COLLECTION)->count() > 1) ? $case_study->getMedia(App\Models\CaseStudy::MEDIA_COLLECTION)[1]->getUrl('responsive') : $case_study->getFirstMediaUrl(App\Models\CaseStudy::MEDIA_COLLECTION, 'responsive') }}')">
+                                        style="background-image: url('{{ $case_study->getFirstMediaUrl(App\Models\CaseStudy::MEDIA_COLLECTION, 'responsive') }}')">
                                         <div class="partner">{{ $case_study->partner?->name }}</div>
                                         <h3>{{ $case_study->title }}</h3>
                                     </div>
