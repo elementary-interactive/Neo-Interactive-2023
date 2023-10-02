@@ -9,6 +9,5 @@
         <!-- nav -->
         <x-neon-menu id="main">
         </x-neon-menu>
-        ˇ
     @endif
 </header>
