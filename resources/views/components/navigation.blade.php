@@ -58,7 +58,7 @@
       @if (site()->locale == 'hu')
       <a href="{{ route('en.index') }}">EN</a>
       @else
-      <a href="{{ route('hu.index') }}">HU</a>
+      <a href="{{ route('hu.change') }}">HU</a>
       @endif
     </div>
   </div>
