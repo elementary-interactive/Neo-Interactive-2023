@@ -1,29 +1,32 @@
 @extends('web.layouts.default')
 
 @section('title')
-    @push('og')
-        @include('web.layouts.head.og', [
-            'og' => [
-                'title' => $job?->title ?: $page->og_title,
-                'description' => $job?->description ?: $page->og_description,
-                'image' => $page->og_image,
-                'type' => 'website',
-                'url' => \Request::url(),
-            ],
-        ])
-    @endpush
+    {{ $page->title }}
+@endsection
 
-    @push('meta')
-        @include('web.layouts.head.meta', [
-            'meta' => [
-                'title' => $job?->title ?: $page->og_title,
-                'description' => $job?->description ?: $page->og_description,
-                // 'image'             => '',
-                // 'type'              => 'website',
-                // 'url'               => \Request::url()
-            ],
-        ])
-    @endpush
+@push('og')
+    @include('web.layouts.head.og', [
+        'og' => [
+            'title' => $job?->title ?: $page->og_title,
+            'description' => $job?->description ?: $page->og_description,
+            'image' => $page->og_image,
+            'type' => 'website',
+            'url' => \Request::url(),
+        ],
+    ])
+@endpush
+
+@push('meta')
+    @include('web.layouts.head.meta', [
+        'meta' => [
+            'title' => $job?->title ?: $page->og_title,
+            'description' => $job?->description ?: $page->og_description,
+            // 'image'             => '',
+            // 'type'              => 'website',
+            // 'url'               => \Request::url()
+        ],
+    ])
+@endpush
 
 @section('body')
     <!-- carrer subpage -->

@@ -1,7 +1,7 @@
 @extends('web.layouts.index')
 
 @section('title')
-    {{ $page->title}}
+    {{ $page->title }}
 @endsection
 
 {{-- 

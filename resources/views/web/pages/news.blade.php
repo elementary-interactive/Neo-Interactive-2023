@@ -1,30 +1,33 @@
 @extends('web.layouts.default')
 
 @section('title')
-    @push('og')
-        @include('web.layouts.head.og', [
-            'og' => [
-                'title' => $news->title,
-                'description' => $news->lead,
-                'image' =>
-                    $news?->getFirstMediaUrl(App\Models\Course::MEDIA_COLLECTION, 'thumb') ?: $page->og_image,
-                'type' => 'website',
-                'url' => \Request::url(),
-            ],
-        ])
-    @endpush
+    {{ $page->title }}
+@endsection
 
-    @push('meta')
-        @include('web.layouts.head.meta', [
-            'meta' => [
-                'title' => $news->title,
-                'description' => $news->lead,
-                // 'image'             => '',
-                // 'type'              => 'website',
-                // 'url'               => \Request::url()
-            ],
-        ])
-    @endpush
+@push('og')
+    @include('web.layouts.head.og', [
+        'og' => [
+            'title' => $news->title,
+            'description' => $news->lead,
+            'image' =>
+                $news?->getFirstMediaUrl(App\Models\Course::MEDIA_COLLECTION, 'thumb') ?: $page->og_image,
+            'type' => 'website',
+            'url' => \Request::url(),
+        ],
+    ])
+@endpush
+
+@push('meta')
+    @include('web.layouts.head.meta', [
+        'meta' => [
+            'title' => $news->title,
+            'description' => $news->lead,
+            // 'image'             => '',
+            // 'type'              => 'website',
+            // 'url'               => \Request::url()
+        ],
+    ])
+@endpush
 
 @section('body')
 

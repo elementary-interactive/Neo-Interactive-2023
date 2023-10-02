@@ -1,30 +1,33 @@
 @extends('web.layouts.default')
 
 @section('title')
-    @push('og')
-        @include('web.layouts.head.og', [
-            'og' => [
-                'title' => $course?->title ?: $page->og_title,
-                'description' => $course?->description ?: $page->og_description,
-                'image' =>
-                    $course?->getFirstMediaUrl(App\Models\Course::MEDIA_COLLECTION, 'thumb') ?: $page->og_image,
-                'type' => 'website',
-                'url' => \Request::url(),
-            ],
-        ])
-    @endpush
+    {{ $page->title }}
+@endsection
 
-    @push('meta')
-        @include('web.layouts.head.meta', [
-            'meta' => [
-                'title' => $page->og_title,
-                'description' => $page->og_description,
-                // 'image'             => '',
-                // 'type'              => 'website',
-                // 'url'               => \Request::url()
-            ],
-        ])
-    @endpush
+@push('og')
+    @include('web.layouts.head.og', [
+        'og' => [
+            'title' => $course?->title ?: $page->og_title,
+            'description' => $course?->description ?: $page->og_description,
+            'image' =>
+                $course?->getFirstMediaUrl(App\Models\Course::MEDIA_COLLECTION, 'thumb') ?: $page->og_image,
+            'type' => 'website',
+            'url' => \Request::url(),
+        ],
+    ])
+@endpush
+
+@push('meta')
+    @include('web.layouts.head.meta', [
+        'meta' => [
+            'title' => $page->og_title,
+            'description' => $page->og_description,
+            // 'image'             => '',
+            // 'type'              => 'website',
+            // 'url'               => \Request::url()
+        ],
+    ])
+@endpush
 
 @section('body')
 
