@@ -18,7 +18,8 @@ class JobOpportunitiesService
 
     if ($slug)
     {
-      $result = JobOpportunity::where('slug', $slug)->first();
+      $result = JobOpportunity::where('site_id', '=', app('site')->current()->id)
+        ->where('slug', $slug)->first();
     }
 
     return $result;
