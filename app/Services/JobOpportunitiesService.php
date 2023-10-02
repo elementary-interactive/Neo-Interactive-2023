@@ -27,10 +27,8 @@ class JobOpportunitiesService
 
   public function index(): EloquentCollection
   {
-    // return JobOpportunity::where('site_id', '=', app('site')->current()->id)
-    //   ->orderBy('order')
-    //   ->get();
-    return JobOpportunity::orderBy('order')
-       ->get();
+    return JobOpportunity::where('site_id', '=', app('site')->current()->id)
+      ->orderBy('order')
+      ->get();
   }
 }
