@@ -45,14 +45,30 @@
 
                         <!-- brief -->
 
-                        <div class="row case-study-row">
-                            <div class="col-12 col-xl-6">
-                                <h2>{{ __('Brief') }}</h2>
-                                {!! $case_study->brief !!}
+                        <div class="row">
+                            <div class="col-12 col-xl-6 order-2 order-xl-1">
+                                <div class="case-study-row">
+                                    <h2>{{ __('Brief') }}</h2>
+                                    {!! $case_study->brief !!}
+                                </div>
+                                <div class="case-study-row">
+                                    <h2>{{ __('Implementation') }}</h2>
+                                    <p>{!! $case_study->solution !!}</p>
+                                </div>
+                                <div class="case-study-row">
+                                    <h2>{{ __('Results') }}</h2>
+                                    <p>{!! $case_study->result !!}</p>
+                                </div>
+                            </div>
+                            <div class="col-12 offset-xl-1 col-xl-4 order-1 order-xl-2">
+                                @if ($media->count() > 1)
+                                    <div class="case-study-half-img"
+                                        style="background-image: url('{{ $media[1]->getUrl('responsive') }}')"></div>
+                                @endif
                             </div>
                         </div>
 
-                        <!-- full width img -->
+                        {{-- <!-- full width img -->
                         @if ($media->count() > 1)
                             <div class="full-w-img" style="background-image: url('{{ $media[1]->getUrl('responsive') }}')">
                             </div>
@@ -84,22 +100,30 @@
                                 <h2>{{ __('Results') }}</h2>
                                 <p>{!! $case_study->result !!}</p>
                             </div>
-                        </div>
+                        </div> --}}
                     @else
-                        <div class="row case-study-row">
-                            <div class="col-12 col-xl-6">
-                                {!! $case_study->old_content !!}
+                        <div class="row">
+                            <div class="col-12 col-xl-6 order-2 order-xl-1">
+                                <div class="case-study-row">
+                                    {!! $case_study->old_content !!}
+                                </div>                                
+                            </div>
+                            <div class="col-12 offset-xl-1 col-xl-4 order-1 order-xl-2">
+                                @if ($media->count() > 1)
+                                    <div class="case-study-half-img"
+                                        style="background-image: url('{{ $media[1]->getUrl('responsive') }}')"></div>
+                                @endif
                             </div>
                         </div>
                         <!-- full width img -->
-                        @if ($media->count() > 1)
+                        {{-- @if ($media->count() > 1)
                             @foreach ($media as $index => $medium)
                                 @if ($index > 0)
                                 <div class="full-w-img"
                                     style="background-image: url('{{ $medium->getUrl('responsive') }}')"></div>
                                 @endif
                             @endforeach
-                        @endif
+                        @endif --}}
                     @endif
                 </div>
             </div>
