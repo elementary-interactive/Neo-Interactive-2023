@@ -1,16 +1,15 @@
 @extends('web.layouts.index')
 
 @section('title')
-    {{ $page->title}}
+    {{ $page->title }}
 @endsection
 
-{{-- 
 @push('og')
     @include('web.layouts.head.og', [
         'og' => [
-            'title' => $product->name,
-            'description' => $product->description,
-            'image' => '',
+            'title' => $page->title,
+            'description' => $page->lead,
+            'image' => $page->og_image,
             'type' => 'website',
             'url' => \Request::url(),
         ],
@@ -20,22 +19,14 @@
 @push('meta')
     @include('web.layouts.head.meta', [
         'meta' => [
-            'title' => $product->name,
-            'description' => $product->description,
+            'title' => $page->title,
+            'description' => $page->lead,
             // 'image'             => '',
             // 'type'              => 'website',
             // 'url'               => \Request::url()
         ],
     ])
 @endpush
-
-@push('breadcrumb')
-    @include('components.breadcrumb', [
-        'path' => $path,
-        'brand' => isset($brand) ? $brand : null,
-        'is_product' => true,
-    ])
-@endpush --}}
 
 @section('index')
     @include('web.pages.partials.'.site()->locale.'_index')

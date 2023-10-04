@@ -14,6 +14,7 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Outl1ne\NovaSortable\Traits\HasSortableRows;
@@ -131,6 +132,8 @@ class CaseStudy extends Resource
         ->singleImageRules('dimensions:min_width=100')
         ->withResponsiveImages()
         ->enableExistingMedia(),
+      Textarea::make('Régi', 'old_content')
+        ->readonly(),
       Trix::make('Brief', 'brief'),
       Trix::make('Megoldás', 'solution'),
       Trix::make('Eredmény', 'result'),

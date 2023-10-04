@@ -1,29 +1,32 @@
 @extends('web.layouts.default')
 
 @section('title')
-    @push('og')
-        @include('web.layouts.head.og', [
-            'og' => [
-                'title' => $case_study->title,
-                'description' => $case_study->brief,
-                'image' => $media->first()?->getUrl('responsive'),
-                'type' => 'website',
-                'url' => \Request::url(),
-            ],
-        ])
-    @endpush
+    {{ $page->title }}
+@endsection
 
-    @push('meta')
-        @include('web.layouts.head.meta', [
-            'meta' => [
-                'title' => $case_study->title,
-                'description' => $case_study->brief,
-                // 'image'             => '',
-                // 'type'              => 'website',
-                // 'url'               => \Request::url()
-            ],
-        ])
-    @endpush
+@push('og')
+    @include('web.layouts.head.og', [
+        'og' => [
+            'title' => $case_study->title,
+            'description' => $case_study->brief,
+            'image' => $media->first()?->getUrl('responsive'),
+            'type' => 'website',
+            'url' => \Request::url(),
+        ],
+    ])
+@endpush
+
+@push('meta')
+    @include('web.layouts.head.meta', [
+        'meta' => [
+            'title' => $case_study->title,
+            'description' => $case_study->brief,
+            // 'image'             => '',
+            // 'type'              => 'website',
+            // 'url'               => \Request::url()
+        ],
+    ])
+@endpush
 
 @section('body')
     <!-- case studies subpage -->
