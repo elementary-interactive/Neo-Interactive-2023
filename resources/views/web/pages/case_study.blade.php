@@ -61,10 +61,8 @@
                                 </div>
                             </div>
                             <div class="col-12 offset-xl-1 col-xl-4 order-1 order-xl-2">
-                                @if ($media->count() > 1)
-                                    <div class="case-study-half-img"
-                                        style="background-image: url('{{ $media[1]->getUrl('responsive') }}')"></div>
-                                @endif
+                                <div class="case-study-half-img"
+                                    style="background-image: url('{{ $media[0]->getUrl('responsive') }}')"></div>
                             </div>
                         </div>
 
