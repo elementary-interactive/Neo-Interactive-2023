@@ -6,7 +6,7 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 pos-rel">
         <h2 class="mb-0">{{ site()->footer_slogan }}<span class="yellow">.</span></h2>
         <h2><a href="mailto:{{ site()->footer_email }}">{{ site()->footer_email }}</a></h2>
 
@@ -36,6 +36,9 @@
             @endif
           </div>
         </div>
+
+        <img class="green-badge" src="https://api.thegreenwebfoundation.org/greencheckimage/neointeractive.hu?nocache=true" alt="This website is hosted Green - checked by thegreenwebfoundation.org">
+
         <div class="legal">
           © {{ now()->year }} Neo Interactive All Rights Reserved.
           @if (site()->locale == 'hu')

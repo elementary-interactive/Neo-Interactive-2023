@@ -8,6 +8,11 @@ footer {
         line-height: 1.5em;
     }
 
+    .green-badge {
+        display: block;
+        margin-bottom: 5.4rem;
+    }
+
     .footer-pattern {
         background-image: url(/resources/images/footer-pattern-mobile.svg);
         background-repeat: repeat;
@@ -21,7 +26,7 @@ footer {
     }
 
     .footer-bottom {
-        margin-bottom: 5.4rem;
+        margin-bottom: 3rem;
 
         .contact {
             p {
@@ -61,6 +66,13 @@ footer {
         h2 {
             margin-bottom: 8.5rem;
             line-height: 1.2em;
+        }
+        
+        .green-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
         }
 
         .footer-pattern {
