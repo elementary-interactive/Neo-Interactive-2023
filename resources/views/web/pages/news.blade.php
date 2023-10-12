@@ -33,9 +33,13 @@
 
     <!-- news subpage -->
 
-    <div class="news-container default-padding-w menu-top-margin">
+    <div class="news-container default-sub-padding-w menu-top-margin">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-12">
+                    <a href="{{ route(site()->locale . '.news.index') }}" class="back-link ul"><i class="arrow left"></i>{{ __('News') }}</a>
+                </div>
+
                 <div class="col-12 col-xl-7 order-2 order-xl-1">
                     <h1>{{ $news->title }}</h1>
                     <h3>{!! $news->lead !!}</h3>

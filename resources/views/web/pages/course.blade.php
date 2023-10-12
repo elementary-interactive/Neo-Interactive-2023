@@ -33,10 +33,12 @@
 
     <!-- courses subpage -->
 
-    <div class="course-container default-padding-w menu-top-margin">
+    <div class="course-container default-sub-padding-w menu-top-margin">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
+            <a href="{{ route(site()->locale . '.courses.index') }}" class="back-link ul"><i class="arrow left"></i>{{ __('Courses') }}</a>
+            
             <h2>{{ $block->main_title }}</h2>
             <div class="row def-b-margin">
               <div class="col-12 col-xl-9">
