@@ -31,10 +31,12 @@
 @section('body')
     <!-- case studies subpage -->
 
-    <div class="case-study-container default-padding menu-top-margin">
+    <div class="case-study-container default-sub-padding menu-top-margin">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
+                    <a href="{{ route(site()->locale . '.case_study.index') }}" class="back-link ul"><i class="arrow left"></i>{{ __('Case Studies') }}</a>
+
                     <h3 class="yellow">{{ $case_study->partner?->name }}</h3>
                     <div class="row">
                         <div class="col-12 col-xl-9">

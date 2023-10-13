@@ -36,8 +36,16 @@
     padding: $mobile-margin 0 calc($mobile-margin + 8rem);
 }
 
+.default-sub-padding {
+    padding: $mobile-margin - 1.5rem 0 calc($mobile-margin + 8rem);
+}
+
 .default-padding-w {
     padding: $mobile-margin 0;
+}
+
+.default-sub-padding-w {
+    padding: $mobile-margin - 1.5rem 0 $mobile-margin;
 }
 
 .def-t-margin {
@@ -88,8 +96,16 @@
         padding: $desktop-margin 0 calc($desktop-margin + 8rem);
     }
 
+    .default-sub-padding {
+        padding: $desktop-margin - 6rem 0 calc($desktop-margin + 8rem);
+    }
+
     .default-padding-w {
         padding: $desktop-margin 0;
+    }
+
+    .default-sub-padding-w {
+        padding: $desktop-margin - 6rem 0 $desktop-margin;
     }
 
     .def-t-margin {
