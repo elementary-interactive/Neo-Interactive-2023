@@ -6,7 +6,7 @@
     @include('web.layouts.head.head')
 </head>
 
-<body id="page-top" class="preload template-black">
+<body id="page-top" class="preload">
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NDXP56H" height="0" width="0"
