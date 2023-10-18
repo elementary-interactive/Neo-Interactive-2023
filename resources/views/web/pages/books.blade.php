@@ -1,4 +1,4 @@
-@extends('web.layouts.black')
+@extends('web.layouts.default')
 
 @section('title')
     {{ $page->title }}
@@ -32,111 +32,214 @@
     <!-- case studies -->
 
 
-    <div class="case-studies-container default-padding menu-top-margin">
+    <div class="books-container default-padding menu-top-margin">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-12 col-xl-6">
+                    <h1>Digitális Média Tények Könyve</h1>
+                    <div class="book-year">2023</div>
+                </div>
+
+                <div class="col-12 col-xl-6 pos-rel">
+                    <img class="book-img" src="{{ Vite::asset('resources/images/book/book_img.jpg') }}" alt="">
+                </div>
+            </div>
+        </div>
+
+        {{-- Média --}}
+
+        <div class="container-fluid main-case-studies-container blue-ver">
+            <div class="row">
                 <div class="col-12">
-                    <h1>{{ $page->title }}<span class="yellow">.</span></h1>
-                    @if ($filters?->count())
-                        <div class="case-studies-filter-wrapper">
-                            <div class="case-studies-filter">
-                                @foreach ($filters as $filter)
-                                    @if ($filter->getTranslation('slug', site()->locale) == request()->get('filter'))
-                                        <a href="{{ route(site()->locale . '.case_study.index') }}"
-                                            class="ul active">{{ $filter->getTranslation('name', site()->locale) }}</a>
-                                    @else
-                                        <a href="{{ route(site()->locale . '.case_study.index', ['filter' => $filter->getTranslation('slug', site()->locale)]) }}"
-                                            class="ul">{{ $filter->getTranslation('name', site()->locale) }}</a>
-                                    @endif
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-                    @if ($case_studies?->count())
-                        <div class="case-studies-cards">
-                            @foreach ($case_studies as $case_study)
-                                <a href="{{ route(site()->locale . '.case_study.show', ['slug' => $case_study->slug]) }}"
-                                    class="case-studies-card">
-                                    <div class="case-studies-card-inner"
-                                        style="background-image: url('{{ $case_study->getFirstMediaUrl(App\Models\CaseStudy::MEDIA_COLLECTION, 'responsive') }}')">
-                                        <div class="partner">{{ $case_study->partner?->name }}</div>
-                                        <h3>{{ $case_study->title }}</h3>
+                    <h2>Média</h2>
+
+                    <div class="slider">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_01.png')">
+                                        <div class="partner">AMC Magyarország</div>
+                                        <h3>Vadon János tovább hódít a Spektrum birodalmában!</h3>
                                     </div>
-                                </a>
-                            @endforeach
-                        </div>
-                        @if ($count > 9)
-                        <div class="more-btn-container text-center def-t-margin">
-                            <div class="defbtn" id="more-loading"><i class="icon-arrow-right"></i>{{ __('More case studies') }}</div>
-                        </div>
-                        @endif
-                        {{--
-                            
-                            <div class="square-container">
-                                <div class="square-1 square"></div>
-                                <div class="square-2 square"></div>
-                                <div class="square-3 square"></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_02.png')">
+                                        <div class="partner">dr. Oetker</div>
+                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_03.png')">
+                                        <div class="partner">dr. Oetker</div>
+                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_04.png')">
+                                        <div class="partner">dr. Oetker</div>
+                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
+                                    </div>
+                                </div>                                
                             </div>
-                       
-                        --}}
-                    @endif
+
+                            <!-- scrollbar -->
+                            <div class="scroll-label">SCROLL TO EXPLORE</div>
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- Marketing --}}
+
+        <div class="container-fluid main-case-studies-container orange-ver">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Marketing</h2>
+
+                    <div class="slider">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_01.png')">
+                                        <div class="partner">AMC Magyarország</div>
+                                        <h3>Vadon János tovább hódít a Spektrum birodalmában!</h3>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_02.png')">
+                                        <div class="partner">dr. Oetker</div>
+                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_03.png')">
+                                        <div class="partner">dr. Oetker</div>
+                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_04.png')">
+                                        <div class="partner">dr. Oetker</div>
+                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
+                                    </div>
+                                </div>                                
+                            </div>
+
+                            <!-- scrollbar -->
+                            <div class="scroll-label">SCROLL TO EXPLORE</div>
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         {{-- Fogyasztók & Trendek --}}
+
+         <div class="container-fluid main-case-studies-container purple-ver">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Fogyasztók & Trendek</h2>
+
+                    <div class="slider">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_01.png')">
+                                        <div class="partner">AMC Magyarország</div>
+                                        <h3>Vadon János tovább hódít a Spektrum birodalmában!</h3>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_02.png')">
+                                        <div class="partner">dr. Oetker</div>
+                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_03.png')">
+                                        <div class="partner">dr. Oetker</div>
+                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_04.png')">
+                                        <div class="partner">dr. Oetker</div>
+                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
+                                    </div>
+                                </div>                                
+                            </div>
+
+                            <!-- scrollbar -->
+                            <div class="scroll-label">SCROLL TO EXPLORE</div>
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         {{-- Fogyasztók & Trendek --}}
+
+         <div class="container-fluid main-case-studies-container yellow-ver">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Fogyasztók & Trendek</h2>
+
+                    <div class="slider">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_01.png')">
+                                        <div class="partner">AMC Magyarország</div>
+                                        <h3>Vadon János tovább hódít a Spektrum birodalmában!</h3>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_02.png')">
+                                        <div class="partner">dr. Oetker</div>
+                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_03.png')">
+                                        <div class="partner">dr. Oetker</div>
+                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="swiper-slide-inner"
+                                        style="background-image: url('images/main/cs_04.png')">
+                                        <div class="partner">dr. Oetker</div>
+                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
+                                    </div>
+                                </div>                                
+                            </div>
+
+                            <!-- scrollbar -->
+                            <div class="scroll-label">SCROLL TO EXPLORE</div>
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
-@push('scripts')
-    <script type="text/javascript">
-        var __url = "{{ route(site()->locale . '.case_study.load') }}";
-        var __query = "{{ parse_url("https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", PHP_URL_QUERY) }}";
-        var page = 0; //
-        var page_max = {{ $count }};
-
-        $(document).ready(function() {
-            $('#more-loading').click(function() { //detect page scroll
-                if (page < page_max - 9)
-                {
-                    page += 9; //page number increment
-                    load_more(page); //load content   
-                }
-            });
-        });
-
-        function load_more(page) {
-            $.ajax({
-                    url: __url + '?' + ((__query.length) ? __query + '&' : '') + 'offset=' + page,
-                    type: "get",
-                    datatype: "html",
-                    beforeSend: function() {
-                        $('#more-loading').prop('disabled', true);
-                    }
-                })
-                .done(function(data, status) {
-                    if (data.length > 0) {
-                        $.each(data, function(index, cs) {
-                            $(".case-studies-cards").append('<a href="' + cs.href + '"' +
-                                'class="case-studies-card">' +
-                                '<div class="case-studies-card-inner"' +
-                                'style="background-image: url(\'' + cs.iurl + '\')">' +
-                                '<div class="partner">' + cs.name + '</div>' +
-                                '<h3>' + cs.ttle + '</h3>' +
-                                '</div>' +
-                                '</a>'); //- Append article
-                        });
-                        
-                        if (page < page_max - 9)
-                        {
-                            $('#more-loading').prop('disabled', false); 
-                        }
-                    }
-                    window.setTimeout(function() {
-                        $('#more-loading').hide(); //hide loading animation once data is received
-                    }, 2000);
-                })
-                .fail(function(jqXHR, ajaxOptions, thrownError) {
-                    $('#more-loading').prop('disabled', true);
-                    console.log(thrownError);
-                });
-        }
-    </script>
-@endpush
