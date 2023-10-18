@@ -9,7 +9,6 @@ use ClassicO\NovaMediaLibrary\MediaLibrary;
 use ClassicO\NovaMediaLibrary\NovaMediaLibrary;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
-use Kraftbit\NovaTinymce5Editor\NovaTinymce5Editor;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
@@ -21,6 +20,7 @@ use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Outl1ne\NovaSortable\Traits\HasSortableRows;
+use Murdercode\TinymceEditor\TinymceEditor;
 use Spatie\TagsField\Tags;
 
 class Book extends Resource
@@ -136,8 +136,11 @@ class Book extends Resource
         ->singleImageRules('dimensions:min_width=100')
         ->withResponsiveImages()
         ->enableExistingMedia(),
-      NovaTinymce5Editor::make('Tartalom', 'content')
-        ->id('content'),
+      TinymceEditor::make('Tartalom', 'content')
+        ->rules(['required', 'min:20'])
+        ->fullWidth()
+        ->help(__('The content of the article.')),
+
       //   ->withMeta(['mediaLibrary' => true]),
       // MediaLibrary::make('Insert image', 'js_callback_media_library')
       //   ->jsCallback('mediaLibrarySelectFiles', ['editor' => 'body'])->types(['Image']),
