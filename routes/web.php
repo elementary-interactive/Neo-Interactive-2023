@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\JobApplicantController;
@@ -91,6 +92,13 @@ Route::group([
 
   Route::get("/munkaink/{slug}", [CaseStudyController::class, 'show'])
     ->name('hu.case_study.show');
+
+  Route::get("/dmtk", [BookController::class, 'index'])
+    ->name('hu.book.index');
+
+  Route::get("/dmtk/{slug}", [Bookontroller::class, 'show'])
+    ->name('hu.book.show');
+
 
   Route::get("/jelentkezes/koszonjuk", [JobApplicantController::class, 'thanks'])
     ->name('hu.apply.thanks');
