@@ -109,14 +109,14 @@ class Book extends Resource
       // BelongsTo::make('Weboldal', 'site', \App\Nova\Site::class)
       //   ->nullable(),
       // BelongsTo::make('Partner', 'partner', \App\Nova\Partner::class)
-        // ->showCreateRelationButton(),
+      // ->showCreateRelationButton(),
       Text::make('Cím', 'title')
         ->rules('required', 'max:255'),
       Text::make('')
         ->resolveUsing(function () {
-            return '<a style="color: inherit;" href="'.route('hu.book.show', ['slug' => $this->resource->slug]).'" target="_blank" title="'.$this->resource->title.'">'.view('nova::icon.svg-link', [
-                'color'     => 'rgb(var(--colors-gray-400), 0.75)'
-            ])->render().'</a>';
+          return '<a style="color: inherit;" href="' . route('hu.book.show', ['slug' => $this->resource->slug]) . '" target="_blank" title="' . $this->resource->title . '">' . view('nova::icon.svg-link', [
+            'color'     => 'rgb(var(--colors-gray-400), 0.75)'
+          ])->render() . '</a>';
         })
         ->asHtml()
         ->onlyOnIndex(),
@@ -124,16 +124,21 @@ class Book extends Resource
         ->from('title')
         ->hideFromIndex(),
       Select::make('Csoport', 'group')
+        ->resolveUsing(function () {
+          return $this->resource->groupKey;
+        })
         ->options(BookModel::$groups)
         ->displayUsingLabels()
         ->hideFromDetail()
         ->hideFromIndex(),
-      Text::make('Csoport')
+      Text::make('Csoport', '')
         ->resolveUsing(function () {
-            return $this->resource->group->label;
+          return $this->resource->group->label;
         })
         ->showOnDetail()
-        ->showOnIndex(),
+        ->showOnIndex()
+        ->hideWhenCreating()
+        ->hideWhenUpdating(),
       Images::make(__('Images'), BookModel::MEDIA_COLLECTION) // second parameter is the media collection name
         ->conversionOnPreview('responsive') // conversion used to display the "original" image
         ->conversionOnDetailView('responsive') // conversion used on the model's view
@@ -143,15 +148,15 @@ class Book extends Resource
         ->singleImageRules('dimensions:min_width=100')
         ->withResponsiveImages()
         ->enableExistingMedia(),
-      TinymceEditor::make('Tartalom', 'content')
+      Trix::make('Tartalom', 'content')
         ->rules(['required', 'min:20'])
-        ->fullWidth()
+        ->withFiles()
         ->help(__('The content of the article.')),
 
       //   ->withMeta(['mediaLibrary' => true]),
       // MediaLibrary::make('Insert image', 'js_callback_media_library')
       //   ->jsCallback('mediaLibrarySelectFiles', ['editor' => 'body'])->types(['Image']),
-        // ->readonly(),
+      // ->readonly(),
       // Trix::make('Brief', 'brief'),
       // Trix::make('Megoldás', 'solution'),
       // Trix::make('Eredmény', 'result'),
@@ -162,7 +167,7 @@ class Book extends Resource
 
     return $fields;
   }
-  
+
   public function actions(NovaRequest $request)
   {
     return [

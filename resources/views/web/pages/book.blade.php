@@ -43,6 +43,7 @@
                             <h1>{{ $book->title }}</h1>
                         </div>
                     </div>
+                    {!! $book->content !!}
                     @if (strlen($book->brief) > 5 && strlen($book->solution) > 5 && strlen($book->result) > 5)
 
                         <!-- brief -->
@@ -51,7 +52,7 @@
                             <div class="col-12 col-xl-6 order-2 order-xl-1">
                                 <div class="case-study-row">
                                     <h2>{{ __('Brief') }}</h2>
-                                    {!! $book->brief !!}
+                                    {!! $book->content !!}
                                 </div>
                                 <div class="case-study-row">
                                     <h2>{{ __('Implementation') }}</h2>

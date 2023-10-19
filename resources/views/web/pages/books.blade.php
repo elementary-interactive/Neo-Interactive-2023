@@ -1,4 +1,4 @@
-@extends('web.layouts.default')
+@extends('web.layouts.black')
 
 @section('title')
     {{ $page->title }}
