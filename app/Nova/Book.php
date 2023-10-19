@@ -14,21 +14,17 @@ use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Outl1ne\NovaSortable\Traits\HasSortableRows;
 use Murdercode\TinymceEditor\TinymceEditor;
 use Spatie\TagsField\Tags;
 
 class Book extends Resource
 {
-  use HasSortableRows {
-    indexQuery as indexSortableQuery;
-  }
-
   /**
    * The model the resource corresponds to.
    *
@@ -118,7 +114,7 @@ class Book extends Resource
         ->rules('required', 'max:255'),
       Text::make('')
         ->resolveUsing(function () {
-            return '<a style="color: inherit;" href="'.route($this->resource->site->locale.'.book.show', ['slug' => $this->resource->slug]).'" target="_blank" title="'.$this->resource->title.'">'.view('nova::icon.svg-link', [
+            return '<a style="color: inherit;" href="'.route('hu.book.show', ['slug' => $this->resource->slug]).'" target="_blank" title="'.$this->resource->title.'">'.view('nova::icon.svg-link', [
                 'color'     => 'rgb(var(--colors-gray-400), 0.75)'
             ])->render().'</a>';
         })
@@ -127,6 +123,17 @@ class Book extends Resource
       Slug::make('', 'slug')
         ->from('title')
         ->hideFromIndex(),
+      Select::make('Csoport', 'group')
+        ->options(BookModel::$groups)
+        ->displayUsingLabels()
+        ->hideFromDetail()
+        ->hideFromIndex(),
+      Text::make('Csoport')
+        ->resolveUsing(function () {
+            return $this->resource->group->label;
+        })
+        ->showOnDetail()
+        ->showOnIndex(),
       Images::make(__('Images'), BookModel::MEDIA_COLLECTION) // second parameter is the media collection name
         ->conversionOnPreview('responsive') // conversion used to display the "original" image
         ->conversionOnDetailView('responsive') // conversion used on the model's view
@@ -164,23 +171,24 @@ class Book extends Resource
     ];
   }
 
-  /**
-   * Build an "index" query for the given resource.
-   *
-   * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-   * @param  \Illuminate\Database\Eloquent\Builder  $query
-   * @return \Illuminate\Database\Eloquent\Builder
-   */
-  public static function indexQuery(NovaRequest $request, $query)
-  {
-    $next = parent::indexQuery($request, static::indexSortableQuery($request, $query));
+  // /**
+  //  * Build an "index" query for the given resource.
+  //  *
+  //  * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+  //  * @param  \Illuminate\Database\Eloquent\Builder  $query
+  //  * @return \Illuminate\Database\Eloquent\Builder
+  //  */
+  // public static function indexQuery(NovaRequest $request, $query)
+  // {
+  //   // $next = parent::indexQuery($request, static::indexSortableQuery($request, $query));
+  //   $next = parent::indexQuery($request, static::indexQuery($request, $query));
 
-    // $next->withoutGlobalScopes([
-    //   \Neon\Site\Models\Scopes\SiteScope::class
-    // ]);
-    $next->orderBy('order', 'ASC');
+  //   // $next->withoutGlobalScopes([
+  //   //   \Neon\Site\Models\Scopes\SiteScope::class
+  //   // ]);
+  //   $next->orderBy('create', 'ASC');
 
-    // dd($next);
-    return $next;
-  }
+  //   // dd($next);
+  //   return $next;
+  // }
 }

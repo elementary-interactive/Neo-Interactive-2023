@@ -96,7 +96,7 @@ Route::group([
   Route::get("/dmtk", [BookController::class, 'index'])
     ->name('hu.book.index');
 
-  Route::get("/dmtk/{slug}", [Bookontroller::class, 'show'])
+  Route::get("/dmtk/{slug}", [BookController::class, 'show'])
     ->name('hu.book.show');
 
 

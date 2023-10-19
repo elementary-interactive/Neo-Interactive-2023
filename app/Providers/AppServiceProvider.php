@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
             'applicants'        => \App\Models\JobApplicant::class,
             'attibute'          => \Neon\Attributable\Models\Attribute::class,
             'attibute_value'    => \Neon\Attributable\Models\AttributeValue::class,
+            'book'              => \App\Models\Book::class,
             'case_study'        => \App\Models\CaseStudy::class,
             'course'            => \App\Models\Course::class,
             'jobs'              => \App\Models\JobOpportunity::class,

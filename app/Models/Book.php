@@ -33,6 +33,25 @@ class Book extends Model implements HasMedia, Sortable
     'nova_order_by'       => 'DESC',
   ];
 
+  public static $groups = [
+    'media' => [
+      'label' => 'Média',
+      'color' => 'blue-ver',
+    ],
+    'fogyasztok_trendek' => [
+      'label' => 'Fogyasztók és trendek',
+      'color' => 'purple-ver'
+    ],
+    'marketing' => [
+      'label' => 'Marketing',
+      'color' => 'orange-ver'
+    ],
+    'emberek' => [
+      'label' => 'Emberek',
+      'color' => 'yellow-ver'
+    ]
+  ];
+
   /**
    * The attributes that are mass assignable.
    *
@@ -50,6 +69,28 @@ class Book extends Model implements HasMedia, Sortable
     'updated_at'    => 'timestamp',
     'deleted_at'    => 'timestamp',
   ];
+
+  public function getGroupAttribute(): object|null
+  {
+    return (array_key_exists('group', $this->attributes)) ? (object) self::$groups[$this->attributes['group']] : null;
+  }
+
+  public function getGroupKeyAttribute(): string
+  {
+    return $this->attributes['group'];
+  }
+
+  // public static function groupOptions(): array
+  // {
+  //   $result = [];
+
+  //   foreach (self::$groups as $key => $group)
+  //   {
+  //     $result[$key] = $group['label'];
+  //   }
+
+  //   return $result;
+  // }
 
   public function registerMediaCollections(): void
   {

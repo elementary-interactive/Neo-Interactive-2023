@@ -36,7 +36,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-xl-6">
-                    <h1>Digitális Média Tények Könyve</h1>
+                    <h1>{{ $page->title }}</h1>
                     <div class="book-year">2023</div>
                 </div>
 
@@ -47,43 +47,27 @@
         </div>
 
         {{-- Média --}}
-
-        <div class="container-fluid main-case-studies-container blue-ver">
+        @foreach ($groups as $groupKey => $group)
+        <div class="container-fluid main-case-studies-container {{ $group['color'] }}">
             <div class="row">
                 <div class="col-12">
-                    <h2>Média</h2>
+                    <h2>{{ $group['label'] }}</h2>
 
                     <div class="slider">
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_01.png')">
-                                        <div class="partner">AMC Magyarország</div>
-                                        <h3>Vadon János tovább hódít a Spektrum birodalmában!</h3>
+                                @if ($books->has($groupKey))
+                                    @foreach ($books[$groupKey] as $book)
+                                    <div class="swiper-slide">
+                                        <a href="{{ route(site()->locale . '.book.show', ['slug' => $book->slug]) }}"
+                                            class="swiper-slide-inner"
+                                            style="background-image: url('{{ $book->getFirstMediaUrl(App\Models\Book::MEDIA_COLLECTION, 'responsive') }}')">
+                                            <div class="partner">{{ $group['label'] }}</div>
+                                            <h3>{{ $book->title }}</h3>
+                                        </a>
                                     </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_02.png')">
-                                        <div class="partner">dr. Oetker</div>
-                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_03.png')">
-                                        <div class="partner">dr. Oetker</div>
-                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_04.png')">
-                                        <div class="partner">dr. Oetker</div>
-                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
-                                    </div>
-                                </div>                                
+                                    @endforeach
+                                @endif
                             </div>
 
                             <!-- scrollbar -->
@@ -94,152 +78,6 @@
                 </div>
             </div>
         </div>
-
-        {{-- Marketing --}}
-
-        <div class="container-fluid main-case-studies-container orange-ver">
-            <div class="row">
-                <div class="col-12">
-                    <h2>Marketing</h2>
-
-                    <div class="slider">
-                        <div class="swiper-container">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_01.png')">
-                                        <div class="partner">AMC Magyarország</div>
-                                        <h3>Vadon János tovább hódít a Spektrum birodalmában!</h3>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_02.png')">
-                                        <div class="partner">dr. Oetker</div>
-                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_03.png')">
-                                        <div class="partner">dr. Oetker</div>
-                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_04.png')">
-                                        <div class="partner">dr. Oetker</div>
-                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
-                                    </div>
-                                </div>                                
-                            </div>
-
-                            <!-- scrollbar -->
-                            <div class="scroll-label">SCROLL TO EXPLORE</div>
-                            <div class="swiper-scrollbar"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-         {{-- Fogyasztók & Trendek --}}
-
-         <div class="container-fluid main-case-studies-container purple-ver">
-            <div class="row">
-                <div class="col-12">
-                    <h2>Fogyasztók & Trendek</h2>
-
-                    <div class="slider">
-                        <div class="swiper-container">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_01.png')">
-                                        <div class="partner">AMC Magyarország</div>
-                                        <h3>Vadon János tovább hódít a Spektrum birodalmában!</h3>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_02.png')">
-                                        <div class="partner">dr. Oetker</div>
-                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_03.png')">
-                                        <div class="partner">dr. Oetker</div>
-                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_04.png')">
-                                        <div class="partner">dr. Oetker</div>
-                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
-                                    </div>
-                                </div>                                
-                            </div>
-
-                            <!-- scrollbar -->
-                            <div class="scroll-label">SCROLL TO EXPLORE</div>
-                            <div class="swiper-scrollbar"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-         {{-- Fogyasztók & Trendek --}}
-
-         <div class="container-fluid main-case-studies-container yellow-ver">
-            <div class="row">
-                <div class="col-12">
-                    <h2>Fogyasztók & Trendek</h2>
-
-                    <div class="slider">
-                        <div class="swiper-container">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_01.png')">
-                                        <div class="partner">AMC Magyarország</div>
-                                        <h3>Vadon János tovább hódít a Spektrum birodalmában!</h3>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_02.png')">
-                                        <div class="partner">dr. Oetker</div>
-                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_03.png')">
-                                        <div class="partner">dr. Oetker</div>
-                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="swiper-slide-inner"
-                                        style="background-image: url('images/main/cs_04.png')">
-                                        <div class="partner">dr. Oetker</div>
-                                        <h3>Süsd meg, ez<br>nagyon jó lett!</h3>
-                                    </div>
-                                </div>                                
-                            </div>
-
-                            <!-- scrollbar -->
-                            <div class="scroll-label">SCROLL TO EXPLORE</div>
-                            <div class="swiper-scrollbar"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 @endsection

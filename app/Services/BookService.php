@@ -34,11 +34,11 @@ class BookService
       ->firstOrFail();
   }
 
-  public function index($offset = 0, $limit = 9): EloquentCollection
+  public function index(): EloquentCollection
   {
     return Book::orderBy('created_at', 'desc')
       ->get()
-      ->group;
+      ->groupBy('groupKey');
   }
 
   public function filter(string $filter = null, $offset = 0, $limit = 9): EloquentCollection

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\CaseStudy;
+use App\Services\BookService;
 use App\Services\CaseStudyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -17,7 +19,7 @@ class BookController extends Controller
 {
     protected $book_service;
 
-    public function __construct(CaseStudyService $book_service)
+    public function __construct(BookService $book_service)
     {
         $this->book_service = $book_service;
     }
@@ -28,20 +30,19 @@ class BookController extends Controller
          * 
          * @var  Link $page
          */
-        $page           = $page_service->static('munka');
-        $page->template = 'case_study';
+        $page           = $page_service->static('book');
+        $page->template = 'book';
 
-        /** @var CaseStudy $case_study
+        /** @var Book $book
          */
-        $case_study     = $this->book_service->findOrFail($slug);
+        $book     = $this->book_service->findOrFail($slug);
  
         return View::first(
             $page_service->getViews(Arr::first(site()->domains)),
             [
                 'page'          => $page,
-                'filters'       => Tag::withType(CaseStudy::TAG_TYPE)->get(),
-                'case_study'    => $case_study,
-                'media'         => $case_study->getMedia(CaseStudy::MEDIA_COLLECTION)
+                'book'          => $book,
+                'media'         => $book->getMedia(Book::MEDIA_COLLECTION)
             ]
         );
     }
@@ -52,16 +53,15 @@ class BookController extends Controller
          * 
          * @var  Link $page
          */
-        $page           = $page_service->find('munkaink');
-        $page->template = 'case_studies';
+        $page           = $page_service->find('books');
+        $page->template = 'books';
  
         return View::first(
             $page_service->getViews(Arr::first(site()->domains)),
             [
                 'page'          => $page,
-                'filters'       => Tag::withType(CaseStudy::TAG_TYPE)->get(),
-                'case_studies'  => $this->book_service->filter($request->query('filter')),
-                'count'         => $this->book_service->count($request->query('filter')),
+                'groups'        => Book::$groups,
+                'books'         => $this->book_service->index(),
             ]
         );
     }
