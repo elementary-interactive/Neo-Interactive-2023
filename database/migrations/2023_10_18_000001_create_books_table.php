@@ -17,7 +17,6 @@ return new class extends Migration
             $table->uuid('site_id')
                 ->nullable()
                 ->default(null);
-            $table->uuid('partner_id');
             
             $table->string('title');
             $table->string('slug')
