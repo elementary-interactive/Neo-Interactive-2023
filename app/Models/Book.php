@@ -75,9 +75,9 @@ class Book extends Model implements HasMedia, Sortable
     return (array_key_exists('group', $this->attributes)) ? (object) self::$groups[$this->attributes['group']] : null;
   }
 
-  public function getGroupKeyAttribute(): string
+  public function getGroupKeyAttribute(): string|null
   {
-    return $this->attributes['group'];
+    return (array_key_exists('group', $this->attributes)) ? $this->attributes['group'] : null;
   }
 
   // public static function groupOptions(): array
