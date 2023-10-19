@@ -61,6 +61,99 @@
   }
 }
 
+// sub page
+
+.book-container {
+  &.blue-ver {
+    .category {
+      color: $book-blue;
+    }
+
+    .basic-text-container {
+      blockquote {
+        border-left-color: $book-blue;
+      }
+
+      ul li::before,
+      a::after {
+        background-color: $book-blue;
+      }
+    }
+
+    .ul::after {
+      background-color: $book-blue;
+    }
+  }
+
+  &.orange-ver {
+    .category {
+      color: $book-orange;
+    }
+
+    .basic-text-container {
+      blockquote {
+        border-left-color: $book-orange;
+      }
+
+      ul li::before,
+      a::after {
+        background-color: $book-orange;
+      }
+    }
+
+    .ul::after {
+      background-color: $book-orange;
+    }
+  }
+
+  &.purple-ver {
+    .category {
+      color: $book-purple;
+    }
+
+    .basic-text-container {
+      blockquote {
+        border-left-color: $book-purple;
+      }
+
+      ul li::before,
+      a::after {
+        background-color: $book-purple;
+      }
+    }
+
+    .ul::after {
+      background-color: $book-purple;
+    }
+  }
+
+  &.yellow-ver {
+    .category {
+      color: $yellow;
+    }
+
+    .basic-text-container {
+      blockquote {
+        border-left-color: $yellow;
+      }
+
+      ul li::before,
+      a::after {
+        background-color: $yellow;
+      }
+    }
+
+    .ul::after {
+      background-color: $yellow;
+    }
+  }
+
+  .case-study-half-img {
+    margin: 3rem 0;
+    background-color: transparent;
+  }
+}
+
 @media (min-width: $xl-width) {
   .books-container {
     .book-year {
@@ -76,6 +169,14 @@
 
     .main-case-studies-container {
       padding: 6rem 0;
+    }
+  }
+
+  // sub page
+
+  .book-container {
+    .case-study-half-img {
+      margin: 0;
     }
   }
 }
