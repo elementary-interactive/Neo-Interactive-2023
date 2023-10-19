@@ -1,0 +1,81 @@
+.books-container {
+  .book-year {
+    font-size: 2rem;
+  }
+
+  .main-case-studies-container {
+    padding: 4rem 0;
+
+    .swiper-scrollbar {
+      background: black;
+      border: 1px solid #686868;
+    }
+  }
+
+  .blue-ver {
+    h2,
+    .swiper-container .swiper-slide .partner {
+      color: $book-blue;
+    }
+
+    .swiper-scrollbar .swiper-scrollbar-drag,
+    .swiper-scrollbar-drag {
+      background-color: $book-blue;
+    }
+  }
+
+  .orange-ver {
+    h2,
+    .swiper-container .swiper-slide .partner {
+      color: $book-orange;
+    }
+
+    .swiper-scrollbar .swiper-scrollbar-drag,
+    .swiper-scrollbar-drag {
+      background-color: $book-orange;
+    }
+  }
+
+  .purple-ver {
+    h2,
+    .swiper-container .swiper-slide .partner {
+      color: $book-purple;
+    }
+
+    .swiper-scrollbar .swiper-scrollbar-drag,
+    .swiper-scrollbar-drag {
+      background-color: $book-purple;
+    }
+  }
+
+  .yellow-ver {
+    h2,
+    .swiper-container .swiper-slide .partner {
+      color: $yellow;
+    }
+
+    .swiper-scrollbar .swiper-scrollbar-drag,
+    .swiper-scrollbar-drag {
+      background-color: $yellow;
+    }
+  }
+}
+
+@media (min-width: $xl-width) {
+  .books-container {
+    .book-year {
+      font-size: 3.6rem;
+      margin-bottom: 8rem;
+    }
+
+    .book-img {
+      position: absolute;
+      right: -3rem;
+      top: -23rem;
+    }
+
+    .main-case-studies-container {
+      padding: 6rem 0;
+    }
+  }
+}

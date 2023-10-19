@@ -15,9 +15,8 @@ use Laravel\Nova\Menu\MenuSection as NovaMenuSection;
 
 use App\Nova\Admin;
 use App\Nova\Attribute;
-use App\Nova\Brand;
+use App\Nova\Book;
 use App\Nova\CaseStudy;
-use App\Nova\Category;
 use App\Nova\Course;
 use App\Nova\CourseParticipant;
 use App\Nova\Link;
@@ -32,6 +31,7 @@ use App\Nova\News;
 use App\Nova\Partner;
 use App\Nova\Service;
 use App\Nova\Tags;
+use ClassicO\NovaMediaLibrary\NovaMediaLibrary;
 use Laravel\Nova\Badge;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -87,8 +87,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
           NovaMenuItem::resource(Product::class), // Termékeink
           NovaMenuItem::resource(Partner::class), // Ügyfelek
           NovaMenuItem::resource(CaseStudy::class), // Case Study
+          NovaMenuItem::resource(Book::class), // Case Study
           NovaMenuItem::resource(News::class), // Hírek
           NovaMenuItem::resource(Tags::class), // Címkék
+
+          // NovaMenuItem::resource(NovaMediaLibrary::class),
           /** Here comes all the menu items...
          * 
          * ...

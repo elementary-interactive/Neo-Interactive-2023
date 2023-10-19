@@ -1,0 +1,88 @@
+.template-black {
+    color: $white;
+    background: black;
+
+    .main-container{
+        background: black;
+    }
+
+    footer {
+        background: $black;
+
+        .footer-pattern {
+            background-image: url(/resources/images/footer-pattern-mobile-black.svg);
+        }
+    }
+
+    .main-container,
+    footer,
+    .menu-bar nav .nav-content,
+    .defbtn,
+    .menu-bar nav .nav-content .nav-list-item a:hover,
+    .back-link {
+        color: $white;
+    }
+
+    .defbtn {
+
+        &:hover,
+        &:focus,
+        &.hover {
+            color: $yellow;
+        }
+    }
+
+    // header
+
+    .nav-bg:before {
+        background: black;
+    }
+
+    .menu-bar nav .nav-content .nav-mobilemenu {
+        border-top: 1px solid $white;
+    }
+
+    .menu-bar .menu-icon__line {
+        background-color: $white;
+    }
+
+    &.nav-active .menu-icon__line {
+        background-color: $yellow;
+    }
+
+    &.nav-active .menu-icon__line-middle {
+        background-color: transparent;
+    }
+
+    .menu-bar .brand-logo {
+        .neo-logo-white {
+            display: inline;
+        }
+
+        .neo-logo-black {
+            display: none;
+        }
+    }
+}
+
+@media (min-width: $xl-width) {
+    .template-black {
+        background: black;
+
+        .main-container {
+            background: black;
+        }
+
+        footer {
+            background: linear-gradient(to right, black 0%, $black 100%);
+
+            .footer-pattern {
+                background-image: url(/resources/images/footer-pattern-black.svg);
+            }
+        }
+
+        .menu-bar nav .nav-content .nav-list-item a:hover {
+            color: $yellow;
+        }
+    }
+}

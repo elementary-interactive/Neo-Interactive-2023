@@ -1,6 +1,7 @@
 <div class="menu-bar">
     <div class="brand-logo">
-      <a href="{{ route(site()->locale.'.index') }}"><img src="{{ Vite::asset('resources/images/neo_logo.svg') }}" alt="NEO"></a>
+      <a class="neo-logo-black" href="{{ route(site()->locale.'.index') }}"><img src="{{ Vite::asset('resources/images/neo_logo.svg') }}" alt="NEO"></a>
+      <a class="neo-logo-white" href="{{ route(site()->locale.'.index') }}"><img src="{{ Vite::asset('resources/images/neo_logo_white.svg') }}" alt="NEO"></a>
     </div>
     <div class="menu-btn d-xl-none">
       <div class="menu-icon">

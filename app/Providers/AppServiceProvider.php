@@ -21,12 +21,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        URL::forceScheme('https');
+        // URL::forceScheme('https');
  
         Relation::enforceMorphMap([
             'applicants'        => \App\Models\JobApplicant::class,
             'attibute'          => \Neon\Attributable\Models\Attribute::class,
             'attibute_value'    => \Neon\Attributable\Models\AttributeValue::class,
+            'book'              => \App\Models\Book::class,
             'case_study'        => \App\Models\CaseStudy::class,
             'course'            => \App\Models\Course::class,
             'jobs'              => \App\Models\JobOpportunity::class,

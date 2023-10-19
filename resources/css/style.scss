@@ -25,6 +25,7 @@
 
 // pages - page parts
 
+@import "pages/_book";
 @import "pages/_career";
 @import "pages/_case-studies";
 @import "pages/_case-study";
@@ -35,3 +36,7 @@
 @import "pages/_main";
 @import "pages/_news";
 @import "pages/_newsroom";
+
+// template - black
+
+@import "template-black";
