@@ -232,7 +232,7 @@
     }
 
     .swiper-container {
-        padding-bottom: 2.2rem;
+        padding-bottom: 6.2rem;
         width: 90%;
 
         .swiper-slide {
@@ -286,7 +286,10 @@
     .scroll-label {
         font-size: 1rem;
         text-transform: uppercase;
-        margin-top: 2rem;
+        position: absolute;
+        top: -3.5rem;
+        left: 0;
+        margin: 0;
     }
 
     .swiper-scrollbar {
@@ -631,10 +634,9 @@
         }
 
         .scroll-label {
-            position: absolute;
+            top: unset;
             bottom: -0.5rem;
-            left: 0;
-            margin: 0;
+            left: -17rem;
         }
 
         .swiper-scrollbar {
