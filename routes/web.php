@@ -93,10 +93,10 @@ Route::group([
   Route::get("/munkaink/{slug}", [CaseStudyController::class, 'show'])
     ->name('hu.case_study.show');
 
-  Route::get("/dmtk", [BookController::class, 'index'])
+  Route::get("/dmtk/2023", [BookController::class, 'index'])
     ->name('hu.book.index');
 
-  Route::get("/dmtk/{slug}", [BookController::class, 'show'])
+  Route::get("/dmtk/2023/{slug}", [BookController::class, 'show'])
     ->name('hu.book.show');
 
 
