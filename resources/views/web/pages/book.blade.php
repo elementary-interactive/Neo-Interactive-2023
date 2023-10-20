@@ -35,7 +35,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <a href="{{ route(site()->locale . '.book.index') }}" class="back-link ul"><i class="arrow left"></i>Vissza</a>
+                    <a href="{{ route(site()->locale . '.book.index') }}#{{ $book->groupKey }}" class="back-link ul"><i class="arrow left"></i>Vissza</a>
 
                     <h3 class="category">{{ $book->group->label }}</h3>
                     <div class="row">

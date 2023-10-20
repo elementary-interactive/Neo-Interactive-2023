@@ -47,7 +47,7 @@
 
         {{-- Média --}}
         @foreach ($groups as $groupKey => $group)
-        <div class="container-fluid main-case-studies-container {{ $group['color'] }}">
+        <div id="{{ $groupKey }}" class="container-fluid main-case-studies-container {{ $group['color'] }}">
             <div class="row">
                 <div class="col-12">
                     <h2>{{ $group['label'] }}</h2>
