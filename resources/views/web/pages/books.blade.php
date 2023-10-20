@@ -37,7 +37,6 @@
             <div class="row">
                 <div class="col-12 col-xl-6">
                     <h1>{{ $page->title }}</h1>
-                    <div class="book-year">2023</div>
                 </div>
 
                 <div class="col-12 col-xl-6 pos-rel">
@@ -71,8 +70,10 @@
                             </div>
 
                             <!-- scrollbar -->
-                            <div class="scroll-label">SCROLL TO EXPLORE</div>
-                            <div class="swiper-scrollbar"></div>
+                           
+                            <div class="swiper-scrollbar">
+                                <div class="scroll-label">{{ __('SCROLL TO EXPLORE') }}</div>
+                            </div>
                         </div>
                     </div>
                 </div>

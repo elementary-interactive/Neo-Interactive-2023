@@ -23,9 +23,10 @@
                                 @endforeach
                             </div>
 
-                            <!-- scrollbar -->
-                            <div class="scroll-label">{{ __('SCROLL TO EXPLORE') }}</div>
-                            <div class="swiper-scrollbar"></div>
+                            <!-- scrollbar -->                            
+                            <div class="swiper-scrollbar">
+                                <div class="scroll-label">{{ __('SCROLL TO EXPLORE') }}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
