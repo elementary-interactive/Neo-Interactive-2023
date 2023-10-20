@@ -71,7 +71,7 @@
                             </div>
 
                             <!-- scrollbar -->
-                            <div class="scroll-label">SCROLL TO EXPLORE</div>
+                            <div class="scroll-label">{{ __('SCROLL TO EXPLORE') }}</div>
                             <div class="swiper-scrollbar"></div>
                         </div>
                     </div>
