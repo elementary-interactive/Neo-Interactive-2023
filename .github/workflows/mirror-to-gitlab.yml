@@ -1,0 +1,21 @@
+﻿name: Mirror to GitLab
+
+on:
+  push:
+    branches: ['**']
+  delete: {}
+  create: {}
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Mirror to GitLab
+        run: |
+          git remote add gitlab \
+            https://oauth2:${{ secrets.GITLAB_MIRROR_TOKEN }}@gitlab.com/elementary-interactive/neo-interactive/${{ github.event.repository.name }}.git
+          git push gitlab --mirror --force
